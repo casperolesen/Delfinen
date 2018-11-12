@@ -7,7 +7,7 @@ package data;
 
 /**
  *
- * @author caspe
+ * @author Vics
  */
 public class DAO {
     

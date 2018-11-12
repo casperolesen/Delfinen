@@ -7,8 +7,7 @@ package logic;
 
 /**
  *
- * @author caspe
+ * @author Vics
  */
 public class Member {
     
-}
