@@ -13,6 +13,15 @@ public class Member {
     private boolean elite;
     
     public Member(int id, String name, String email, LocalDate date, boolean active, boolean elite){
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.birthday = date;
+        this.active = active;
+        this.elite = elite;
+    }
+    
+    public Member(String name, String email, LocalDate date, boolean active, boolean elite){
         this.name = name;
         this.email = email;
         this.birthday = date;

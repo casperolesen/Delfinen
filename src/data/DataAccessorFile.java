@@ -71,19 +71,18 @@ public class DataAccessorFile implements DataAccessorInterface {
 
     @Override
     public List<Member> searchMailForMembers(String email) throws Exception {
-        List<Member> members = new ArrayList<>();
-        for (String line : readAllLines(fileMembers)) {
-            if (email.equals(line.split(splitSymbol)[2])) {
-                String[] parts = line.split(splitSymbol);
-                members.add(new Member(
-                        Integer.parseInt(parts[0].trim()),
-                        parts[1].trim(),
-                        parts[2].trim(),
-                        LocalDate.parse(parts[3].trim()),
-                        Boolean.parseBoolean(parts[4].trim()),
-                        Boolean.parseBoolean(parts[5].trim())));
-            }
-        }
+        List<Member> members = new ArrayList<>(); 
+            for(String line:readAllLines(fileMembers)){
+            if(email.equals(line.split(splitSymbol)[2].trim())){
+            String[] parts = line.split(splitSymbol);
+            members.add(new Member(
+                    Integer.parseInt(parts[0].trim()),
+                    parts[1].trim(),
+                    parts[2].trim(),
+                    LocalDate.parse(parts[3].trim()),
+                    Boolean.parseBoolean(parts[4].trim()),
+                    Boolean.parseBoolean(parts[5].trim())));
+            }}
         return members;
     }
 
