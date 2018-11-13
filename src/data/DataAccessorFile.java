@@ -72,7 +72,7 @@ public class DataAccessorFile implements DataAccessorInterface{
     public List<Member> searchMailForMembers(String email) throws Exception {
         List<Member> members = new ArrayList<>(); 
             for(String line:readAllLines(fileMembers)){
-            if(email.equals(line.split(splitSymbol)[2])){
+            if(email.equals(line.split(splitSymbol)[2].trim())){
             String[] parts = line.split(splitSymbol);
             members.add(new Member(
                     Integer.parseInt(parts[0].trim()),
