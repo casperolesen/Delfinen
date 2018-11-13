@@ -2,16 +2,19 @@ package data;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import logic.Member;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Before;
 
 /**
  *
  * @author caspe
  */
 public class DataAccessorInterfaceTest {
-
+    
     public DataAccessorInterfaceTest() {
     }
 
@@ -60,20 +63,20 @@ public class DataAccessorInterfaceTest {
     /**
      * Test of createMember method, of class DataAccessorInterface.
      */
+    
     @Test
     public void testCreateMember() throws Exception {
-//        System.out.println("createMember");
+        System.out.println("createMember");
 //        Member newMember = new Member("Oprettet via Test", "test@test.dk", LocalDate.parse("1900-01-28"), true, true);
-//        DataAccessorInterface instance = new DataAccessorFile();
+        DataAccessorInterface instance = new DataAccessorFile();
 //        instance.createMember(newMember); // gemmer nyt test member i filen
 ////        
 ////        DataAccessorInterface instanceTwo = new DataAccessorFile();
 ////        
-//        String expResult = "Oprettet via Test";
-//        String result = instance.searchMailForMembers("test@test.dk").get(0).getName();
+        String expResult = "Oprettet via Test";
+        String result = instance.searchMailForMembers("test@test.dk").get(0).getName();
 ////        
-//        assertEquals(expResult, result); // tester på navnet
-        fail("The test case is a prototype.");
+        assertEquals(expResult, result); // tester på navnet
     }
 
     /**
