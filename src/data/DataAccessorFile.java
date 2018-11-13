@@ -11,10 +11,11 @@ import java.util.List;
 import logic.Member;
 
 public class DataAccessorFile implements DataAccessorInterface{
-    private String filetext = "members_delfinen.txt"; // filepath som String
-    private Path filepath = Paths.get(filetext); // Path oprettet via filetext. Burde laves på en linje
+    private String fileMembers = "members_delfinen.txt"; // filepath som String
+    private Path filepath = Paths.get(fileMembers); // Path oprettet via filetext. Burde laves på en linje
+    private String splitSymbol = ",";
     
-    public List readAllLines(String filename) throws IOException{
+    public List<String> readAllLines(String filename) throws IOException{
         try {
             Charset cs = Charset.forName("ISO-8859-1");
             Path path = Paths.get(filename);
@@ -33,6 +34,19 @@ public class DataAccessorFile implements DataAccessorInterface{
             out.close();
         } catch (IOException ex) {
             throw new IOException();
+        }
+    }
+    
+    public void editLine(String id, String newLine, String filename ) throws IOException {
+        List<String> allLinesInFile = readAllLines(filename);
+        for (String line : allLinesInFile) {
+            
+            for (int i = 0; i < allLinesInFile.size(); i++) {
+                if (id.equals(allLinesInFile.get(i).split(splitSymbol)[0].trim())) {
+                    allLinesInFile.set(i, newLine);
+                    break;
+                }
+            }
         }
     }
 
