@@ -7,7 +7,3 @@
 7; Ggg GggFile; g@g.dk; 2007-07-25; true; false
 8; Hhh HhhFile; h@h.dk; 2008-08-24; true; false
 9; Iii IiiFile; i@i.dk; 2009-09-23; true; false
-10;Oprettet via Test; test@test.dk, 1900-01-28, true, true
-11;Oprettet via Test; test@test.dk, 1900-01-28, true, true
-12;Oprettet via Test; test@test.dk, 1900-01-28, true, true
-13;Oprettet via Test; test@test.dk, 1900-01-28, true, true
