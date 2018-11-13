@@ -7,6 +7,7 @@ public class Member {
     
     private String name;
     private LocalDate birthday;
+    private String email;
     
     private boolean active;
     private boolean elite;
