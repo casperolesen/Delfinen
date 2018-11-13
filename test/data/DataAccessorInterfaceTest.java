@@ -22,9 +22,9 @@ public class DataAccessorInterfaceTest {
     public void testGetMembers() throws Exception {
         System.out.println("getMembers");
         DataAccessorInterface instance = new DataAccessorFile();
-        //List<Member> expResult = null;
-        List<Member> result = instance.getMembers();
-        assertNotNull(result); // tester at listen med Member ikke er tom
+        Boolean expResult = false;
+        Boolean result = instance.getMembers().isEmpty();
+        assertEquals(expResult, result); // tester at listen ikke er tom
     }
 
     /**
@@ -50,8 +50,8 @@ public class DataAccessorInterfaceTest {
         System.out.println("getMember");
         int id = 3;
         DataAccessorInterface instance = new DataAccessorFile();
-        Member expResult = new Member(3, "Casper Kruse Olesen", "c@c.dk", LocalDate.parse("1990-03-27"), true, true);
-        Member result = instance.getMember(id);
+        String expResult = "Casper Kruse Olesen";
+        String result = instance.getMember(id).getName();
         assertEquals(expResult, result);
     }
 
