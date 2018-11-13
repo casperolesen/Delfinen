@@ -7,6 +7,8 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import logic.Member;
 
@@ -52,7 +54,19 @@ public class DataAccessorFile implements DataAccessorInterface{
 
     @Override
     public List<Member> getMembers() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Member> members = new ArrayList<>();    
+        for(String line:readAllLines(fileMembers)){
+            String[] parts = line.split(splitSymbol);
+            members.add(new Member(
+                    Integer.parseInt(parts[0]),
+                    parts[1],
+                    parts[2],
+                    LocalDate.parse(parts[3]),
+                    Boolean.parseBoolean(parts[4]),
+                    Boolean.parseBoolean(parts[5])));
+        }
+        
+        return members;
     }
 
     @Override
