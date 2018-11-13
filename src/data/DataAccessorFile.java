@@ -57,12 +57,12 @@ public class DataAccessorFile implements DataAccessorInterface{
         for(String line:readAllLines(fileMembers)){
             String[] parts = line.split(splitSymbol);
             members.add(new Member(
-                    Integer.parseInt(parts[0]),
-                    parts[1],
-                    parts[2],
-                    LocalDate.parse(parts[3]),
-                    Boolean.parseBoolean(parts[4]),
-                    Boolean.parseBoolean(parts[5])));
+                    Integer.parseInt(parts[0].trim()),
+                    parts[1].trim(),
+                    parts[2].trim(),
+                    LocalDate.parse(parts[3].trim()),
+                    Boolean.parseBoolean(parts[4].trim()),
+                    Boolean.parseBoolean(parts[5].trim())));
         }
         
         return members;
@@ -70,7 +70,19 @@ public class DataAccessorFile implements DataAccessorInterface{
 
     @Override
     public List<Member> searchMailForMembers(String email) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Member> members = new ArrayList<>(); 
+            for(String line:readAllLines(fileMembers)){
+            if(email.equals(line.split(splitSymbol)[2])){
+            String[] parts = line.split(splitSymbol);
+            members.add(new Member(
+                    Integer.parseInt(parts[0].trim()),
+                    parts[1].trim(),
+                    parts[2].trim(),
+                    LocalDate.parse(parts[3].trim()),
+                    Boolean.parseBoolean(parts[4].trim()),
+                    Boolean.parseBoolean(parts[5].trim())));
+            }}
+        return members;
     }
 
     @Override
