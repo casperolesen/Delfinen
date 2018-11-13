@@ -43,4 +43,8 @@ public class Member {
     public boolean isElite() {
         return elite;
     }
+    
+    public String toFile() {
+        return id+"||"+name+"||"+email+"||"+birthday+"||"+active+"||"+elite;
+    }
 }
