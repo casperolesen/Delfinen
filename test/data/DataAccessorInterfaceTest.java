@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
  * @author caspe
  */
 public class DataAccessorInterfaceTest {
-    
+
     public DataAccessorInterfaceTest() {
     }
 
@@ -38,7 +38,7 @@ public class DataAccessorInterfaceTest {
         DataAccessorInterface instance = new DataAccessorFile();
         int expResult = 3; // id
         int result = instance.searchMailForMembers(email).get(0).getID(); // id
-        
+
 //        Boolean expResult = false;
 //        Boolean result = instance.searchMailForMembers(email).isEmpty();
         assertEquals(expResult, result); // tester pt. kun på det første resultat i listen
@@ -66,12 +66,12 @@ public class DataAccessorInterfaceTest {
 //        Member newMember = new Member("Oprettet via Test", "test@test.dk", LocalDate.parse("1900-01-28"), true, true);
 //        DataAccessorInterface instance = new DataAccessorFile();
 //        instance.createMember(newMember); // gemmer nyt test member i filen
-//        
-//        DataAccessorInterface instanceTwo = new DataAccessorFile();
-//        
+////        
+////        DataAccessorInterface instanceTwo = new DataAccessorFile();
+////        
 //        String expResult = "Oprettet via Test";
-//        String result = instanceTwo.searchMailForMembers("test@test.dk").get(0).getName();
-//        
+//        String result = instance.searchMailForMembers("test@test.dk").get(0).getName();
+////        
 //        assertEquals(expResult, result); // tester på navnet
         fail("The test case is a prototype.");
     }
@@ -125,5 +125,5 @@ public class DataAccessorInterfaceTest {
         public void deleteMember(Member member) throws Exception {
         }
     }
-    
+
 }
