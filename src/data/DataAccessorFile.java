@@ -14,7 +14,7 @@ import logic.Member;
 
 public class DataAccessorFile implements DataAccessorInterface{
     private final String fileMembers = "members_delfinen.txt"; // filepath som String
-    private final String splitSymbol = "||";
+    private final String splitSymbol = ";";
     
     public List<String> readAllLines(String filename) throws IOException{
         try {
@@ -92,12 +92,12 @@ public class DataAccessorFile implements DataAccessorInterface{
         
         for (String line : allLinesInFile ) {
             if (Integer.toString(id).equals(line.split(splitSymbol)[0].trim())) {
-                int id_member = Integer.parseInt(line.split(",")[0].trim());
-                    String name = line.split(",")[1].trim();
-                    String email = line.split(",")[2].trim();
-                    LocalDate birthday = LocalDate.parse(line.split(",")[3].trim());
-                    Boolean active = Boolean.valueOf(line.split(",")[4].trim());
-                    Boolean elite = Boolean.valueOf(line.split(",")[5].trim());
+                int id_member = Integer.parseInt(line.split(splitSymbol)[0].trim());
+                    String name = line.split(splitSymbol)[1].trim();
+                    String email = line.split(splitSymbol)[2].trim();
+                    LocalDate birthday = LocalDate.parse(line.split(splitSymbol)[3].trim());
+                    Boolean active = Boolean.valueOf(line.split(splitSymbol)[4].trim());
+                    Boolean elite = Boolean.valueOf(line.split(splitSymbol)[5].trim());
                 Member member = new Member (id_member, name, email, birthday, active, elite);
                 
                 return member;
