@@ -33,13 +33,14 @@ public class DataAccessorInterfaceTest {
     @Test
     public void testSearchMailForMembers() throws Exception {
         System.out.println("searchMailForMembers");
-        String email = "";
+        String email = "c@c.dk";
         DataAccessorInterface instance = new DataAccessorFile();
-        List<Member> expResult = null;
-        List<Member> result = instance.searchMailForMembers(email);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        int expResult = 3; // id
+//        int result = instance.searchMailForMembers(email).get(0).getID(); // id
+        
+        Boolean expResult = false;
+        Boolean result = instance.searchMailForMembers(email).isEmpty();
+        assertEquals(expResult, result); // tester pt. kun på det første resultat i listen
     }
 
     /**
