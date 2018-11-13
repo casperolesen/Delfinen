@@ -35,11 +35,11 @@ public class DataAccessorInterfaceTest {
         System.out.println("searchMailForMembers");
         String email = "c@c.dk";
         DataAccessorInterface instance = new DataAccessorFile();
-//        int expResult = 3; // id
-//        int result = instance.searchMailForMembers(email).get(0).getID(); // id
+        int expResult = 3; // id
+        int result = instance.searchMailForMembers(email).get(0).getID(); // id
         
-        Boolean expResult = false;
-        Boolean result = instance.searchMailForMembers(email).isEmpty();
+//        Boolean expResult = false;
+//        Boolean result = instance.searchMailForMembers(email).isEmpty();
         assertEquals(expResult, result); // tester pt. kun på det første resultat i listen
     }
 
@@ -53,7 +53,7 @@ public class DataAccessorInterfaceTest {
         DataAccessorInterface instance = new DataAccessorFile();
         String expResult = "Casper Kruse Olesen";
         String result = instance.getMember(id).getName();
-        assertEquals(expResult, result);
+        assertEquals(expResult, result); // Tester at navnet på Member med id 3 hedder Casper Kruse Olesen
     }
 
     /**
@@ -62,11 +62,14 @@ public class DataAccessorInterfaceTest {
     @Test
     public void testCreateMember() throws Exception {
         System.out.println("createMember");
-        Member member = null;
-        DataAccessorInterface instance = new DataAccessorInterfaceImpl();
-        instance.createMember(member);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Member newMember = new Member(0, "Oprettet via Test", "test@test.dk", LocalDate.parse("1900-01-28"), true, true);
+        DataAccessorInterface instance = new DataAccessorFile();
+        instance.createMember(newMember); // gemmer nyt test member i filen
+        
+        String expResult = "Oprettet via Test";
+        String result = instance.searchMailForMembers("test@test.dk").get(0).getName();
+        
+        assertEquals(expResult, result); // tester på navnet
     }
 
     /**
