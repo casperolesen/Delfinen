@@ -13,9 +13,8 @@ import java.util.List;
 import logic.Member;
 
 public class DataAccessorFile implements DataAccessorInterface{
-    private String fileMembers = "members_delfinen.txt"; // filepath som String
-    private Path filepath = Paths.get(fileMembers); // Path oprettet via filetext. Burde laves på en linje
-    private String splitSymbol = "||";
+    private final String fileMembers = "members_delfinen.txt"; // filepath som String
+    private final String splitSymbol = "||";
     
     public List<String> readAllLines(String filename) throws IOException{
         try {
