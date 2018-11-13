@@ -5,24 +5,12 @@
  */
 package logic;
 
-import java.util.List;
-
 /**
  *
  * @author Vics
  */
 public interface ControllerInterface {
     
-    public List<Member> getMembers() throws Exception;
     
-    public List<Member> searchMailForMembers(String email) throws Exception;
-    
-    public Member getMember(int id) throws Exception;
-    
-    public void createMember(Member member) throws Exception;
-    
-    public void editMember(Member member) throws Exception;
-    
-    public void deleteMember(Member member) throws Exception;
        
 }

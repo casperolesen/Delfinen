@@ -5,8 +5,7 @@ import java.time.LocalDate;
 public class Member {
     private int id;
     
-    private String firstName;
-    private String lastName;
+    private String name;
     private LocalDate birthday;
     private String email;
     
