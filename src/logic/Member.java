@@ -6,12 +6,19 @@ public class Member {
     private int id;
     
     private String name;
-    private LocalDate birthday;
     private String email;
+    private LocalDate birthday;
     
     private boolean active;
     private boolean elite;
     
+    public Member(int id, String name, String email, LocalDate date, boolean active, boolean elite){
+        this.name = name;
+        this.email = email;
+        this.birthday = date;
+        this.active = active;
+        this.elite = elite;
+    }
     
     public int getID() {
         return id;
