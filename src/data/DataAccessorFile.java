@@ -10,6 +10,9 @@ import java.nio.file.Paths;
 import java.util.List;
 
 public class DataAccessorFile {
+    private String filetext = "members_delfinen.txt"; // filepath som String
+    private Path filepath = Paths.get(filetext); // Path oprettet via filetext. Burde laves på en linje
+    
     public List readAllLines(String filename) throws IOException{
         try {
             Charset cs = Charset.forName("ISO-8859-1");
