@@ -7,6 +7,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.List;
 import logic.Member;
 
@@ -41,7 +42,7 @@ public class DataAccessorFile implements DataAccessorInterface{
         for (String line : allLinesInFile) {
             
             for (int i = 0; i < allLinesInFile.size(); i++) {
-                if (id.equals(allLinesInFile.get(i).split(splitSymbol)[0].trim())) {
+                if (id.equals(line.split(splitSymbol)[0].trim())) {
                     allLinesInFile.set(i, newLine);
                     break;
                 }
@@ -61,7 +62,25 @@ public class DataAccessorFile implements DataAccessorInterface{
 
     @Override
     public Member getMember(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        List<String> allLinesInFile = readAllLines(fileMembers);
+        
+        for (String line : allLinesInFile ) {
+            if (Integer.toString(id).equals(line.split(splitSymbol)[0].trim())) {
+                int id_member = Integer.parseInt(line.split(",")[0].trim());
+                    String name = line.split(",")[1].trim();
+                    String email = line.split(",")[2].trim();
+                    LocalDate birthday = LocalDate.parse(line.split(",")[3].trim());
+                    Boolean active = Boolean.valueOf(line.split(",")[4].trim());
+                    Boolean elite = Boolean.valueOf(line.split(",")[5].trim());
+                Member member = new Member (id_member, name, email, birthday, active, elite);
+                
+                return member;
+                
+            }
+        }
+        
+        return null;
     }
 
     @Override
