@@ -110,12 +110,18 @@ public class DataAccessorFile implements DataAccessorInterface{
 
     @Override
     public void createMember(Member member) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try{
+        List<String> lines = readAllLines(fileMembers);
+        int id = Integer.parseInt(lines.get(lines.size() -1).split(splitSymbol)[0]) +1;
+        appendLine(fileMembers,id+splitSymbol+member.toFile());
+        } catch(Exception e){
+            throw new Exception();
+        }
     }
 
     @Override
     public void editMember(Member member) throws Exception {
-       editLine(""+member.getID(), member.toFile(), fileMembers);
+       editLine(""+member.getID(),member.getID()+splitSymbol+member.toFile(), fileMembers);
     }
 
     @Override
