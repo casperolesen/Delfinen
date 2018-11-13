@@ -13,7 +13,7 @@ import logic.Member;
 public class DataAccessorFile implements DataAccessorInterface{
     private String fileMembers = "members_delfinen.txt"; // filepath som String
     private Path filepath = Paths.get(fileMembers); // Path oprettet via filetext. Burde laves på en linje
-    private String splitSymbol = ",";
+    private String splitSymbol = "||";
     
     public List<String> readAllLines(String filename) throws IOException{
         try {
