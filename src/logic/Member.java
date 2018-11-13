@@ -45,6 +45,6 @@ public class Member {
     }
     
     public String toFile() {
-        return name+"||"+email+"||"+birthday+"||"+active+"||"+elite;
+        return name + "; " +email+ ", " + birthday + ", " + active + ", " + elite;
     }
 }
