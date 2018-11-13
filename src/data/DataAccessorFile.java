@@ -41,15 +41,13 @@ public class DataAccessorFile implements DataAccessorInterface {
 
     public void editLine(String id, String newLine, String filename) throws IOException {
         List<String> allLinesInFile = readAllLines(filename);
-        for (String line : allLinesInFile) {
-
             for (int i = 0; i < allLinesInFile.size(); i++) {
-                if (id.equals(line.split(splitSymbol)[0].trim())) {
+                if (id.equals(allLinesInFile.get(i).split(splitSymbol)[0].trim())) {
                     allLinesInFile.set(i, newLine);
                     break;
                 }
             }
-        }
+            Files.write(Paths.get(filename), allLinesInFile);
     }
 
     @Override
@@ -122,7 +120,11 @@ public class DataAccessorFile implements DataAccessorInterface {
 
     @Override
     public void editMember(Member member) throws Exception {
+        try{
         editLine("" + member.getID(), member.getID() + splitSymbol + member.toFile(), fileMembers);
+        } catch(IOException e){
+            throw new Exception();
+        }
     }
 
     @Override

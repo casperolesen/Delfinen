@@ -6,6 +6,7 @@
 package presentation;
 
 import data.DataAccessorFile;
+import java.time.LocalDate;
 import java.util.List;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
@@ -61,6 +62,11 @@ public class GUI extends javax.swing.JFrame {
         });
 
         editMemberBTN.setText("Rediger medlem");
+        editMemberBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editMemberBTNActionPerformed(evt);
+            }
+        });
 
         deleteMemberBTN.setText("Slet medlem");
 
@@ -231,8 +237,24 @@ public class GUI extends javax.swing.JFrame {
 
     private void addMemberBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMemberBTNActionPerformed
         membersDialog mdia = new membersDialog(this,true);
+        mdia.setTitle("Opret nyt medlem");
         mdia.setVisible(true);
     }//GEN-LAST:event_addMemberBTNActionPerformed
+
+    private void editMemberBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editMemberBTNActionPerformed
+        membersDialog mdia = new membersDialog(this,true);
+        mdia.setTitle("Rediger medlem");
+        DefaultTableModel model = (DefaultTableModel) memberTable.getModel();
+        mdia.readyEdit(new Member(
+            (int)model.getValueAt(memberTable.getSelectedRow(),0),
+            (String)model.getValueAt(memberTable.getSelectedRow(),1),
+            (String)model.getValueAt(memberTable.getSelectedRow(),2),
+            (LocalDate)model.getValueAt(memberTable.getSelectedRow(),3),
+            (boolean)model.getValueAt(memberTable.getSelectedRow(),4),
+            (boolean)model.getValueAt(memberTable.getSelectedRow(),5)
+        ));
+        mdia.setVisible(true);
+    }//GEN-LAST:event_editMemberBTNActionPerformed
 
     /**
      * @param args the command line arguments
