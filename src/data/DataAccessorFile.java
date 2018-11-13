@@ -49,6 +49,18 @@ public class DataAccessorFile implements DataAccessorInterface {
             }
             Files.write(Paths.get(filename), allLinesInFile);
     }
+    
+    public void removeLine(String id, String filename ) throws IOException {
+        List<String> allLinesInFile = readAllLines(filename);
+            
+            for (int i = 0; i < allLinesInFile.size(); i++) {
+                if (id.equals(allLinesInFile.get(i).split(splitSymbol)[0].trim())) {
+                    allLinesInFile.remove(i);
+                }
+            }
+            
+            Files.write(Paths.get(filename), allLinesInFile);
+    }
 
     @Override
     public List<Member> getMembers() throws Exception {
