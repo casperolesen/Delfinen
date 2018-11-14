@@ -169,7 +169,7 @@ public class membersDialog extends javax.swing.JDialog {
         } catch(DateTimeParseException e){
                 errorTXT.setText("Fejl i fødselsdag..");
         } catch(Exception e){
-                errorTXT.setText("Der skete en fejl..");
+                errorTXT.setText("Kunne ikke gemme..");
         }
     }//GEN-LAST:event_saveBTNActionPerformed
 
