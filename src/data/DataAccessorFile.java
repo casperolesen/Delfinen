@@ -120,6 +120,12 @@ public class DataAccessorFile implements DataAccessorInterface {
     }
 
     @Override
+    // 
+    
+    /**
+     * ER DET BARE NAVNET, SOM FORVIRRER MIG?? En methode "createMember", som tager et Member som parameter.
+     * Mulig løsning: Ændre navnet til "saveMember-something" - eller gi' methoden oplysningerne på det nye Member, og kald new Member inde i methoden
+     */
     public void createMember(Member member) throws Exception {
         try {
             List<String> lines = readAllLines(fileMembers);

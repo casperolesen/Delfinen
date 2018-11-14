@@ -14,119 +14,103 @@ import org.junit.Before;
  * @author caspe
  */
 public class DataAccessorInterfaceTest {
-    
+
+    DataAccessorInterface instance = null;
+
     public DataAccessorInterfaceTest() {
+        instance = new DataAccessorFile(); // henter data via File
     }
 
     /**
-     * Test of getMembers method, of class DataAccessorInterface.
+     * Test of getMembers method, of class DataAccessorFile
      */
     @Test
     public void testGetMembers() throws Exception {
         System.out.println("getMembers");
-        DataAccessorInterface instance = new DataAccessorFile();
-        //Boolean expResult = true;
-        //Boolean result = instance.getMembers().isEmpty();
-        assertNotNull(instance.getMembers());
-        //assertEquals(expResult, result); // tester at listen ikke er tom
+        Boolean expResult = false;
+        Boolean result = instance.getMembers().isEmpty();
+        //assertNotNull(instance.getMembers());
+        assertEquals(expResult, result); // tester at listen ikke er tom
     }
 
     /**
-     * Test of searchMailForMembers method, of class DataAccessorInterface.
+     * Test of searchMailForMembers method, of class DataAccessorFile.
      */
     @Test
     public void testSearchMailForMembers() throws Exception {
         System.out.println("searchMailForMembers");
         String email = "c@c.dk";
-        DataAccessorInterface instance = new DataAccessorFile();
         int expResult = 3; // id
         int result = instance.searchMailForMembers(email).get(0).getID(); // id
-
-//        Boolean expResult = false;
-//        Boolean result = instance.searchMailForMembers(email).isEmpty();
         assertEquals(expResult, result); // tester pt. kun på det første resultat i listen
     }
 
     /**
-     * Test of getMember method, of class DataAccessorInterface.
+     * Test of getMember method, of class DataAccessorFile.
      */
     @Test
     public void testGetMember() throws Exception {
         System.out.println("getMember");
-        int id = 3;
-        DataAccessorInterface instance = new DataAccessorFile();
-        String expResult = "Casper Kruse Olesen";
+        int id = 1;
+        String expResult = "Aaa AaaFile";
         String result = instance.getMember(id).getName();
         assertEquals(expResult, result); // Tester at navnet på Member med id 3 hedder Casper Kruse Olesen
     }
 
     /**
-     * Test of createMember method, of class DataAccessorInterface.
+     * Test of createMember method, of class DataAccessorFile.
      */
-    
     @Test
     public void testCreateMember() throws Exception {
         System.out.println("createMember");
-//        Member newMember = new Member("Oprettet via Test", "test@test.dk", LocalDate.parse("1900-01-28"), true, true);
-        DataAccessorInterface instance = new DataAccessorFile();
-//        instance.createMember(newMember); // gemmer nyt test member i filen
-////        
-////        DataAccessorInterface instanceTwo = new DataAccessorFile();
-////        
+        try {
+            Member newMember = new Member("Oprettet via Test", "cko@cko.dk", LocalDate.parse("1900-01-28"), true, true);
+            instance.createMember(newMember); // gemmer nyt test member i filen
+        } catch (Exception ex) {
+            Logger.getLogger(DataAccessorInterfaceTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         String expResult = "Oprettet via Test";
-        String result = instance.searchMailForMembers("test@test.dk").get(0).getName();
-////        
+        String result = instance.searchMailForMembers("cko@cko.dk").get(0).getName();       
         assertEquals(expResult, result); // tester på navnet
     }
 
     /**
-     * Test of editMember method, of class DataAccessorInterface.
+     * Test of editMember method, of class DataAccessorFile.
      */
+    @Before
+    public void beforeTestEditMember() {
+        try {
+            //DataAccessorInterface instance = new DataAccessorFile();
+            Member member = instance.getMember(3);
+            member.setName("Nyt navn fra Test");
+            instance.editMember(member);
+        } catch (Exception ex) {
+            Logger.getLogger(DataAccessorInterfaceTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     @Test
     public void testEditMember() throws Exception {
         System.out.println("editMember");
-        Member member = null;
-        DataAccessorInterface instance = new DataAccessorInterfaceImpl();
-        instance.editMember(member);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //DataAccessorInterface instance = new DataAccessorFile();
+        Member member = instance.getMember(3);
+        String expResult = "Nyt navn fra Test";
+        String result = member.getName();
+
+        assertEquals(expResult, result); // tester om Member med id 3 har fået ændret sit navn fra @Before
     }
 
     /**
-     * Test of deleteMember method, of class DataAccessorInterface.
+     * Test of deleteMember method, of class DataAccessorFile.
      */
     @Test
     public void testDeleteMember() throws Exception {
         System.out.println("deleteMember");
         Member member = null;
-        DataAccessorInterface instance = new DataAccessorInterfaceImpl();
         instance.deleteMember(member);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
-    }
-
-    public class DataAccessorInterfaceImpl implements DataAccessorInterface {
-
-        public List<Member> getMembers() throws Exception {
-            return null;
-        }
-
-        public List<Member> searchMailForMembers(String email) throws Exception {
-            return null;
-        }
-
-        public Member getMember(int id) throws Exception {
-            return null;
-        }
-
-        public void createMember(Member member) throws Exception {
-        }
-
-        public void editMember(Member member) throws Exception {
-        }
-
-        public void deleteMember(Member member) throws Exception {
-        }
     }
 
 }
