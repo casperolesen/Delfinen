@@ -12,13 +12,24 @@ public class Member {
     private boolean active;
     private boolean elite;
     
-    public Member(int id, String name, String email, LocalDate date, boolean active, boolean elite){
+    private boolean butterfly;
+    private boolean crawl;
+    private boolean rygcrawl;
+    private boolean brystsvømning;
+    
+    
+    public Member(int id, String name, String email, LocalDate date, boolean active, boolean elite, boolean[] categories){
         this.id = id;
         this.name = name;
         this.email = email;
         this.birthday = date;
         this.active = active;
         this.elite = elite;
+        
+        this.butterfly = categories[0];
+        this.crawl = categories[1];
+        this.rygcrawl = categories[2];
+        this.brystsvømning = categories[3];
     }
     
     public Member(String name, String email, LocalDate date, boolean active, boolean elite){

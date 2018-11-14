@@ -1,0 +1,4 @@
+1; Butterfly
+2; Crawl
+3; Rygcrawl
+4; Brystsvømning

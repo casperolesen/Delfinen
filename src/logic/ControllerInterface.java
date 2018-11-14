@@ -10,7 +10,17 @@ package logic;
  * @author Vics
  */
 public interface ControllerInterface {
-    
-    
-       
+
+/**
+ * 
+ * @return total antal af både aktive og inaktive member's
+ */
+    public int getTotalNumberOfMembers();
+
+    /**
+     * 
+     * @return  total antal af aktive member's
+     */
+    public int getTotalNumberOfActiveMembers();
+
 }
