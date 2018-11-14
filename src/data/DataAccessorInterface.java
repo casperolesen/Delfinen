@@ -23,5 +23,5 @@ public interface DataAccessorInterface {
     
     public void editMember(Member member) throws Exception;
     
-    public void deleteMember(Member member) throws Exception;
+    public void deleteMember(int id) throws Exception;
 }

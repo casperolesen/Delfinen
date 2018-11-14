@@ -14,6 +14,7 @@ import logic.Member;
 
 public class DataAccessorFile implements DataAccessorInterface {
 
+    //private final String fileMembers = "crashData.txt"; // fil med stor mængde dummy data
     private final String fileMembers = "members_delfinen.txt"; // filepath som String
     private final String splitSymbol = ";";
 
@@ -146,8 +147,8 @@ public class DataAccessorFile implements DataAccessorInterface {
     }
 
     @Override
-    public void deleteMember(Member member) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void deleteMember(int id) throws Exception {
+        removeLine(Integer.toString(id), fileMembers);
     }
 
 }

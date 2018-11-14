@@ -12,3 +12,7 @@
 12;Test Testesen;aof@dsgs.dk;1990-03-27;false;false
 13;234;3;1900-03-03;true;false
 14;Oprettet via Test;cko@cko.dk;1900-01-28;true;true
+15;Oprettet via Test;cko@cko.dk;1900-01-28;true;true
+16;Oprettet via Test;cko@cko.dk;1900-01-28;true;true
+17;Oprettet via Test;cko@cko.dk;1900-01-28;true;true
+18;Oprettet via Test;cko@cko.dk;1900-01-28;true;true

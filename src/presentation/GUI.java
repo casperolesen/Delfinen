@@ -69,6 +69,11 @@ public class GUI extends javax.swing.JFrame {
         });
 
         deleteMemberBTN.setText("Slet medlem");
+        deleteMemberBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteMemberBTNActionPerformed(evt);
+            }
+        });
 
         memberTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -263,6 +268,17 @@ public class GUI extends javax.swing.JFrame {
         ));
         mdia.setVisible(true);
     }//GEN-LAST:event_editMemberBTNActionPerformed
+
+    private void deleteMemberBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMemberBTNActionPerformed
+        DefaultTableModel model = (DefaultTableModel) memberTable.getModel();
+        try {
+            data.deleteMember((int)model.getValueAt(memberTable.getSelectedRow(), 0));
+            clearTable(model);
+        }
+        catch(Exception e) {
+            showMessage("Kunne ikke slette medlem");
+        }
+    }//GEN-LAST:event_deleteMemberBTNActionPerformed
 
     /**
      * @param args the command line arguments
