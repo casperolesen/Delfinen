@@ -74,7 +74,12 @@ public class DataAccessorFile implements DataAccessorInterface {
                     parts[2].trim(),
                     LocalDate.parse(parts[3].trim()),
                     Boolean.parseBoolean(parts[4].trim()),
-                    Boolean.parseBoolean(parts[5].trim())));
+                    Boolean.parseBoolean(parts[5].trim()),
+                    new boolean[]{
+                        Boolean.parseBoolean(parts[6].trim()),
+                        Boolean.parseBoolean(parts[7].trim()),
+                        Boolean.parseBoolean(parts[8].trim()),
+                        Boolean.parseBoolean(parts[9].trim())}));
         }
 
         return members;
@@ -92,7 +97,12 @@ public class DataAccessorFile implements DataAccessorInterface {
                     parts[2].trim(),
                     LocalDate.parse(parts[3].trim()),
                     Boolean.parseBoolean(parts[4].trim()),
-                    Boolean.parseBoolean(parts[5].trim())));
+                    Boolean.parseBoolean(parts[5].trim()),
+                    new boolean[]{
+                        Boolean.parseBoolean(parts[6].trim()),
+                        Boolean.parseBoolean(parts[7].trim()),
+                        Boolean.parseBoolean(parts[8].trim()),
+                        Boolean.parseBoolean(parts[9].trim())}));
             }}
         return members;
     }
@@ -104,13 +114,19 @@ public class DataAccessorFile implements DataAccessorInterface {
 
         for (String line : allLinesInFile) {
             if (Integer.toString(id).equals(line.split(splitSymbol)[0].trim())) {
-                int id_member = Integer.parseInt(line.split(splitSymbol)[0].trim());
-                String name = line.split(splitSymbol)[1].trim();
-                String email = line.split(splitSymbol)[2].trim();
-                LocalDate birthday = LocalDate.parse(line.split(splitSymbol)[3].trim());
-                Boolean active = Boolean.valueOf(line.split(splitSymbol)[4].trim());
-                Boolean elite = Boolean.valueOf(line.split(splitSymbol)[5].trim());
-                Member member = new Member(id_member, name, email, birthday, active, elite);
+                String[] parts = line.split(splitSymbol);
+                    Member member = new Member(
+                    Integer.parseInt(parts[0].trim()),
+                    parts[1].trim(),
+                    parts[2].trim(),
+                    LocalDate.parse(parts[3].trim()),
+                    Boolean.parseBoolean(parts[4].trim()),
+                    Boolean.parseBoolean(parts[5].trim()),
+                    new boolean[]{
+                        Boolean.parseBoolean(parts[6].trim()),
+                        Boolean.parseBoolean(parts[7].trim()),
+                        Boolean.parseBoolean(parts[8].trim()),
+                        Boolean.parseBoolean(parts[9].trim())});
 
                 return member;
 

@@ -1,11 +1,11 @@
-1; Aaa AaaFile; a@a.dk; 2001-01-31; true; true
-2; Bbb BbbFile; b@b.dk; 2002-02-15; true; true
-3;Nyt navn fra Test;c@c.dk;1990-03-27;true;true
-4; Ddd DddFile; d@d.dk; 2004-04-28; true; true
-5; Eee EeeFile; e@e.dk; 2005-05-27; true; false
-6; Fff FffFile; f@f.dk; 2006-06-26; true; false
-7; Ggg GggFile; g@g.dk; 2007-07-25; true; false
-8; Hhh HhhFile; h@h.dk; 2008-08-24; true; false
+1; Aaa AaaFile; a@a.dk; 2001-01-31; true; true; false; false; false; false;
+2; Bbb BbbFile; b@b.dk; 2002-02-15; true; true; false; false; false; false;
+3;Nyt navn fra Test;c@c.dk;1990-03-27;true;true;false;true;true;false
+4; Ddd DddFile; d@d.dk; 2004-04-28; true; true; false; false; false; false;
+5; Eee EeeFile; e@e.dk; 2005-05-27; true; false; false; false; false; false;
+6; Fff FffFile; f@f.dk; 2006-06-26; true; false; false; false; false; false;
+7; Ggg GggFile; g@g.dk; 2007-07-25; true; false; false; false; false; false;
+8; Hhh HhhFile; h@h.dk; 2008-08-24; true; false; false; false; false; false;
 9; Iii IiiFile; i@i.dk; 2009-09-23; true; false; false; false; false; false;
 10;testers;test@test.dk;2000-01-01;true;false; false; false; false; false;
 11;Oprettet via Test;cko@cko.dk;1900-01-28;true;true; false; false; false; false;

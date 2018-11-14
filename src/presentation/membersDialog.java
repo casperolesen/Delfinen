@@ -38,6 +38,10 @@ public class membersDialog extends javax.swing.JDialog {
         birthdayTXT.setText(""+member.getBirthday());
         activeCHECK.setSelected(member.isActive());
         eliteCHECK.setSelected(member.isElite());
+        butterflyCHECK.setSelected(member.getButterfly());
+        crawlCHECK.setSelected(member.getCrawl());
+        rygcrawlCHECK.setSelected(member.getRygcrawl());
+        brystCHECK.setSelected(member.getBryst());
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,6 +62,11 @@ public class membersDialog extends javax.swing.JDialog {
         birthdayTXT = new javax.swing.JTextField();
         saveBTN = new javax.swing.JButton();
         errorTXT = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        butterflyCHECK = new javax.swing.JCheckBox();
+        crawlCHECK = new javax.swing.JCheckBox();
+        rygcrawlCHECK = new javax.swing.JCheckBox();
+        brystCHECK = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -82,6 +91,16 @@ public class membersDialog extends javax.swing.JDialog {
         errorTXT.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         errorTXT.setText("errorTxt");
 
+        jLabel4.setText("Svømmediscipliner:");
+
+        butterflyCHECK.setText("Butterfly");
+
+        crawlCHECK.setText("Crawl");
+
+        rygcrawlCHECK.setText("Rygcrawl");
+
+        brystCHECK.setText("Brystsvømning");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,22 +109,34 @@ public class membersDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(activeCHECK)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(nameTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(emailTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(birthdayTXT, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(eliteCHECK)))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(errorTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(saveBTN)))
+                        .addComponent(saveBTN))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(butterflyCHECK)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(crawlCHECK)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(rygcrawlCHECK)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(brystCHECK))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(activeCHECK)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(nameTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(emailTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(birthdayTXT, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(eliteCHECK)))
+                            .addComponent(jLabel4))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -131,6 +162,14 @@ public class membersDialog extends javax.swing.JDialog {
                     .addComponent(activeCHECK)
                     .addComponent(eliteCHECK))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(butterflyCHECK)
+                    .addComponent(crawlCHECK)
+                    .addComponent(rygcrawlCHECK)
+                    .addComponent(brystCHECK))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(saveBTN)
                     .addComponent(errorTXT))
@@ -144,30 +183,32 @@ public class membersDialog extends javax.swing.JDialog {
 
     private void saveBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBTNActionPerformed
         try{
-        if(isEdit){
-            LocalDate date = LocalDate.parse(birthdayTXT.getText());
-            data.editMember(new Member(
+            if(nameTXT.getText().isEmpty()||emailTXT.getText().isEmpty()){
+                errorTXT.setText("Udfyld navn/email..");
+                return;
+            }
+        LocalDate date = LocalDate.parse(birthdayTXT.getText());
+        Member member = new Member(
             currentID,
             nameTXT.getText(),
             emailTXT.getText(),
             date,
             activeCHECK.isSelected(),
-            eliteCHECK.isSelected()
-            ));
+            eliteCHECK.isSelected(),
+            new boolean[] {butterflyCHECK.isSelected(),
+            crawlCHECK.isSelected(),
+            rygcrawlCHECK.isSelected(),
+            brystCHECK.isSelected()}
+            );
+        if(isEdit){
+            data.editMember(member);
             dispose();
         } else {
-            LocalDate date = LocalDate.parse(birthdayTXT.getText());
-            data.createMember(new Member(
-            nameTXT.getText(),
-            emailTXT.getText(),
-            date,
-            activeCHECK.isSelected(),
-            eliteCHECK.isSelected()
-            ));
+            data.createMember(member);
             dispose();
         }
         } catch(DateTimeParseException e){
-                errorTXT.setText("Fejl i fødselsdag..");
+                errorTXT.setText("Fejl i fødselsdag.. Format: YYYY-MM-DD");
         } catch(Exception e){
                 errorTXT.setText("Kunne ikke gemme..");
         }
@@ -218,13 +259,18 @@ public class membersDialog extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox activeCHECK;
     private javax.swing.JTextField birthdayTXT;
+    private javax.swing.JCheckBox brystCHECK;
+    private javax.swing.JCheckBox butterflyCHECK;
+    private javax.swing.JCheckBox crawlCHECK;
     private javax.swing.JCheckBox eliteCHECK;
     private javax.swing.JTextField emailTXT;
     private javax.swing.JLabel errorTXT;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField nameTXT;
+    private javax.swing.JCheckBox rygcrawlCHECK;
     private javax.swing.JButton saveBTN;
     // End of variables declaration//GEN-END:variables
 }

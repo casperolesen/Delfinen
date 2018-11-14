@@ -146,13 +146,17 @@
                     <Component class="javax.swing.JTable" name="memberTable">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="6" rowCount="0">
+                          <Table columnCount="10" rowCount="0">
                             <Column editable="false" title="id" type="java.lang.Integer"/>
                             <Column editable="false" title="Navn" type="java.lang.String"/>
                             <Column editable="false" title="Email" type="java.lang.String"/>
                             <Column editable="false" title="F&#xf8;dselsdag" type="java.lang.Object"/>
                             <Column editable="false" title="active" type="java.lang.Boolean"/>
                             <Column editable="false" title="elite" type="java.lang.Boolean"/>
+                            <Column editable="false" title="butterfly" type="java.lang.Boolean"/>
+                            <Column editable="false" title="crawl" type="java.lang.Boolean"/>
+                            <Column editable="false" title="rygcrawl" type="java.lang.Boolean"/>
+                            <Column editable="false" title="bryst" type="java.lang.Boolean"/>
                           </Table>
                         </Property>
                         <Property name="selectionModel" type="javax.swing.ListSelectionModel" editor="org.netbeans.modules.form.editors2.JTableSelectionModelEditor">

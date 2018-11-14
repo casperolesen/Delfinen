@@ -23,30 +23,45 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="activeCHECK" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="nameTXT" linkSize="1" min="-2" pref="301" max="-2" attributes="0"/>
-                              <Component id="emailTXT" linkSize="1" min="-2" pref="301" max="-2" attributes="0"/>
-                              <Component id="birthdayTXT" linkSize="1" alignment="1" min="-2" pref="301" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="eliteCHECK" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Component id="errorTXT" min="-2" pref="320" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="saveBTN" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="butterflyCHECK" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="crawlCHECK" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="rygcrawlCHECK" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="brystCHECK" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="activeCHECK" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="nameTXT" linkSize="1" min="-2" pref="301" max="-2" attributes="0"/>
+                                      <Component id="emailTXT" linkSize="1" min="-2" pref="301" max="-2" attributes="0"/>
+                                      <Component id="birthdayTXT" linkSize="1" alignment="1" min="-2" pref="301" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="eliteCHECK" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -75,6 +90,15 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="activeCHECK" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="eliteCHECK" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="butterflyCHECK" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="crawlCHECK" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="rygcrawlCHECK" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="brystCHECK" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -131,6 +155,31 @@
       <Properties>
         <Property name="horizontalAlignment" type="int" value="4"/>
         <Property name="text" type="java.lang.String" value="errorTxt"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sv&#xf8;mmediscipliner:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="butterflyCHECK">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Butterfly"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="crawlCHECK">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Crawl"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="rygcrawlCHECK">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Rygcrawl"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="brystCHECK">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Brystsv&#xf8;mning"/>
       </Properties>
     </Component>
   </SubComponents>

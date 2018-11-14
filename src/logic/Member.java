@@ -15,7 +15,7 @@ public class Member {
     private boolean butterfly;
     private boolean crawl;
     private boolean rygcrawl;
-    private boolean brystsvømning;
+    private boolean brystsvoemning;
     
     
     public Member(int id, String name, String email, LocalDate date, boolean active, boolean elite, boolean[] categories){
@@ -29,7 +29,7 @@ public class Member {
         this.butterfly = categories[0];
         this.crawl = categories[1];
         this.rygcrawl = categories[2];
-        this.brystsvømning = categories[3];
+        this.brystsvoemning = categories[3];
     }
     
     public int getID() {
@@ -73,10 +73,10 @@ public class Member {
     }
     
     public boolean getBryst() {
-        return brystsvømning;
+        return brystsvoemning;
     }
     
     public String toFile() {
-        return name+";"+email+";"+birthday+";"+active+";"+elite;
+        return name+";"+email+";"+birthday+";"+active+";"+elite+";"+butterfly+";"+crawl+";"+rygcrawl+";"+brystsvoemning;
     }
 }

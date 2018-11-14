@@ -24,6 +24,10 @@ public class GUI extends javax.swing.JFrame {
     DataAccessorFile data = new DataAccessorFile();
     public GUI() {
         initComponents();
+        memberTable.removeColumn(memberTable.getColumnModel().getColumn(9));
+        memberTable.removeColumn(memberTable.getColumnModel().getColumn(8));
+        memberTable.removeColumn(memberTable.getColumnModel().getColumn(7));
+        memberTable.removeColumn(memberTable.getColumnModel().getColumn(6));
         memberTable.removeColumn(memberTable.getColumnModel().getColumn(5));
         memberTable.removeColumn(memberTable.getColumnModel().getColumn(4));
         memberTable.removeColumn(memberTable.getColumnModel().getColumn(0));
@@ -80,14 +84,14 @@ public class GUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "id", "Navn", "Email", "Fødselsdag", "active", "elite"
+                "id", "Navn", "Email", "Fødselsdag", "active", "elite", "butterfly", "crawl", "rygcrawl", "bryst"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Boolean.class, java.lang.Boolean.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -224,7 +228,7 @@ public class GUI extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) memberTable.getModel();
         clearTable(model);
         for(Member member:members){
-            model.addRow(new Object[]{member.getID(), member.getName(), member.getEmail(),member.getBirthday(),member.isActive(),member.isElite()});
+            model.addRow(new Object[]{member.getID(), member.getName(), member.getEmail(),member.getBirthday(),member.isActive(),member.isElite(),member.getButterfly(),member.getCrawl(),member.getRygcrawl(),member.getBryst()});
         }
         } catch(Exception e){
             showMessage("Kunne ikke indlæse medlemmer..");
@@ -237,7 +241,7 @@ public class GUI extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) memberTable.getModel();
         clearTable(model);
         for(Member member:members){
-            model.addRow(new Object[]{member.getID(), member.getName(), member.getEmail(),member.getBirthday(),member.isActive(),member.isElite()});
+            model.addRow(new Object[]{member.getID(), member.getName(), member.getEmail(),member.getBirthday(),member.isActive(),member.isElite(),member.getButterfly(),member.getCrawl(),member.getRygcrawl(),member.getBryst()});
         }
         } catch(Exception e){
             showMessage("Kunne ikke indlæse medlemmer..");
@@ -264,7 +268,11 @@ public class GUI extends javax.swing.JFrame {
             (String)model.getValueAt(memberTable.getSelectedRow(),2),
             (LocalDate)model.getValueAt(memberTable.getSelectedRow(),3),
             (boolean)model.getValueAt(memberTable.getSelectedRow(),4),
-            (boolean)model.getValueAt(memberTable.getSelectedRow(),5)
+            (boolean)model.getValueAt(memberTable.getSelectedRow(),5),
+            new boolean[]{(boolean)model.getValueAt(memberTable.getSelectedRow(),6),
+            (boolean)model.getValueAt(memberTable.getSelectedRow(),7),
+            (boolean)model.getValueAt(memberTable.getSelectedRow(),8),
+            (boolean)model.getValueAt(memberTable.getSelectedRow(),9)}
         ));
         mdia.setVisible(true);
         clearTable(model);
