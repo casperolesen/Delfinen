@@ -205,6 +205,10 @@ public class GUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void showMessage(String msg){
+        JOptionPane.showMessageDialog(null, msg);
+    }
+    
     private void clearTable(DefaultTableModel model){
         model.setRowCount(0);
     }
@@ -218,7 +222,7 @@ public class GUI extends javax.swing.JFrame {
             model.addRow(new Object[]{member.getID(), member.getName(), member.getEmail(),member.getBirthday(),member.isActive(),member.isElite()});
         }
         } catch(Exception e){
-            //System.out.println(e);
+            showMessage("Kunne ikke indlæse medlemmer..");
         }
     }//GEN-LAST:event_getMembersBTNActionPerformed
 
@@ -231,7 +235,7 @@ public class GUI extends javax.swing.JFrame {
             model.addRow(new Object[]{member.getID(), member.getName(), member.getEmail(),member.getBirthday(),member.isActive(),member.isElite()});
         }
         } catch(Exception e){
-            //System.out.println(e);
+            showMessage("Kunne ikke indlæse medlemmer..");
         }
     }//GEN-LAST:event_emailSearchBTNActionPerformed
 
@@ -243,7 +247,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void editMemberBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editMemberBTNActionPerformed
         if(memberTable.getSelectionModel().isSelectionEmpty()){
-           JOptionPane.showMessageDialog(null, "Vælg et medlem på listen før du redigere.");
+           showMessage("Vælg et medlem på listen før du redigerer.");
            return;
         }
         membersDialog mdia = new membersDialog(this,true);
