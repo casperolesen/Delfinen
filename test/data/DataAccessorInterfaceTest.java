@@ -1,5 +1,6 @@
 package data;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.logging.Level;
@@ -16,6 +17,7 @@ import org.junit.Before;
 public class DataAccessorInterfaceTest {
 
     DataAccessorInterface instance = null;
+    DataAccessorFile dataFile = new DataAccessorFile();
 
     public DataAccessorInterfaceTest() {
         instance = new DataAccessorFile(); // henter data via File
@@ -81,7 +83,6 @@ public class DataAccessorInterfaceTest {
     @Before
     public void beforeTestEditMember() {
         try {
-            //DataAccessorInterface instance = new DataAccessorFile();
             Member member = instance.getMember(3);
             member.setName("Nyt navn fra Test");
             instance.editMember(member);
@@ -93,7 +94,6 @@ public class DataAccessorInterfaceTest {
     @Test
     public void testEditMember() throws Exception {
         System.out.println("editMember");
-        //DataAccessorInterface instance = new DataAccessorFile();
         Member member = instance.getMember(3);
         String expResult = "Nyt navn fra Test";
         String result = member.getName();
@@ -112,5 +112,20 @@ public class DataAccessorInterfaceTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    
+//    @Test
+//    public void testAppendLine() {
+//        String outFilename = "crashData.txt";
+//        
+//        
+//        for (int i = 1; i <= 10000; i++) {
+//            try {
+//                String output = i + "; " + "Member " + i + "; " + "test@mail.dk; " + "1900-01-20; " + "true; " + "true; ";
+//                dataFile.appendLine(outFilename, output);
+//            } catch (IOException ex) {
+//                Logger.getLogger(DataAccessorInterfaceTest.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
+//    }
 
 }

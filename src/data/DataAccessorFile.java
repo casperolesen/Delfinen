@@ -14,6 +14,7 @@ import logic.Member;
 
 public class DataAccessorFile implements DataAccessorInterface {
 
+    //private final String fileMembers = "crashData.txt"; // fil med stor mængde dummy data
     private final String fileMembers = "members_delfinen.txt"; // filepath som String
     private final String splitSymbol = ";";
 
