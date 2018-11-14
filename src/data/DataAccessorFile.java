@@ -146,8 +146,8 @@ public class DataAccessorFile implements DataAccessorInterface {
     }
 
     @Override
-    public void deleteMember(Member member) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void deleteMember(int id) throws Exception {
+        removeLine(Integer.toString(id), fileMembers);
     }
 
 }
