@@ -104,13 +104,26 @@ public class DataAccessorInterfaceTest {
     /**
      * Test of deleteMember method, of class DataAccessorFile.
      */
+    
+    @Before
+    public void beforeTestDeleteMember() {
+        try {
+            Member member = instance.searchMailForMembers("cko@cko.dk").get(0);
+            int member_id = member.getID();
+            instance.deleteMember(member_id);
+        } catch (Exception ex) {
+            Logger.getLogger(DataAccessorInterfaceTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     @Test
     public void testDeleteMember() throws Exception {
         System.out.println("deleteMember");
-        Member member = null;
-        instance.deleteMember(member);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
+        int expResult = 0;
+        int result = instance.searchMailForMembers("cko@cko.dk").size(); // antal members med mail cko@cko.dk
+        
+        assertEquals(expResult, result);
     }
     
 //    @Test
