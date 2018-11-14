@@ -143,8 +143,8 @@ public class membersDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBTNActionPerformed
+        try{
         if(isEdit){
-            try{
             LocalDate date = LocalDate.parse(birthdayTXT.getText());
             data.editMember(new Member(
             currentID,
@@ -155,13 +155,7 @@ public class membersDialog extends javax.swing.JDialog {
             eliteCHECK.isSelected()
             ));
             dispose();
-            } catch(DateTimeParseException e){
-                errorTXT.setText("Fejl i fødselsdag..");
-            } catch(Exception e){
-                errorTXT.setText("Der skete en fejl..");
-            }
         } else {
-            try{
             LocalDate date = LocalDate.parse(birthdayTXT.getText());
             data.createMember(new Member(
             nameTXT.getText(),
@@ -171,11 +165,11 @@ public class membersDialog extends javax.swing.JDialog {
             eliteCHECK.isSelected()
             ));
             dispose();
-            } catch(DateTimeParseException e){
+        }
+        } catch(DateTimeParseException e){
                 errorTXT.setText("Fejl i fødselsdag..");
-            } catch(Exception e){
+        } catch(Exception e){
                 errorTXT.setText("Der skete en fejl..");
-            }
         }
     }//GEN-LAST:event_saveBTNActionPerformed
 

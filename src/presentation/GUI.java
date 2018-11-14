@@ -8,7 +8,7 @@ package presentation;
 import data.DataAccessorFile;
 import java.time.LocalDate;
 import java.util.List;
-import javax.swing.SwingUtilities;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import logic.Member;
 
@@ -242,6 +242,10 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_addMemberBTNActionPerformed
 
     private void editMemberBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editMemberBTNActionPerformed
+        if(memberTable.getSelectionModel().isSelectionEmpty()){
+           JOptionPane.showMessageDialog(null, "Vælg et medlem på listen før du redigere.");
+           return;
+        }
         membersDialog mdia = new membersDialog(this,true);
         mdia.setTitle("Rediger medlem");
         DefaultTableModel model = (DefaultTableModel) memberTable.getModel();
