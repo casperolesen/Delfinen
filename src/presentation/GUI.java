@@ -267,16 +267,22 @@ public class GUI extends javax.swing.JFrame {
             (boolean)model.getValueAt(memberTable.getSelectedRow(),5)
         ));
         mdia.setVisible(true);
+        clearTable(model);
     }//GEN-LAST:event_editMemberBTNActionPerformed
 
     private void deleteMemberBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMemberBTNActionPerformed
         DefaultTableModel model = (DefaultTableModel) memberTable.getModel();
+        int reply = JOptionPane.showConfirmDialog(null, 
+                "Er du sikker på at du vil slette "+model.getValueAt(memberTable.getSelectedRow(), 1)+"?", 
+                "Slet medlem?", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {        
         try {
             data.deleteMember((int)model.getValueAt(memberTable.getSelectedRow(), 0));
             clearTable(model);
         }
         catch(Exception e) {
             showMessage("Kunne ikke slette medlem");
+        }
         }
     }//GEN-LAST:event_deleteMemberBTNActionPerformed
 
