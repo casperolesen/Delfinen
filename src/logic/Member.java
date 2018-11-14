@@ -32,14 +32,6 @@ public class Member {
         this.brystsvømning = categories[3];
     }
     
-    public Member(String name, String email, LocalDate date, boolean active, boolean elite){
-        this.name = name;
-        this.email = email;
-        this.birthday = date;
-        this.active = active;
-        this.elite = elite;
-    }
-    
     public int getID() {
         return id;
     }
@@ -66,6 +58,22 @@ public class Member {
     
     public boolean isElite() {
         return elite;
+    }
+    
+    public boolean getButterfly() {
+        return butterfly;
+    }
+    
+    public boolean getCrawl() {
+        return crawl;
+    }
+    
+    public boolean getRygcrawl() {
+        return rygcrawl;
+    }
+    
+    public boolean getBryst() {
+        return brystsvømning;
     }
     
     public String toFile() {
