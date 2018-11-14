@@ -66,7 +66,8 @@ public class DataAccessorInterfaceTest {
     public void testCreateMember() throws Exception {
         System.out.println("createMember");
         try {
-            Member newMember = new Member("Oprettet via Test", "cko@cko.dk", LocalDate.parse("1900-01-28"), true, true);
+            boolean[] categories = {false, false, false ,false};
+            Member newMember = new Member(0, "Oprettet via Test", "cko@cko.dk", LocalDate.parse("1900-01-28"), true, true, categories);
             instance.createMember(newMember); // gemmer nyt test member i filen
         } catch (Exception ex) {
             Logger.getLogger(DataAccessorInterfaceTest.class.getName()).log(Level.SEVERE, null, ex);
