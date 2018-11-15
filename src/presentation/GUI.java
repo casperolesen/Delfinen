@@ -6,8 +6,8 @@
 package presentation;
 
 import data.DataAccessorFile;
-import java.time.LocalDate;
-import java.util.List;
+import java.nio.file.Paths;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import logic.Controller;
@@ -27,6 +27,10 @@ public class GUI extends javax.swing.JFrame {
     
     public GUI() {
         initComponents();
+        //
+        setTitle("Svømmeklubben Delfinen");
+        ImageIcon img = new ImageIcon("dolphin.png");
+        this.setIconImage(img.getImage());
         memberTable.removeColumn(memberTable.getColumnModel().getColumn(0));
         
         //updateLabels();
