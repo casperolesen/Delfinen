@@ -5,9 +5,9 @@
  */
 package presentation;
 
-import data.DataAccessorFile;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
+import logic.Controller;
 import logic.Member;
 
 /**
@@ -21,7 +21,7 @@ public class membersDialog extends javax.swing.JDialog {
      */
     private boolean isEdit = false;
     private int currentID;
-    DataAccessorFile data = new DataAccessorFile();
+    Controller logic = new Controller();
     
     public membersDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -201,10 +201,10 @@ public class membersDialog extends javax.swing.JDialog {
             brystCHECK.isSelected()}
             );
         if(isEdit){
-            data.editMember(member);
+            logic.editMember(member);
             dispose();
         } else {
-            data.createMember(member);
+            logic.createMember(member);
             dispose();
         }
         } catch(DateTimeParseException e){
