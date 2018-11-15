@@ -27,12 +27,6 @@ public class GUI extends javax.swing.JFrame {
     
     public GUI() {
         initComponents();
-        memberTable.removeColumn(memberTable.getColumnModel().getColumn(9));
-        memberTable.removeColumn(memberTable.getColumnModel().getColumn(8));
-        memberTable.removeColumn(memberTable.getColumnModel().getColumn(7));
-        memberTable.removeColumn(memberTable.getColumnModel().getColumn(6));
-        memberTable.removeColumn(memberTable.getColumnModel().getColumn(5));
-        memberTable.removeColumn(memberTable.getColumnModel().getColumn(4));
         memberTable.removeColumn(memberTable.getColumnModel().getColumn(0));
         
         //updateLabels();
@@ -96,14 +90,14 @@ public class GUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "id", "Navn", "Email", "Fødselsdag", "active", "elite", "butterfly", "crawl", "rygcrawl", "bryst"
+                "id", "Navn", "Email", "Fødselsdag"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -228,7 +222,7 @@ public class GUI extends javax.swing.JFrame {
         bgPanel.setLayout(bgPanelLayout);
         bgPanelLayout.setHorizontalGroup(
             bgPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainTabs, javax.swing.GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE)
+            .addComponent(mainTabs)
         );
         bgPanelLayout.setVerticalGroup(
             bgPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -309,11 +303,11 @@ public class GUI extends javax.swing.JFrame {
     
     private void getMembersBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getMembersBTNActionPerformed
         try{
-        List<Member> members = data.getMembers();
+        logic.memberList = data.getMembers();
         DefaultTableModel model = (DefaultTableModel) memberTable.getModel();
         clearTable(model);
-        for(Member member:members){
-            model.addRow(new Object[]{member.getID(), member.getName(), member.getEmail(),member.getBirthday(),member.isActive(),member.isElite(),member.getButterfly(),member.getCrawl(),member.getRygcrawl(),member.getBryst()});
+        for(Member member:logic.memberList){
+            model.addRow(new Object[]{member.getID(), member.getName(), member.getEmail(),member.getBirthday()});
         }
         } catch(Exception e){
             showMessage("Kunne ikke indlæse medlemmer..");
@@ -322,11 +316,11 @@ public class GUI extends javax.swing.JFrame {
 
     private void emailSearchBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailSearchBTNActionPerformed
        try{
-        List<Member> members = data.searchMailForMembers(emailTXT.getText());
+        logic.memberList = data.searchMailForMembers(emailTXT.getText());
         DefaultTableModel model = (DefaultTableModel) memberTable.getModel();
         clearTable(model);
-        for(Member member:members){
-            model.addRow(new Object[]{member.getID(), member.getName(), member.getEmail(),member.getBirthday(),member.isActive(),member.isElite(),member.getButterfly(),member.getCrawl(),member.getRygcrawl(),member.getBryst()});
+        for(Member member:logic.memberList){
+            model.addRow(new Object[]{member.getID(), member.getName(), member.getEmail(),member.getBirthday()});
         }
         } catch(Exception e){
             showMessage("Kunne ikke indlæse medlemmer..");
@@ -347,18 +341,7 @@ public class GUI extends javax.swing.JFrame {
         membersDialog mdia = new membersDialog(this,true);
         mdia.setTitle("Rediger medlem");
         DefaultTableModel model = (DefaultTableModel) memberTable.getModel();
-        mdia.readyEdit(new Member(
-            (int)model.getValueAt(memberTable.getSelectedRow(),0),
-            (String)model.getValueAt(memberTable.getSelectedRow(),1),
-            (String)model.getValueAt(memberTable.getSelectedRow(),2),
-            (LocalDate)model.getValueAt(memberTable.getSelectedRow(),3),
-            (boolean)model.getValueAt(memberTable.getSelectedRow(),4),
-            (boolean)model.getValueAt(memberTable.getSelectedRow(),5),
-            new boolean[]{(boolean)model.getValueAt(memberTable.getSelectedRow(),6),
-            (boolean)model.getValueAt(memberTable.getSelectedRow(),7),
-            (boolean)model.getValueAt(memberTable.getSelectedRow(),8),
-            (boolean)model.getValueAt(memberTable.getSelectedRow(),9)}
-        ));
+        mdia.readyEdit(logic.memberList.get(memberTable.convertRowIndexToModel(memberTable.getSelectedRow())));
         mdia.setVisible(true);
         clearTable(model);
     }//GEN-LAST:event_editMemberBTNActionPerformed
