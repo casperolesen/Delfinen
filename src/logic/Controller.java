@@ -61,5 +61,28 @@ public class Controller implements ControllerInterface {
     public boolean checkEmail(String email) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    
+    public void deleteMember(int id) throws Exception{
+        data.deleteMember(id);
+    }
+    
+    public void updateMemberList() throws Exception{
+        memberList = data.getMembers();
+    }
+    
+    public void updateMemberList(String email) throws Exception{
+        memberList = data.searchMailForMembers(email);
+    }
+    
+    public void editMember(Member member) throws Exception{
+        data.editMember(member);
+    }
+    
+     public void createMember(Member member) throws Exception{
+        data.createMember(member);
+    }
+     
+     
 
 }

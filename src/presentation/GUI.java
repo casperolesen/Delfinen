@@ -5,8 +5,7 @@
  */
 package presentation;
 
-import data.DataAccessorFile;
-import java.nio.file.Paths;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -22,7 +21,6 @@ public class GUI extends javax.swing.JFrame {
     /**
      * Creates new form GUI
      */
-    DataAccessorFile data = new DataAccessorFile();
     Controller logic = new Controller();
     
     public GUI() {
@@ -311,7 +309,7 @@ public class GUI extends javax.swing.JFrame {
     
     private void getMembersBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getMembersBTNActionPerformed
         try{
-        logic.memberList = data.getMembers(); // FLYT TIL CONTROLLER
+        logic.updateMemberList();
         DefaultTableModel model = (DefaultTableModel) memberTable.getModel();
         clearTable(model);
         for(Member member:logic.memberList){
@@ -324,7 +322,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void emailSearchBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailSearchBTNActionPerformed
        try{
-        logic.memberList = data.searchMailForMembers(emailTXT.getText());
+        logic.updateMemberList(emailTXT.getText());
         DefaultTableModel model = (DefaultTableModel) memberTable.getModel();
         clearTable(model);
         for(Member member:logic.memberList){
@@ -361,7 +359,7 @@ public class GUI extends javax.swing.JFrame {
                 "Slet medlem?", JOptionPane.YES_NO_OPTION);
         if (reply == JOptionPane.YES_OPTION) {        
         try {
-            data.deleteMember((int)model.getValueAt(memberTable.getSelectedRow(), 0));
+            logic.deleteMember((int)model.getValueAt(memberTable.getSelectedRow(), 0));
             clearTable(model);
         }
         catch(Exception e) {
