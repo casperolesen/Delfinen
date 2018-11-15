@@ -32,6 +32,7 @@ public class Member {
         this.brystsvoemning = categories[3];
     }
     
+    
     public int getID() {
         return id;
     }
