@@ -129,8 +129,8 @@ public class DataAccessorInterfaceTest {
     
 //    @Test
 //    public void testAppendLine() {
+//        long start = System.currentTimeMillis();
 //        String outFilename = "crashData.txt";
-//        
 //        
 //        for (int i = 1; i <= 10000; i++) {
 //            try {
@@ -140,6 +140,11 @@ public class DataAccessorInterfaceTest {
 //                Logger.getLogger(DataAccessorInterfaceTest.class.getName()).log(Level.SEVERE, null, ex);
 //            }
 //        }
+//        
+//        long end = System.currentTimeMillis();
+//        
+//        System.out.println("Tid i millis: " + (end - start));
+//        System.out.println("Tid i sekunder: " + ((end - start) * 0.001));
 //    }
 
 }

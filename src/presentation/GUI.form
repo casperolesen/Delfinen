@@ -38,7 +38,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="mainTabs" alignment="0" max="32767" attributes="0"/>
+              <Component id="mainTabs" alignment="0" pref="584" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -76,29 +76,25 @@
                               </Group>
                               <Component id="memberTableScroll" min="-2" pref="355" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="29" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="addMemberBTN" max="32767" attributes="0"/>
-                              <Component id="editMemberBTN" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="editMemberBTN" min="-2" pref="119" max="-2" attributes="0"/>
+                              <Component id="addMemberBTN" min="-2" max="-2" attributes="0"/>
                               <Component id="deleteMemberBTN" alignment="0" min="-2" pref="119" max="-2" attributes="0"/>
+                              <Component id="numberOfActiveMembersLBL" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jSeparator1" alignment="0" min="-2" pref="154" max="-2" attributes="0"/>
+                              <Component id="numberOfNotActiveMembersLBL" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="numberOfMembersLBL" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="numberFactLBL" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                          <EmptySpace pref="42" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                          <Component id="addMemberBTN" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="editMemberBTN" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="deleteMemberBTN" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="19" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="getMembersBTN" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="emailSearchBTN" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -107,6 +103,25 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="memberTableScroll" min="-2" pref="206" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                          <Component id="addMemberBTN" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="editMemberBTN" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="deleteMemberBTN" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="numberOfActiveMembersLBL" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="numberOfNotActiveMembersLBL" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                          <Component id="numberOfMembersLBL" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="numberFactLBL" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -184,6 +199,28 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="emailTXT">
                 </Component>
+                <Component class="javax.swing.JLabel" name="numberOfMembersLBL">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="numberOfMembersLBL"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="numberOfActiveMembersLBL">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="numberOfActiveMembersLBL"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="numberOfNotActiveMembersLBL">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="numberOfNotActiveMembersLBL"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JSeparator" name="jSeparator1">
+                </Component>
+                <Component class="javax.swing.JLabel" name="numberFactLBL">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="numberFactLBL"/>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="accountingPane">
@@ -198,12 +235,12 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="574" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="579" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="257" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="265" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -220,12 +257,12 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="574" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="579" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="257" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="265" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>

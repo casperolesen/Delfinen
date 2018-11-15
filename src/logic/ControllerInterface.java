@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package logic;
 
 /**
@@ -11,16 +6,33 @@ package logic;
  */
 public interface ControllerInterface {
 
-/**
- * 
- * @return total antal af både aktive og inaktive member's
- */
-    public int getTotalNumberOfMembers();
+    /**
+     *
+     * @return antallet af både aktive og inaktive member's
+     * @throws java.lang.Exception
+     */
+    public int getTotalNumberOfMembers() throws Exception;
 
     /**
-     * 
-     * @return  total antal af aktive member's
+     *
+     * @return antallet af aktive member's
+     * @throws java.lang.Exception
      */
-    public int getTotalNumberOfActiveMembers();
+    public int getTotalNumberOfActiveMembers() throws Exception;
+
+    /**
+     *
+     * @return antallet af inaktive member's
+     * @throws java.lang.Exception
+     */
+    public int getTotalNumberOfNotActiveMembers() throws Exception;
+
+    /**
+     *
+     * @return checker om en String er en email. F.eks. string indeholder @ og
+     * .dk
+     * @throws java.lang.Exception
+     */
+    public boolean checkEmail(String email) throws Exception;
 
 }
