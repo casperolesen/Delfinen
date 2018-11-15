@@ -311,7 +311,7 @@ public class GUI extends javax.swing.JFrame {
     
     private void getMembersBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getMembersBTNActionPerformed
         try{
-        logic.memberList = data.getMembers();
+        logic.memberList = data.getMembers(); // FLYT TIL CONTROLLER
         DefaultTableModel model = (DefaultTableModel) memberTable.getModel();
         clearTable(model);
         for(Member member:logic.memberList){

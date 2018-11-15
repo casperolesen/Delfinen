@@ -17,7 +17,7 @@ import org.junit.Before;
 public class DataAccessorInterfaceTest {
 
     DataAccessorInterface instance = null;
-    DataAccessorFile dataFile = new DataAccessorFile();
+    //DataAccessorFile dataFile = new DataAccessorFile();
 
     public DataAccessorInterfaceTest() {
         instance = new DataAccessorFile(); // henter data via File
