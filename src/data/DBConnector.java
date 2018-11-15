@@ -2,6 +2,9 @@ package data;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class DBConnector {
     private Connection connection = null;
@@ -24,4 +27,19 @@ public class DBConnector {
                 //System.out.println("Forbundet til DB!");
   		return this.connection;
 	}
+        
+        public ResultSet GetSQLResult(String query) {
+        
+            ResultSet rs = null;
+        
+            try{
+                Statement stmt = connection.createStatement();
+                rs = stmt.executeQuery(query);
+            
+            } catch(SQLException e) {
+                System.out.println("Oopsie");
+            }
+        
+            return rs;
+        }
 }
