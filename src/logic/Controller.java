@@ -6,6 +6,8 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -13,7 +15,8 @@ import java.net.URL;
  */
 public class Controller implements ControllerInterface {
 
-    DataAccessorInterface data = new DataAccessorFile();
+    private DataAccessorInterface data = new DataAccessorFile();
+    public List<Member> memberList = null;
 
     public String getNumberFact(int number) throws Exception {
         URL url = new URL("http://numbersapi.com/" + number);
