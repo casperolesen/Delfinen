@@ -1,5 +1,7 @@
 package logic;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author caspe
@@ -8,6 +10,8 @@ public class Result {
     private int id;
     private int id_member;
     private int id_category;
+    
+    private LocalDate data;
     
     private double time;
     
