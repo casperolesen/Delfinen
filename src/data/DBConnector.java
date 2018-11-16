@@ -53,4 +53,13 @@ public class DBConnector {
                 throw new SQLException();
             }
         }
+        
+        public void newQuery(String query) throws SQLException{
+            try{
+                Statement stmt = connection.createStatement();
+                stmt.executeQuery(query);
+            } catch(SQLException e) {
+                throw new SQLException();
+            }
+        }
 }

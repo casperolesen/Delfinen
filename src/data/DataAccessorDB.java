@@ -180,13 +180,43 @@ public class DataAccessorDB implements DataAccessorInterface {
     }
     
     @Override
-    public void editMember(Member member, boolean[] discs) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void editMember(Member member, boolean[] disciplines) throws Exception {
+        try{
+            Connection connection = con.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement(
+            "UPDATE members "+
+            "SET name = ?, email = ?, birthday = ?, active = ?, elite = ?) " +
+            "WHERE id="+member.getID());
+            pstmt.setString(1, member.getName());
+            pstmt.setString(2, member.getEmail());
+            pstmt.setString(3, member.getBirthday().toString());
+            pstmt.setString(4, ""+member.isActive());
+            pstmt.setString(5, ""+member.isElite());
+            con.newQuery(pstmt);
+            
+            pstmt = connection.prepareStatement(
+            "UPDATE members_disciplines "+
+            "SET discipline1=?, discipline2=?, discipline3=?, discipline4=? " +
+            "WHERE memberID="+member.getID());
+            pstmt.setString(1, ""+disciplines[0]);
+            pstmt.setString(2, ""+disciplines[1]);
+            pstmt.setString(3, ""+disciplines[2]);
+            pstmt.setString(4, ""+disciplines[3]);
+            con.newQuery(pstmt);
+            
+        } catch(Exception e){
+            throw new Exception();
+        }
     }
     
     @Override
     public void deleteMember(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try{
+        con.newQuery("DELETE FROM members WHERE id="+id);
+        con.newQuery("DELETE FROM members_disciplines WHERE memberID="+id);
+        } catch(Exception e){
+            throw new Exception();
+        }
     }
     
 }
