@@ -1,6 +1,7 @@
 package logic;
 
 public class Category {
+
     private int id;
     private String name;
 
@@ -24,6 +25,10 @@ public class Category {
     public void setName(String name) {
         this.name = name;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return id + " " + name;
+    }
+
 }

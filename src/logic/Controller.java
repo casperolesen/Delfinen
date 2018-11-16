@@ -1,12 +1,12 @@
 package logic;
 
+import data.DataAccessorDB;
 import data.DataAccessorFile;
 import data.DataAccessorInterface;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,6 +17,10 @@ public class Controller implements ControllerInterface {
 
     private DataAccessorInterface data = new DataAccessorFile();
     public List<Member> memberList = null;
+    
+    private DataAccessorDB sqldata = new DataAccessorDB();
+    public List<Result> resultList = null;
+    public List<Category> categoryList = null;
 
     public String getNumberFact(int number) throws Exception {
         URL url = new URL("http://numbersapi.com/" + number);
@@ -30,14 +34,14 @@ public class Controller implements ControllerInterface {
 
     @Override
     public int getTotalNumberOfMembers() throws Exception {
-        return data.getMembers().size();
+        return memberList.size();
     }
 
     @Override
     public int getTotalNumberOfActiveMembers() throws Exception {
 
         int numberOfActiveMembers = 0;
-        for (Member member : data.getMembers()) {
+        for (Member member : memberList) {
             if (member.isActive()) {
                 numberOfActiveMembers++;
             }
@@ -49,7 +53,7 @@ public class Controller implements ControllerInterface {
     public int getTotalNumberOfNotActiveMembers() throws Exception {
         
         int numberOfNotActiveMembers = 0;
-        for (Member member : data.getMembers()) {
+        for (Member member : memberList) {
             if (!member.isActive()) {
                 numberOfNotActiveMembers++;
             }
@@ -62,6 +66,22 @@ public class Controller implements ControllerInterface {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    public void updateResultList() throws Exception {
+        this.resultList = sqldata.getResults();
+    }
+    
+    
+    public void getResultsInCategory(int categoryID) throws Exception {
+        this.resultList = sqldata.getResultsInCategory(categoryID);
+    }
+    
+    public void getResultsForMember(String memberID) throws Exception {
+        this.resultList = sqldata.getResultsForMember(memberID);
+    }
+    
+    public void updateCategoryList() throws Exception {
+        this.categoryList = sqldata.getCategories();
+    }
     
     public void deleteMember(int id) throws Exception{
         data.deleteMember(id);
