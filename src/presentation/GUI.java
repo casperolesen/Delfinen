@@ -4,8 +4,8 @@ import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import logic.Category;
 import logic.Controller;
+import logic.Discipline;
 import logic.Member;
 import logic.Result;
 
@@ -439,8 +439,8 @@ public class GUI extends javax.swing.JFrame {
             logic.updateCategoryList();
             DefaultListModel model = new DefaultListModel();
 
-            for (Category category : logic.categoryList) {
-                model.addElement(category.getName());
+            for (Discipline discipline : logic.categoryList) {
+                model.addElement(discipline.getName());
             }
 
             categoryList.setModel(model);

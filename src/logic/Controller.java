@@ -20,7 +20,7 @@ public class Controller implements ControllerInterface {
     
     private DataAccessorDB sqldata = new DataAccessorDB();
     public List<Result> resultList = null;
-    public List<Category> categoryList = null;
+    public List<Discipline> categoryList = null;
 
     public String getNumberFact(int number) throws Exception {
         URL url = new URL("http://numbersapi.com/" + number);
@@ -72,7 +72,7 @@ public class Controller implements ControllerInterface {
     
     
     public void getResultsInCategory(int categoryID) throws Exception {
-        this.resultList = sqldata.getResultsInCategory(categoryID);
+        this.resultList = sqldata.getResultsInDisciplines(categoryID);
     }
     
     public void getResultsForMember(String memberID) throws Exception {
@@ -80,7 +80,7 @@ public class Controller implements ControllerInterface {
     }
     
     public void updateCategoryList() throws Exception {
-        this.categoryList = sqldata.getCategories();
+        this.categoryList = sqldata.getDisciplines();
     }
     
     public void deleteMember(int id) throws Exception{

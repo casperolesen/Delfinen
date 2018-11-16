@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import logic.Category;
+import logic.Discipline;
 import logic.Member;
 import logic.Result;
 
@@ -58,10 +58,10 @@ public class DataAccessorDB implements DataAccessorInterface {
         
     }
     
-    public List<Result> getResultsInCategory(int categoryID) throws Exception {
+    public List<Result> getResultsInDisciplines(int categoryID) throws Exception {
         List<Result> results = new ArrayList<>();
         
-        ResultSet rs = con.GetSQLResult("select * from results where idcategories = " + categoryID);
+        ResultSet rs = con.GetSQLResult("select * from results where iddisciplines = " + categoryID);
         
         while (rs.next()) {
             
@@ -83,17 +83,17 @@ public class DataAccessorDB implements DataAccessorInterface {
         return results;
     }
     
-    public List<Category> getCategories() throws Exception {
-        List<Category> categories = new ArrayList<>();
+    public List<Discipline> getDisciplines() throws Exception {
+        List<Discipline> disciplines = new ArrayList<>();
         
-        ResultSet rs = con.GetSQLResult("select * from categories;");
+        ResultSet rs = con.GetSQLResult("select * from discipline;");
         
         while (rs.next()) {
-            Category category = new Category(rs.getInt("idcategories"), rs.getString("name"));
-            categories.add(category);
+            Discipline discipline = new Discipline(rs.getInt("idcategories"), rs.getString("name"));
+            disciplines.add(discipline);
         }
         
-        return categories;
+        return disciplines;
     }
     
     @Override
