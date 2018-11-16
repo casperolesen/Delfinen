@@ -194,17 +194,16 @@ public class membersDialog extends javax.swing.JDialog {
             emailTXT.getText(),
             date,
             activeCHECK.isSelected(),
-            eliteCHECK.isSelected(),
-            new boolean[] {butterflyCHECK.isSelected(),
+            eliteCHECK.isSelected());
+            boolean[] discs = new boolean[] {butterflyCHECK.isSelected(),
             crawlCHECK.isSelected(),
             rygcrawlCHECK.isSelected(),
-            brystCHECK.isSelected()}
-            );
+            brystCHECK.isSelected()};
         if(isEdit){
-            logic.editMember(member);
+            logic.editMember(member, discs);
             dispose();
         } else {
-            logic.createMember(member);
+            logic.createMember(member, discs);
             dispose();
         }
         } catch(DateTimeParseException e){

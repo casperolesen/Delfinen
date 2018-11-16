@@ -19,9 +19,9 @@ public interface DataAccessorInterface {
     
     public Member getMember(int id) throws Exception;
     
-    public void createMember(Member member) throws Exception;
+    public void createMember(Member member, boolean[] discs) throws Exception;
     
-    public void editMember(Member member) throws Exception;
+    public void editMember(Member member, boolean[] discs) throws Exception;
     
     public void deleteMember(int id) throws Exception;
 }

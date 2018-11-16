@@ -87,6 +87,6 @@ public class Member {
     }
     
     public String toFile() {
-        return name+";"+email+";"+birthday+";"+active+";"+elite+";"+butterfly+";"+crawl+";"+rygcrawl+";"+brystsvoemning;
+        return name+";"+email+";"+birthday+";"+active+";"+elite;
     }
 }

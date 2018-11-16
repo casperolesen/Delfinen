@@ -137,20 +137,23 @@ public class DataAccessorFile implements DataAccessorInterface {
     }
 
     @Override
-    public void createMember(Member member) throws Exception {
+    public void createMember(Member member,boolean[] discs) throws Exception {
         try {
             List<String> lines = readAllLines(fileMembers);
             int id = Integer.parseInt(lines.get(lines.size() - 1).split(splitSymbol)[0]) + 1;
-            appendLine(fileMembers, id + splitSymbol + member.toFile());
+            appendLine(fileMembers, id + splitSymbol + member.toFile()+
+  splitSymbol+discs[0]+splitSymbol+discs[1]+splitSymbol+discs[2]+splitSymbol+discs[3]);
         } catch (Exception e) {
             throw new Exception();
         }
     }
 
     @Override
-    public void editMember(Member member) throws Exception {
+    public void editMember(Member member, boolean[] discs) throws Exception {
         try{
-        editLine("" + member.getID(), member.getID() + splitSymbol + member.toFile(), fileMembers);
+        editLine("" + member.getID(), member.getID() + splitSymbol + member.toFile()
+                +splitSymbol+discs[0]+splitSymbol+discs[1]+splitSymbol+discs[2]+splitSymbol+discs[3]
+                , fileMembers);
         } catch(IOException e){
             throw new Exception();
         }

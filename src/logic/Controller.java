@@ -95,12 +95,12 @@ public class Controller implements ControllerInterface {
         memberList = data.searchMailForMembers(email);
     }
     
-    public void editMember(Member member) throws Exception{
-        data.editMember(member);
+    public void editMember(Member member, boolean[] discs) throws Exception{
+        data.editMember(member, discs);
     }
     
-     public void createMember(Member member) throws Exception{
-        data.createMember(member);
+     public void createMember(Member member, boolean[] discs) throws Exception{
+        data.createMember(member, discs);
     }
      
      

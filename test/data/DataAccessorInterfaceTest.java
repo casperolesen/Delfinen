@@ -68,7 +68,7 @@ public class DataAccessorInterfaceTest {
         try {
             boolean[] categories = {false, false, false ,false};
             Member newMember = new Member(0, "Oprettet via Test", "cko@cko.dk", LocalDate.parse("1900-01-28"), true, true, categories);
-            instance.createMember(newMember); // gemmer nyt test member i filen
+            instance.createMember(newMember,categories); // gemmer nyt test member i filen
         } catch (Exception ex) {
             Logger.getLogger(DataAccessorInterfaceTest.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -84,9 +84,10 @@ public class DataAccessorInterfaceTest {
     @Before
     public void beforeTestEditMember() {
         try {
+            boolean[] categories = {false, false, false ,false};
             Member member = instance.getMember(3);
             member.setName("Nyt navn fra Test");
-            instance.editMember(member);
+            instance.editMember(member,categories);
         } catch (Exception ex) {
             Logger.getLogger(DataAccessorInterfaceTest.class.getName()).log(Level.SEVERE, null, ex);
         }

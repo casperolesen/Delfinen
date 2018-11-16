@@ -1,6 +1,9 @@
 package data;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -96,28 +99,88 @@ public class DataAccessorDB implements DataAccessorInterface {
         return disciplines;
     }
     
-    @Override
+     @Override
     public List<Member> getMembers() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Member> members = new ArrayList<>();
+        ResultSet rs = con.GetSQLResult("select * from members");
+        while (rs.next()) {
+            members.add(new Member(
+                    rs.getInt(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    LocalDate.parse(rs.getString(4)),
+                    rs.getBoolean(5),
+                    rs.getBoolean(6)));
+        }
+        return members;
+    
     }
     
     @Override
     public List<Member> searchMailForMembers(String email) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Member> members = new ArrayList<>();
+        ResultSet rs = con.GetSQLResult("select * from members where email='"+email+"'");
+        while (rs.next()) {
+            members.add(new Member(
+                    rs.getInt(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    LocalDate.parse(rs.getString(4)),
+                    rs.getBoolean(5),
+                    rs.getBoolean(6)));
+        }
+        return members;
     }
     
     @Override
     public Member getMember(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Member member = null;
+        ResultSet rs = con.GetSQLResult("select * from members where id="+id);
+        while (rs.next()) {
+            member = new Member(
+                    rs.getInt(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    LocalDate.parse(rs.getString(4)),
+                    rs.getBoolean(5),
+                    rs.getBoolean(6));
+        }
+        return member;
     }
     
     @Override
-    public void createMember(Member member) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void createMember(Member member,boolean[] disciplines) throws Exception {
+        try{
+            Connection connection = con.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement(
+            "INSERT INTO members "+
+            "(name, email, birthday, active, elite) " +
+            "VALUES (?,?,?,?,?)");
+            pstmt.setString(1, member.getName());
+            pstmt.setString(2, member.getEmail());
+            pstmt.setString(3, member.getBirthday().toString());
+            pstmt.setString(4, ""+member.isActive());
+            pstmt.setString(5, ""+member.isElite());
+            con.newQuery(pstmt);
+            
+            pstmt = connection.prepareStatement(
+            "INSERT INTO members_disciplines "+
+            "(memberID, discipline1, discipline2, discipline3, discipline4) " +
+            "VALUES (?,?,?,?,?)");
+            pstmt.setInt(1, member.getID());
+            pstmt.setString(2, ""+disciplines[0]);
+            pstmt.setString(3, ""+disciplines[1]);
+            pstmt.setString(4, ""+disciplines[2]);
+            pstmt.setString(5, ""+disciplines[3]);
+            con.newQuery(pstmt);
+            
+        } catch(Exception e){
+            throw new Exception();
+        }
     }
     
     @Override
-    public void editMember(Member member) throws Exception {
+    public void editMember(Member member, boolean[] discs) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
