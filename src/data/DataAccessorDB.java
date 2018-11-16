@@ -26,7 +26,7 @@ public class DataAccessorDB implements DataAccessorInterface {
         }
     }
     
-    private Result createResult(ResultSet rs) throws Exception {
+    private Result buildResult(ResultSet rs) throws Exception {
         
         int id = rs.getInt(1);
         int id_member = rs.getInt(2);
@@ -51,7 +51,7 @@ public class DataAccessorDB implements DataAccessorInterface {
         ResultSet rs = con.GetSQLResult("select * from results");
                 
         while (rs.next()) {
-            results.add(createResult(rs));
+            results.add(buildResult(rs));
         }
         
         return results;
@@ -65,7 +65,7 @@ public class DataAccessorDB implements DataAccessorInterface {
         
         while (rs.next()) {
             
-            results.add(createResult(rs));
+            results.add(buildResult(rs));
         }
         
         return results;
@@ -77,7 +77,7 @@ public class DataAccessorDB implements DataAccessorInterface {
         ResultSet rs = con.GetSQLResult("select * from results where idmembers = " + memberID);
         
         while (rs.next()) {
-            results.add(createResult(rs));
+            results.add(buildResult(rs));
         }
         
         return results;
@@ -86,7 +86,7 @@ public class DataAccessorDB implements DataAccessorInterface {
     public List<Discipline> getDisciplines() throws Exception {
         List<Discipline> disciplines = new ArrayList<>();
         
-        ResultSet rs = con.GetSQLResult("select * from discipline;");
+        ResultSet rs = con.GetSQLResult("select * from disciplines;");
         
         while (rs.next()) {
             Discipline discipline = new Discipline(rs.getInt("idcategories"), rs.getString("name"));
