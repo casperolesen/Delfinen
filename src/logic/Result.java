@@ -9,12 +9,12 @@ public class Result {
     private int id_member;
     private int id_category;
     
-    private String time;
+    private double time;
     
     private Boolean comp;
     private String place;
 
-    public Result(int id, int id_member, int id_category, String time, Boolean comp, String place) {
+    public Result(int id, int id_member, int id_category, double time, Boolean comp, String place) {
         this.id = id;
         this.id_member = id_member;
         this.id_category = id_category;
@@ -35,7 +35,7 @@ public class Result {
         return id_category;
     }
 
-    public String getTime() {
+    public double getTime() {
         return time;
     }
 

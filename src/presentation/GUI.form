@@ -276,8 +276,8 @@
                     <Container class="javax.swing.JPanel" name="testPane">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="Test">
-                            <Property name="tabTitle" type="java.lang.String" value="Test"/>
+                          <JTabbedPaneConstraints tabName="Resultater">
+                            <Property name="tabTitle" type="java.lang.String" value="Resultater"/>
                           </JTabbedPaneConstraints>
                         </Constraint>
                       </Constraints>

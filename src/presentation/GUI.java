@@ -306,7 +306,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        jTabbedPane1.addTab("Test", testPane);
+        jTabbedPane1.addTab("Resultater", testPane);
 
         javax.swing.GroupLayout coachPaneLayout = new javax.swing.GroupLayout(coachPane);
         coachPane.setLayout(coachPaneLayout);

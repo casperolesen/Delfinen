@@ -32,7 +32,7 @@ public class DataAccessorDB implements DataAccessorInterface {
         int id_member = rs.getInt(2);
         int id_category = rs.getInt(3);
         
-        String time = rs.getString(4);
+        Double time = Double.parseDouble(rs.getString(4));
         
         Boolean comp = false;
         if ("true".equals(rs.getString(5))) {
