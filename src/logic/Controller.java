@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class Controller implements ControllerInterface {
 
-    private DataAccessorInterface data = new DataAccessorFile();
+    //private DataAccessorInterface data = new DataAccessorFile();
     public List<Member> memberList = null;
     
     private DataAccessorDB sqldata = new DataAccessorDB();
@@ -84,7 +84,8 @@ public class Controller implements ControllerInterface {
     }
     
     public void deleteMember(int id) throws Exception{
-        data.deleteMember(id);
+        sqldata.deleteMember(id);
+        //data.deleteMember(id);
     }
     
     public void updateMemberList() throws Exception{
@@ -93,11 +94,13 @@ public class Controller implements ControllerInterface {
     }
     
     public void updateMemberList(String email) throws Exception{
-        memberList = data.searchMailForMembers(email);
+        memberList = sqldata.searchMailForMembers(email);
+        //memberList = data.searchMailForMembers(email);
     }
     
     public void editMember(Member member, boolean[] discs) throws Exception{
-        data.editMember(member, discs);
+        //data.editMember(member, discs);
+        sqldata.editMember(member, discs);
     }
     
      public void createMember(Member member, boolean[] discs) throws Exception{
