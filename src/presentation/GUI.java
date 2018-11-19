@@ -71,6 +71,7 @@ public class GUI extends javax.swing.JFrame {
         getResultsBTN = new javax.swing.JButton();
         testResetBTN = new javax.swing.JButton();
         deleteResultBTN = new javax.swing.JButton();
+        newResult = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -281,24 +282,32 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        newResult.setText("New Result");
+        newResult.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newResultActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout testPaneLayout = new javax.swing.GroupLayout(testPane);
         testPane.setLayout(testPaneLayout);
         testPaneLayout.setHorizontalGroup(
             testPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(testPaneLayout.createSequentialGroup()
                 .addGroup(testPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(testPaneLayout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(testPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane4)
-                            .addComponent(testResetBTN, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
-                            .addComponent(deleteResultBTN)))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(testPaneLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(resultsMemberIdTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(getResultsBTN)))
+                .addGap(18, 18, 18)
+                .addGroup(testPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(newResult)
+                    .addGroup(testPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane4)
+                        .addComponent(testResetBTN, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                        .addComponent(deleteResultBTN)))
                 .addContainerGap(13, Short.MAX_VALUE))
         );
         testPaneLayout.setVerticalGroup(
@@ -307,7 +316,8 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(testPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(resultsMemberIdTXT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(getResultsBTN))
+                    .addComponent(getResultsBTN)
+                    .addComponent(newResult))
                 .addGap(18, 18, 18)
                 .addGroup(testPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(testPaneLayout.createSequentialGroup()
@@ -602,6 +612,13 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_deleteResultBTNActionPerformed
 
+    private void newResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newResultActionPerformed
+        // TODO add your handling code here:
+                resultsDialog rdia = new resultsDialog(this, true);
+        rdia.setTitle("Opret nyt medlem");
+        rdia.setVisible(true);
+    }//GEN-LAST:event_newResultActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -658,6 +675,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTabbedPane mainTabs;
     private javax.swing.JTable memberTable;
     private javax.swing.JScrollPane memberTableScroll;
+    private javax.swing.JButton newResult;
     private javax.swing.JLabel numberFactLBL;
     private javax.swing.JLabel numberOfActiveMembersLBL;
     private javax.swing.JLabel numberOfMembersLBL;

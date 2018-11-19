@@ -82,6 +82,11 @@ public class DataAccessorDB implements DataAccessorInterface {
         return results;
 
     }
+    
+    @Override
+    public void createResult() throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     @Override
     public void deleteResult(int id) throws Exception {
@@ -283,5 +288,7 @@ public class DataAccessorDB implements DataAccessorInterface {
             throw new Exception();
         }
     }
+
+    
 
 }

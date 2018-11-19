@@ -28,6 +28,8 @@ public interface DataAccessorInterface {
     public void deleteMember(int id) throws Exception;
     
     
+    public void createResult() throws Exception;
+    
     public List<Result> getResults() throws Exception;
     
     public void deleteResult(int id) throws Exception;
