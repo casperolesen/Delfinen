@@ -81,6 +81,15 @@ public class DataAccessorDB implements DataAccessorInterface {
         return results;
 
     }
+    
+    public void deleteResult(int id) throws Exception {
+        String query = "DELETE FROM results where idresults = ?";   
+        Connection connection = con.getConnection();
+        PreparedStatement pstmt = connection.prepareStatement(query);
+        pstmt.setInt(1, id);
+        
+        pstmt.execute();
+    }
 
     public List<Result> getResultsInDisciplines(int categoryID) throws Exception {
         List<Result> results = new ArrayList<>();

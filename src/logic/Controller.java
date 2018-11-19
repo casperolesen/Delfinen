@@ -79,6 +79,10 @@ public class Controller implements ControllerInterface {
         this.resultList = sqldata.getResultsForMember(memberID);
     }
     
+    public void deleteResult(int id) throws Exception {
+        sqldata.deleteResult(id);
+    }
+    
     public void updateCategoryList() throws Exception {
         this.categoryList = sqldata.getDisciplines();
     }

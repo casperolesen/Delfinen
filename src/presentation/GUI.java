@@ -1,5 +1,7 @@
 package presentation;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -69,6 +71,7 @@ public class GUI extends javax.swing.JFrame {
         resultsMemberIdTXT = new javax.swing.JTextField();
         getResultsBTN = new javax.swing.JButton();
         testResetBTN = new javax.swing.JButton();
+        deleteResultBTN = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -281,6 +284,13 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        deleteResultBTN.setText("Slet Res");
+        deleteResultBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteResultBTNActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout testPaneLayout = new javax.swing.GroupLayout(testPane);
         testPane.setLayout(testPaneLayout);
         testPaneLayout.setHorizontalGroup(
@@ -292,7 +302,8 @@ public class GUI extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(testPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane4)
-                            .addComponent(testResetBTN, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)))
+                            .addComponent(testResetBTN, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                            .addComponent(deleteResultBTN)))
                     .addGroup(testPaneLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(resultsMemberIdTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -312,7 +323,9 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(testPaneLayout.createSequentialGroup()
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(testResetBTN))
+                        .addComponent(testResetBTN)
+                        .addGap(18, 18, 18)
+                        .addComponent(deleteResultBTN))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
@@ -515,8 +528,8 @@ public class GUI extends javax.swing.JFrame {
                 //int idTest = Integer.parseInt(model.getValueAt(memberTable.getSelectedRow(), 0));
                 //System.out.println(model.getValueAt(memberTable.getSelectedRow(), 0));
                
-                logic.deleteMember(10);
-                //logic.deleteMember((int) model.getValueAt(memberTable.getSelectedRow(), 0));
+                //logic.deleteMember(10);
+                logic.deleteMember((int) model.getValueAt(memberTable.getSelectedRow(), 0));
                 clearTable(model);
             } catch (Exception e) {
                 showMessage("Kunne ikke slette medlem");
@@ -572,6 +585,17 @@ public class GUI extends javax.swing.JFrame {
         testResetBTN.setEnabled(false);
     }//GEN-LAST:event_testResetBTNActionPerformed
 
+    private void deleteResultBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteResultBTNActionPerformed
+        try {
+            DefaultTableModel model = (DefaultTableModel) resultTable.getModel();
+            int id = (int) model.getValueAt(resultTable.getSelectedRow(), 0);
+            //int id = (int) model.getValueAt(resultTable.getSelectedRow(), 1);
+            logic.deleteResult(id);
+        } catch (Exception ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_deleteResultBTNActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -615,6 +639,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JList<String> categoryList;
     private javax.swing.JPanel coachPane;
     private javax.swing.JButton deleteMemberBTN;
+    private javax.swing.JButton deleteResultBTN;
     private javax.swing.JButton editMemberBTN;
     private javax.swing.JButton emailSearchBTN;
     private javax.swing.JTextField emailTXT;
