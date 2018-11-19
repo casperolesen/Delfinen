@@ -428,6 +428,7 @@ public class GUI extends javax.swing.JFrame {
             updateLabels();
             fillResultTable();
             fillCategoryList();
+            fillMemberList();
 
         } catch (Exception ex) {
             showMessage("Kunne ikke loade content");
@@ -462,6 +463,20 @@ public class GUI extends javax.swing.JFrame {
             // TODO
         }
     }
+    
+    private void fillMemberList() {
+        try {
+            logic.updateMemberList();
+            DefaultTableModel model = (DefaultTableModel) memberTable.getModel();
+            clearTable(model);
+            for (Member member : logic.memberList) {
+                model.addRow(new Object[]{member.getID(), member.getName(), member.getEmail(), member.getBirthday()});
+            }
+            
+        } catch (Exception ex) {
+            showMessage("Kunne ikke indlæse medlemmer");
+        }
+    }
 
     private void getMembersBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getMembersBTNActionPerformed
         try {
@@ -493,6 +508,7 @@ public class GUI extends javax.swing.JFrame {
         membersDialog mdia = new membersDialog(this, true);
         mdia.setTitle("Opret nyt medlem");
         mdia.setVisible(true);
+        fillMemberList();
     }//GEN-LAST:event_addMemberBTNActionPerformed
 
     private void editMemberBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editMemberBTNActionPerformed
@@ -520,7 +536,7 @@ public class GUI extends javax.swing.JFrame {
                
                 //logic.deleteMember(10);
                 logic.deleteMember((int) model.getValueAt(memberTable.getSelectedRow(), 0));
-                clearTable(model);
+                //clearTable(model);
             } catch (Exception e) {
                 showMessage("Kunne ikke slette medlem");
                 //System.out.println(e.getMessage());
