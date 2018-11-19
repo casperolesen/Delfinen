@@ -62,8 +62,8 @@ public class Controller implements ControllerInterface {
     }
 
     @Override
-    public boolean checkEmail(String email) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean checkEmail(String email) throws Exception {
+        return email.contains("@");
     }
     
     @Override
