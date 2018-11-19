@@ -88,7 +88,8 @@ public class Controller implements ControllerInterface {
     }
     
     public void updateMemberList() throws Exception{
-        memberList = data.getMembers();
+        //memberList = data.getMembers();
+        memberList = sqldata.getMembers();
     }
     
     public void updateMemberList(String email) throws Exception{
@@ -100,7 +101,8 @@ public class Controller implements ControllerInterface {
     }
     
      public void createMember(Member member, boolean[] discs) throws Exception{
-        data.createMember(member, discs);
+         sqldata.createMember(member, discs);
+        //data.createMember(member, discs);
     }
      
      

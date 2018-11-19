@@ -57,6 +57,7 @@ public class GUI extends javax.swing.JFrame {
         numberOfNotActiveMembersLBL = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         numberFactLBL = new javax.swing.JLabel();
+        jToggleButton1 = new javax.swing.JToggleButton();
         accountingPane = new javax.swing.JPanel();
         coachPane = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -140,6 +141,8 @@ public class GUI extends javax.swing.JFrame {
 
         numberFactLBL.setText("numberFactLBL");
 
+        jToggleButton1.setText("jToggleButton1");
+
         javax.swing.GroupLayout adminPaneLayout = new javax.swing.GroupLayout(adminPane);
         adminPane.setLayout(adminPaneLayout);
         adminPaneLayout.setHorizontalGroup(
@@ -154,17 +157,22 @@ public class GUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(emailTXT))
                     .addComponent(memberTableScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(adminPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(numberOfNotActiveMembersLBL)
-                    .addComponent(numberOfMembersLBL)
-                    .addComponent(numberFactLBL)
-                    .addGroup(adminPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(deleteMemberBTN, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(editMemberBTN, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(addMemberBTN, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(numberOfActiveMembersLBL, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(adminPaneLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(adminPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(numberOfNotActiveMembersLBL)
+                            .addComponent(numberOfMembersLBL)
+                            .addComponent(numberFactLBL)
+                            .addGroup(adminPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(deleteMemberBTN, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(editMemberBTN, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(addMemberBTN, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(numberOfActiveMembersLBL, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(adminPaneLayout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(jToggleButton1)))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
 
@@ -173,7 +181,7 @@ public class GUI extends javax.swing.JFrame {
         adminPaneLayout.setVerticalGroup(
             adminPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, adminPaneLayout.createSequentialGroup()
-                .addContainerGap(45, Short.MAX_VALUE)
+                .addContainerGap(48, Short.MAX_VALUE)
                 .addGroup(adminPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(getMembersBTN)
                     .addComponent(emailSearchBTN)
@@ -198,7 +206,9 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(numberOfMembersLBL)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(numberFactLBL)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jToggleButton1)
+                .addGap(0, 11, Short.MAX_VALUE))
         );
 
         mainTabs.addTab("Formand", adminPane);
@@ -211,7 +221,7 @@ public class GUI extends javax.swing.JFrame {
         );
         accountingPaneLayout.setVerticalGroup(
             accountingPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 291, Short.MAX_VALUE)
+            .addGap(0, 294, Short.MAX_VALUE)
         );
 
         mainTabs.addTab("Kasserer", accountingPane);
@@ -224,11 +234,11 @@ public class GUI extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "id", "member_id", "category_id", "time", "comp", "place"
+                "id", "Navn", "Disciplin", "Tid", "comp", "place"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.Boolean.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false
@@ -318,7 +328,7 @@ public class GUI extends javax.swing.JFrame {
         );
         coachPaneLayout.setVerticalGroup(
             coachPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 291, Short.MAX_VALUE)
+            .addGap(0, 294, Short.MAX_VALUE)
             .addGroup(coachPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jTabbedPane1))
         );
@@ -427,7 +437,7 @@ public class GUI extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) resultTable.getModel();
             clearTable(model);
             for (Result result : logic.resultList) {
-                model.addRow(new Object[]{result.getId(), result.getId_member(), result.getId_category(), result.getTime(), result.getComp(), result.getPlace()});
+                model.addRow(new Object[]{result.getId(), result.getMemberName(), result.getDisciplineName(), result.getTime(), result.getComp(), result.getPlace()});
             }
         } catch (Exception ex) {
             showMessage("Kunne ikke indlæse resultater..");
@@ -520,7 +530,7 @@ public class GUI extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) resultTable.getModel();
             clearTable(model);
             for (Result result : logic.resultList) {
-                model.addRow(new Object[]{result.getId(), result.getId_member(), result.getId_category(), result.getTime(), result.getComp(), result.getPlace()});
+                model.addRow(new Object[]{result.getId(), result.getMemberName(), result.getDisciplineName(), result.getTime(), result.getComp(), result.getPlace()});
             }
         } catch (Exception ex) {
             showMessage("Kunne ikke indlæse resultater..");
@@ -537,7 +547,7 @@ public class GUI extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) resultTable.getModel();
             clearTable(model);
             for (Result result : logic.resultList) {
-                model.addRow(new Object[]{result.getId(), result.getId_member(), result.getId_category(), result.getTime(), result.getComp(), result.getPlace()});
+                model.addRow(new Object[]{result.getId(), result.getMemberName(), result.getDisciplineName(), result.getTime(), result.getComp(), result.getPlace()});
             }
         } catch (Exception ex) {
             showMessage("Kunne ikke indlæse resultater..");
@@ -609,6 +619,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JTabbedPane mainTabs;
     private javax.swing.JTable memberTable;
     private javax.swing.JScrollPane memberTableScroll;
