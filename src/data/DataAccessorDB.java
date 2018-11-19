@@ -207,7 +207,7 @@ public class DataAccessorDB implements DataAccessorInterface {
             PreparedStatement pstmt = connection.prepareStatement(
                     "UPDATE members "
                     + "SET name = ?, email = ?, birthday = ?, active = ?, elite = ?) "
-                    + "WHERE id=" + member.getID());
+                    + "WHERE idmembers=" + member.getID());
             pstmt.setString(1, member.getName());
             pstmt.setString(2, member.getEmail());
             pstmt.setString(3, member.getBirthday().toString());
@@ -233,8 +233,9 @@ public class DataAccessorDB implements DataAccessorInterface {
     @Override
     public void deleteMember(int id) throws Exception {
         try {
-            con.newQuery("DELETE FROM members WHERE id=" + id);
-            con.newQuery("DELETE FROM members_disciplines WHERE memberID=" + id);
+            con.newQuery("DELETE FROM `delfinen`.`members` WHERE (`idmembers` = '" + id + "')");
+            //con.newQuery("DELETE FROM delfinen.members WHERE idmembers=" + id);
+            //con.newQuery("DELETE FROM members_disciplines WHERE memberID=" + id);
         } catch (Exception e) {
             throw new Exception();
         }

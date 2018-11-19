@@ -512,10 +512,15 @@ public class GUI extends javax.swing.JFrame {
                 "Slet medlem?", JOptionPane.YES_NO_OPTION);
         if (reply == JOptionPane.YES_OPTION) {
             try {
-                logic.deleteMember((int) model.getValueAt(memberTable.getSelectedRow(), 0));
+                //int idTest = Integer.parseInt(model.getValueAt(memberTable.getSelectedRow(), 0));
+                //System.out.println(model.getValueAt(memberTable.getSelectedRow(), 0));
+               
+                logic.deleteMember(10);
+                //logic.deleteMember((int) model.getValueAt(memberTable.getSelectedRow(), 0));
                 clearTable(model);
             } catch (Exception e) {
                 showMessage("Kunne ikke slette medlem");
+                //System.out.println(e.getMessage());
             }
         }
     }//GEN-LAST:event_deleteMemberBTNActionPerformed
