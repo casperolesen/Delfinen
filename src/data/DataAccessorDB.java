@@ -81,13 +81,13 @@ public class DataAccessorDB implements DataAccessorInterface {
         return results;
 
     }
-    
+
     public void deleteResult(int id) throws Exception {
-        String query = "DELETE FROM results where idresults = ?";   
+        String query = "DELETE FROM results where idresults = ?";
         Connection connection = con.getConnection();
         PreparedStatement pstmt = connection.prepareStatement(query);
         pstmt.setInt(1, id);
-        
+
         pstmt.execute();
     }
 
@@ -192,37 +192,27 @@ public class DataAccessorDB implements DataAccessorInterface {
             pstmt.setString(4, "" + member.isActive());
             pstmt.setString(5, "" + member.isElite());
             con.newQuery(pstmt);
-            
+
+            int testID = 0;
             ResultSet rs = con.GetSQLResult("SELECT @@IDENTITY");
-            while(rs.next()) {
-                System.out.println(rs.toString());
+            while (rs.next()) {
+                testID = rs.getInt(1);
             }
 
-//            pstmt = connection.prepareStatement(
-//                    "INSERT INTO members_disciplines "
-//                    + "(memberID, discipline1, discipline2, discipline3, discipline4) "
-//                    + "VALUES (?,?,?,?,?)");
-//            pstmt.setInt(1, member.getID());
-//            pstmt.setString(2, "" + disciplines[0]);
-//            pstmt.setString(3, "" + disciplines[1]);
-//            pstmt.setString(4, "" + disciplines[2]);
-//            pstmt.setString(5, "" + disciplines[3]);
-//            con.newQuery(pstmt);
-
-        } catch (Exception e) {
-            throw new Exception();
-        }
-        Connection connection = con.getConnection();
-         PreparedStatement pstmt = connection.prepareStatement(
+            pstmt = connection.prepareStatement(
                     "INSERT INTO members_disciplines "
                     + "(memberID, discipline1, discipline2, discipline3, discipline4) "
                     + "VALUES (?,?,?,?,?)");
-            pstmt.setInt(1, member.getID());
+            pstmt.setInt(1, testID);
             pstmt.setString(2, "" + disciplines[0]);
             pstmt.setString(3, "" + disciplines[1]);
             pstmt.setString(4, "" + disciplines[2]);
             pstmt.setString(5, "" + disciplines[3]);
             con.newQuery(pstmt);
+
+        } catch (Exception e) {
+            throw new Exception();
+        }
     }
 
     @Override
@@ -257,21 +247,36 @@ public class DataAccessorDB implements DataAccessorInterface {
 
     @Override
     public void deleteMember(int id) throws Exception {
-        
-        String query = "DELETE FROM members where idmembers = ?";   
-        Connection connection = con.getConnection();
-        PreparedStatement pstmt = connection.prepareStatement(query);
-        pstmt.setInt(1, id);
-        
-        pstmt.execute();
-        
-//        try {
-//            con.newQuery("DELETE FROM `delfinen`.`members` WHERE (`idmembers` = '" + id + "')");
-//            //con.newQuery("DELETE FROM delfinen.members WHERE idmembers=" + id);
-//            //con.newQuery("DELETE FROM members_disciplines WHERE memberID=" + id);
-//        } catch (Exception e) {
-//            throw new Exception();
-//        }
+
+        try {
+            String query = "DELETE FROM members where idmembers = ?";
+            Connection connection = con.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement(query);
+            pstmt.setInt(1, id);
+
+            pstmt.execute();
+        } catch (Exception e) {
+
+        }
+
+        try {
+            String query = "DELETE FROM members_disciplines where memberID = ?";
+            Connection connection = con.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement(query);
+            pstmt.setInt(1, id);
+
+            pstmt.execute();
+        } catch (Exception e) {
+
+        }
+
+        try {
+            //con.newQuery("DELETE FROM `delfinen`.`members` WHERE (`idmembers` = '" + id + "')");
+            //con.newQuery("DELETE FROM delfinen.members WHERE idmembers=" + id);
+            //con.newQuery("DELETE FROM members_disciplines WHERE memberID=" + id);
+        } catch (Exception e) {
+            throw new Exception();
+        }
     }
 
 }

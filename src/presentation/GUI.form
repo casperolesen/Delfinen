@@ -76,25 +76,17 @@
                               </Group>
                               <Component id="memberTableScroll" min="-2" pref="355" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jSeparator1" alignment="0" min="-2" pref="154" max="-2" attributes="0"/>
-                                      <Component id="numberOfNotActiveMembersLBL" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="numberOfMembersLBL" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="numberFactLBL" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="deleteMemberBTN" linkSize="1" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="editMemberBTN" linkSize="1" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="addMemberBTN" linkSize="1" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="numberOfActiveMembersLBL" alignment="0" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                                  <Component id="jToggleButton1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jSeparator1" alignment="0" min="-2" pref="154" max="-2" attributes="0"/>
+                              <Component id="numberOfNotActiveMembersLBL" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="numberOfMembersLBL" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="numberFactLBL" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="deleteMemberBTN" linkSize="1" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="editMemberBTN" linkSize="1" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="addMemberBTN" linkSize="1" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="numberOfActiveMembersLBL" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace pref="48" max="32767" attributes="0"/>
@@ -131,9 +123,7 @@
                           <Component id="numberOfMembersLBL" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="numberFactLBL" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jToggleButton1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="11" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -225,11 +215,6 @@
                 <Component class="javax.swing.JLabel" name="numberFactLBL">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="numberFactLBL"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JToggleButton" name="jToggleButton1">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="jToggleButton1"/>
                   </Properties>
                 </Component>
               </SubComponents>
