@@ -66,6 +66,7 @@ public class DataAccessorDB implements DataAccessorInterface {
 
     }
 
+    @Override
     public List<Result> getResults() throws Exception {
         List<Result> results = new ArrayList<>();
 
@@ -82,6 +83,7 @@ public class DataAccessorDB implements DataAccessorInterface {
 
     }
 
+    @Override
     public void deleteResult(int id) throws Exception {
         String query = "DELETE FROM results where idresults = ?";
         Connection connection = con.getConnection();
@@ -91,6 +93,7 @@ public class DataAccessorDB implements DataAccessorInterface {
         pstmt.execute();
     }
 
+    @Override
     public List<Result> getResultsInDisciplines(int categoryID) throws Exception {
         List<Result> results = new ArrayList<>();
 
@@ -104,6 +107,7 @@ public class DataAccessorDB implements DataAccessorInterface {
         return results;
     }
 
+    @Override
     public List<Result> getResultsForMember(String memberID) throws Exception {
         List<Result> results = new ArrayList<>();
 
@@ -116,6 +120,7 @@ public class DataAccessorDB implements DataAccessorInterface {
         return results;
     }
 
+    @Override
     public List<Discipline> getDisciplines() throws Exception {
         List<Discipline> disciplines = new ArrayList<>();
 
@@ -229,16 +234,16 @@ public class DataAccessorDB implements DataAccessorInterface {
             pstmt.setString(4, "" + member.isActive());
             pstmt.setString(5, "" + member.isElite());
             con.newQuery(pstmt);
-
-            pstmt = connection.prepareStatement(
-                    "UPDATE members_disciplines "
-                    + "SET discipline1=?, discipline2=?, discipline3=?, discipline4=? "
-                    + "WHERE memberID=" + member.getID());
-            pstmt.setString(1, "" + disciplines[0]);
-            pstmt.setString(2, "" + disciplines[1]);
-            pstmt.setString(3, "" + disciplines[2]);
-            pstmt.setString(4, "" + disciplines[3]);
-            con.newQuery(pstmt);
+//
+//            pstmt = connection.prepareStatement(
+//                    "UPDATE members_disciplines "
+//                    + "SET discipline1=?, discipline2=?, discipline3=?, discipline4=? "
+//                    + "WHERE memberID=" + member.getID());
+//            pstmt.setString(1, "" + disciplines[0]);
+//            pstmt.setString(2, "" + disciplines[1]);
+//            pstmt.setString(3, "" + disciplines[2]);
+//            pstmt.setString(4, "" + disciplines[3]);
+//            con.newQuery(pstmt);
 
         } catch (Exception e) {
             throw new Exception();

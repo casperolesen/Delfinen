@@ -34,5 +34,25 @@ public interface ControllerInterface {
      * @throws java.lang.Exception
      */
     public boolean checkEmail(String email) throws Exception;
+    
+    public void updateResultList() throws Exception;
+    
+    public void getResultsInCategory(int categoryID) throws Exception;
+    
+    public void getResultsForMember(String memberID) throws Exception;
+    
+    public void deleteResult(int id) throws Exception;
+    
+    public void updateCategoryList() throws Exception;
+    
+    public void deleteMember(int id) throws Exception;
+    
+    public void updateMemberList() throws Exception;
+    
+    public void updateMemberList(String email) throws Exception;
+    
+    public void editMember(Member member, boolean[] discs) throws Exception;
+    
+     public void createMember(Member member, boolean[] discs) throws Exception;
 
 }

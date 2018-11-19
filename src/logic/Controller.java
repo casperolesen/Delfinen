@@ -66,47 +66,57 @@ public class Controller implements ControllerInterface {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    @Override
     public void updateResultList() throws Exception {
         this.resultList = sqldata.getResults();
     }
     
     
+    @Override
     public void getResultsInCategory(int categoryID) throws Exception {
         this.resultList = sqldata.getResultsInDisciplines(categoryID);
     }
     
+    @Override
     public void getResultsForMember(String memberID) throws Exception {
         this.resultList = sqldata.getResultsForMember(memberID);
     }
     
+    @Override
     public void deleteResult(int id) throws Exception {
         sqldata.deleteResult(id);
     }
     
+    @Override
     public void updateCategoryList() throws Exception {
         this.categoryList = sqldata.getDisciplines();
     }
     
+    @Override
     public void deleteMember(int id) throws Exception{
         sqldata.deleteMember(id);
         //data.deleteMember(id);
     }
     
+    @Override
     public void updateMemberList() throws Exception{
         //memberList = data.getMembers();
         memberList = sqldata.getMembers();
     }
     
+    @Override
     public void updateMemberList(String email) throws Exception{
         memberList = sqldata.searchMailForMembers(email);
         //memberList = data.searchMailForMembers(email);
     }
     
+    @Override
     public void editMember(Member member, boolean[] discs) throws Exception{
         //data.editMember(member, discs);
         sqldata.editMember(member, discs);
     }
     
+    @Override
      public void createMember(Member member, boolean[] discs) throws Exception{
          sqldata.createMember(member, discs);
         //data.createMember(member, discs);

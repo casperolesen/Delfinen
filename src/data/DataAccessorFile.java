@@ -10,7 +10,9 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import logic.Discipline;
 import logic.Member;
+import logic.Result;
 
 public class DataAccessorFile implements DataAccessorInterface {
 
@@ -162,6 +164,31 @@ public class DataAccessorFile implements DataAccessorInterface {
     @Override
     public void deleteMember(int id) throws Exception {
         removeLine(Integer.toString(id), fileMembers);
+    }
+
+    @Override
+    public List<Result> getResults() throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void deleteResult(int id) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Result> getResultsInDisciplines(int categoryID) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Result> getResultsForMember(String memberID) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Discipline> getDisciplines() throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

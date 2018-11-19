@@ -6,7 +6,9 @@
 package data;
 
 import java.util.List;
+import logic.Discipline;
 import logic.Member;
+import logic.Result;
 
 /**
  *
@@ -24,4 +26,17 @@ public interface DataAccessorInterface {
     public void editMember(Member member, boolean[] discs) throws Exception;
     
     public void deleteMember(int id) throws Exception;
+    
+    
+    public List<Result> getResults() throws Exception;
+    
+    public void deleteResult(int id) throws Exception;
+    
+    public List<Result> getResultsInDisciplines(int categoryID) throws Exception;
+    
+    public List<Result> getResultsForMember(String memberID) throws Exception;
+    
+    public List<Discipline> getDisciplines() throws Exception;
+    
+    
 }
