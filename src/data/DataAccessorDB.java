@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import logic.Discipline;
 import logic.Member;
+import logic.Payment;
 import logic.Result;
 
 /**
@@ -302,6 +303,25 @@ public class DataAccessorDB implements DataAccessorInterface {
         } catch (Exception e) {
             throw new Exception();
         }
+    }
+    
+    public List<Payment> getPayments() throws Exception {
+        List<Payment> allPayments = new ArrayList<>();
+        
+        ResultSet rs = con.GetSQLResult("select * from members");
+        
+        while (rs.next()) {
+            int id = rs.getInt(1);
+            int memberID = rs.getInt(2);
+            String year = rs.getString(3);
+            double amount = rs.getDouble(4);
+            String date = rs.getString(5);
+            
+            Payment payment = new Payment(id, memberID, year, amount, date);
+            allPayments.add(payment);
+        }
+        
+        return allPayments;
     }
 
 }
