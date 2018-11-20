@@ -7,6 +7,9 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -30,6 +33,40 @@ public class Controller implements ControllerInterface {
         String result = ind.readLine();
         
         return result;
+    }
+    
+    public double getAmountToPay(Member member) throws NumberFormatException {
+        String _memberAge = (member.getBirthday().toString()).substring(0, 4);
+        int memberBday = Integer.parseInt(_memberAge);
+        int memberAge = (Calendar.getInstance().get(Calendar.YEAR) - memberBday);
+        double price = 0.00;
+        
+        LocalDate today = LocalDate.now();
+        LocalDate birth = member.getBirthday();
+        Period period = Period.between(birth, today);
+        
+        Integer years = period.getYears();
+        System.out.println(years);
+       
+        if (!member.isActive()) {
+            price = 500;
+            return price;
+        }
+        
+        if (memberAge < 18) {
+            price = 1000;
+        }
+        
+        if (memberAge >= 18 && memberAge < 60) {
+            price = 1600;
+        }
+        
+        if (memberAge >= 60) {
+            price = 1200;
+        }
+        
+        return price;
+        
     }
 
     @Override
