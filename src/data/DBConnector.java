@@ -11,8 +11,8 @@ public class DBConnector {
     private Connection connection = null;
 	
 	//Constants
-	private static final String IP       = "localhost";
-        //private static final String IP       = "10.50.137.107";
+	//private static final String IP       = "localhost";
+        private static final String IP       = "10.50.138.219";
 	private static final String PORT     = "3306";
 	public  static final String DATABASE = "delfinen";
 	private static final String USERNAME = "admin"; 
@@ -59,6 +59,7 @@ public class DBConnector {
                 Statement stmt = connection.createStatement();
                 stmt.executeQuery(query);
             } catch(SQLException e) {
+                System.out.println("SQL HALLA");
                 throw new SQLException();
             }
         }

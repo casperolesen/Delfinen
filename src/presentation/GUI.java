@@ -60,6 +60,8 @@ public class GUI extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         numberFactLBL = new javax.swing.JLabel();
         accountingPane = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         coachPane = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         testPane = new javax.swing.JPanel();
@@ -177,7 +179,7 @@ public class GUI extends javax.swing.JFrame {
         adminPaneLayout.setVerticalGroup(
             adminPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, adminPaneLayout.createSequentialGroup()
-                .addContainerGap(48, Short.MAX_VALUE)
+                .addContainerGap(74, Short.MAX_VALUE)
                 .addGroup(adminPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(getMembersBTN)
                     .addComponent(emailSearchBTN)
@@ -207,15 +209,30 @@ public class GUI extends javax.swing.JFrame {
 
         mainTabs.addTab("Formand", adminPane);
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
         javax.swing.GroupLayout accountingPaneLayout = new javax.swing.GroupLayout(accountingPane);
         accountingPane.setLayout(accountingPaneLayout);
         accountingPaneLayout.setHorizontalGroup(
             accountingPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 585, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE)
         );
         accountingPaneLayout.setVerticalGroup(
             accountingPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 294, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, accountingPaneLayout.createSequentialGroup()
+                .addGap(0, 61, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         mainTabs.addTab("Kasserer", accountingPane);
@@ -341,7 +358,7 @@ public class GUI extends javax.swing.JFrame {
         );
         coachPaneLayout.setVerticalGroup(
             coachPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 294, Short.MAX_VALUE)
+            .addGap(0, 324, Short.MAX_VALUE)
             .addGroup(coachPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jTabbedPane1))
         );
@@ -668,10 +685,12 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField emailTXT;
     private javax.swing.JButton getMembersBTN;
     private javax.swing.JButton getResultsBTN;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTabbedPane mainTabs;
     private javax.swing.JTable memberTable;
     private javax.swing.JScrollPane memberTableScroll;
