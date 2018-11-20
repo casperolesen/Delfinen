@@ -44,7 +44,7 @@ public class resultsDialog extends javax.swing.JDialog {
             model.removeAllElements();
 
             for (Member member : logic.memberList) {
-                model.addElement(member.getName());
+                model.addElement(member.getID() + ", "+ member.getName());
             }
             membersComboBox.setModel(model);
             //membersComboBox.setModel((ComboBoxModel<String>) logic.memberList);
@@ -60,7 +60,7 @@ public class resultsDialog extends javax.swing.JDialog {
             model.removeAllElements();
             
             for (Discipline discipline : logic.categoryList) {
-                model.addElement(discipline.getName());
+                model.addElement(discipline.getId() + ", " + discipline.getName());
             }
             
             disciplinesComboBox.setModel(model);
@@ -80,6 +80,12 @@ public class resultsDialog extends javax.swing.JDialog {
 
         membersComboBox = new javax.swing.JComboBox<>();
         disciplinesComboBox = new javax.swing.JComboBox<>();
+        timeTXT = new javax.swing.JTextField();
+        timeLBL = new javax.swing.JLabel();
+        compBox = new javax.swing.JCheckBox();
+        placeTXT = new javax.swing.JTextField();
+        placeLBL = new javax.swing.JLabel();
+        createResultBTN = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -87,16 +93,39 @@ public class resultsDialog extends javax.swing.JDialog {
 
         disciplinesComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        timeLBL.setText("time");
+
+        compBox.setText("comp");
+
+        placeLBL.setText("place");
+
+        createResultBTN.setText("Create Result");
+        createResultBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createResultBTNActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(207, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(disciplinesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(membersComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(137, 137, 137))
+                .addContainerGap(209, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(createResultBTN)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(timeLBL)
+                            .addComponent(placeLBL))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(compBox)
+                            .addComponent(disciplinesComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(membersComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(timeTXT)
+                            .addComponent(placeTXT))))
+                .addGap(92, 92, 92))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,11 +134,48 @@ public class resultsDialog extends javax.swing.JDialog {
                 .addComponent(membersComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(disciplinesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(202, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(timeTXT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(timeLBL))
+                .addGap(18, 18, 18)
+                .addComponent(compBox)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(placeTXT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(placeLBL))
+                .addGap(18, 18, 18)
+                .addComponent(createResultBTN)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void createResultBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createResultBTNActionPerformed
+        try {
+            // TODO add your handling code here:
+            String test = (String) membersComboBox.getModel().getSelectedItem();
+            int memberID = Integer.parseInt(membersComboBox.getModel().getSelectedItem().toString().split(",")[0].trim());
+            int disciplineID = Integer.parseInt(disciplinesComboBox.getModel().getSelectedItem().toString().split(",")[0].trim());
+            String time = timeTXT.getText();
+            String comp = "false";
+            if (compBox.isSelected()) {
+                comp = "true";
+            }
+            
+            String place = placeTXT.getText();
+
+            System.out.println(test);
+            System.out.println("memberID: " + memberID);
+            System.out.println("disciplineID: " + disciplineID);
+            logic.createResult(memberID, disciplineID, time, comp, place);
+            
+            dispose();
+        } catch (Exception ex) {
+            Logger.getLogger(resultsDialog.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_createResultBTNActionPerformed
 
     /**
      * @param args the command line arguments
@@ -154,7 +220,13 @@ public class resultsDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox compBox;
+    private javax.swing.JButton createResultBTN;
     private javax.swing.JComboBox<String> disciplinesComboBox;
     private javax.swing.JComboBox<String> membersComboBox;
+    private javax.swing.JLabel placeLBL;
+    private javax.swing.JTextField placeTXT;
+    private javax.swing.JLabel timeLBL;
+    private javax.swing.JTextField timeTXT;
     // End of variables declaration//GEN-END:variables
 }

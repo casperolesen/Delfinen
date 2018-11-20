@@ -82,10 +82,25 @@ public class DataAccessorDB implements DataAccessorInterface {
         return results;
 
     }
+
     
-    @Override
-    public void createResult() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void createResult(int memberID, int disciplineID, String time, String comp, String place) throws Exception {
+        int membID = memberID;
+        int discID = disciplineID;
+        String theTime = time;
+        String theComp = comp;
+        String thePlace = place;
+        
+        Connection connection = con.getConnection();
+        PreparedStatement pstmt = connection.prepareStatement("INSERT INTO `delfinen`.`results` (`idmembers`, `iddisciplines`, `time`, `comp`, `place`) VALUES (?, ?, ?, ?, ?)");
+        
+            pstmt.setInt(1, memberID );
+            pstmt.setInt(2, disciplineID);
+            pstmt.setString(3, time);
+            pstmt.setString(4, comp);
+            pstmt.setString(5, place);
+            
+            con.newQuery(pstmt);
     }
 
     @Override
@@ -288,7 +303,5 @@ public class DataAccessorDB implements DataAccessorInterface {
             throw new Exception();
         }
     }
-
-    
 
 }

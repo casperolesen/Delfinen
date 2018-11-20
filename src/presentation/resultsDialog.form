@@ -24,12 +24,25 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="207" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="disciplinesComboBox" min="-2" max="-2" attributes="0"/>
-                  <Component id="membersComboBox" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="209" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="createResultBTN" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="timeLBL" min="-2" max="-2" attributes="0"/>
+                          <Component id="placeLBL" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="compBox" min="-2" max="-2" attributes="0"/>
+                          <Component id="disciplinesComboBox" alignment="1" max="32767" attributes="0"/>
+                          <Component id="membersComboBox" alignment="1" max="32767" attributes="0"/>
+                          <Component id="timeTXT" max="32767" attributes="0"/>
+                          <Component id="placeTXT" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
-              <EmptySpace min="-2" pref="137" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -40,7 +53,21 @@
               <Component id="membersComboBox" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="disciplinesComboBox" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="202" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="timeTXT" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="timeLBL" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="compBox" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="placeTXT" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="placeLBL" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="createResultBTN" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="44" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -75,6 +102,33 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JTextField" name="timeTXT">
+    </Component>
+    <Component class="javax.swing.JLabel" name="timeLBL">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="time"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="compBox">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="comp"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="placeTXT">
+    </Component>
+    <Component class="javax.swing.JLabel" name="placeLBL">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="place"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="createResultBTN">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Create Result"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createResultBTNActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

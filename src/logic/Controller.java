@@ -71,6 +71,10 @@ public class Controller implements ControllerInterface {
         this.resultList = sqldata.getResults();
     }
     
+    public void createResult(int memberID, int disciplineID, String time, String comp, String place) throws Exception {
+        sqldata.createResult(memberID, disciplineID, time, comp, place);
+    }
+    
     
     @Override
     public void getResultsInCategory(int categoryID) throws Exception {
