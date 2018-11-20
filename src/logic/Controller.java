@@ -1,5 +1,6 @@
 package logic;
 
+import com.mysql.cj.result.SqlDateValueFactory;
 import data.DataAccessorDB;
 import data.DataAccessorFile;
 import data.DataAccessorInterface;
@@ -24,6 +25,7 @@ public class Controller implements ControllerInterface {
     private DataAccessorDB sqldata = new DataAccessorDB();
     public List<Result> resultList = null;
     public List<Discipline> categoryList = null;
+    public List<Payment> paymentList = null;
 
     public String getNumberFact(int number) throws Exception {
         URL url = new URL("http://numbersapi.com/" + number);
@@ -162,6 +164,10 @@ public class Controller implements ControllerInterface {
          sqldata.createMember(member, discs);
         //data.createMember(member, discs);
     }
+     
+     public void updatePaymentList() throws Exception {
+         this.paymentList = sqldata.getPayments();
+     }
      
      
 
