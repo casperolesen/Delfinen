@@ -308,7 +308,7 @@ public class DataAccessorDB implements DataAccessorInterface {
     public List<Payment> getPayments() throws Exception {
         List<Payment> allPayments = new ArrayList<>();
         
-        ResultSet rs = con.GetSQLResult("select * from members");
+        ResultSet rs = con.GetSQLResult("SELECT * FROM payments");
         
         while (rs.next()) {
             int id = rs.getInt(1);
