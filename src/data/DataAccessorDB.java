@@ -120,7 +120,7 @@ public class DataAccessorDB implements DataAccessorInterface {
 
         ResultSet rs = con.GetSQLResult("SELECT idresults, members.name, disciplines.name, time, comp, place FROM delfinen.results\n"
                 + "JOIN disciplines ON results.iddisciplines = disciplines.idcategories\n"
-                + "JOIN members ON results.idmembers = members.idmembers WHERE iddisciplines = " + categoryID + " ORDER BY time ASC LIMIT 3");
+                + "JOIN members ON results.idmembers = members.idmembers WHERE iddisciplines = " + categoryID + " ORDER BY time ASC LIMIT 5");
         //ResultSet rs = con.GetSQLResult("select * from results where iddisciplines = " + categoryID + " LIMIT 3");
 
         while (rs.next()) {
