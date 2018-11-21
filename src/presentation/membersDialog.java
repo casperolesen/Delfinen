@@ -211,6 +211,8 @@ public class membersDialog extends javax.swing.JDialog {
         } catch(Exception e){
                 errorTXT.setText("Kunne ikke gemme..");
         }
+        
+        System.out.println(currentID);
     }//GEN-LAST:event_saveBTNActionPerformed
 
     /**

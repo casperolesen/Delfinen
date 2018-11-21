@@ -1,10 +1,12 @@
 package presentation;
 
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import logic.Controller;
 import logic.Member;
+import logic.Payment;
 
 /**
  *
@@ -24,13 +26,13 @@ public class paymentDialog extends javax.swing.JDialog {
     private void fillMemberComboBox() {
         try {
             logic.updateMemberList();
-            DefaultComboBoxModel model = (DefaultComboBoxModel) membersComboBox.getModel();
+            DefaultComboBoxModel model = (DefaultComboBoxModel) membersPaymentComboBox.getModel();
             model.removeAllElements();
 
             for (Member member : logic.memberList) {
                 model.addElement(member.getID() + ", " + member.getName());
             }
-            membersComboBox.setModel(model);
+            membersPaymentComboBox.setModel(model);
             //membersComboBox.setModel((ComboBoxModel<String>) logic.memberList);
         } catch (Exception ex) {
             Logger.getLogger(resultsDialog.class.getName()).log(Level.SEVERE, null, ex);
@@ -46,14 +48,14 @@ public class paymentDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        membersComboBox = new javax.swing.JComboBox<>();
+        membersPaymentComboBox = new javax.swing.JComboBox<>();
         yearTXT = new javax.swing.JTextField();
         yearLBL = new javax.swing.JLabel();
         createPaymentBTN = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        membersComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        membersPaymentComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         yearLBL.setText("year");
 
@@ -76,7 +78,7 @@ public class paymentDialog extends javax.swing.JDialog {
                         .addComponent(yearLBL)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(membersComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(membersPaymentComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(yearTXT))))
                 .addGap(119, 119, 119))
         );
@@ -84,7 +86,7 @@ public class paymentDialog extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(74, 74, 74)
-                .addComponent(membersComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(membersPaymentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(yearTXT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -97,13 +99,39 @@ public class paymentDialog extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void createPaymentBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createPaymentBTNActionPerformed
-        // TODO add your handling code here:
+    private Member getMemberTest() {
+        Member member = null;
+        try {
+            int id = Integer.parseInt(membersPaymentComboBox.getModel().getSelectedItem().toString().split(",")[0].trim());
+            member = logic.getMember(id);
+            
+        } catch (Exception ex) {
+            Logger.getLogger(paymentDialog.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-        int id = 0;
-        int memberID = Integer.parseInt(membersComboBox.getModel().getSelectedItem().toString().split(",")[0].trim());
-        String paymentYear = yearTXT.getText();
-        double amount = 0.0;
+        return member;
+        
+    }
+    private void createPaymentBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createPaymentBTNActionPerformed
+        //Member memberTest = getMemberTest();
+        try {
+            int id = 0;
+            int memberID = Integer.parseInt(membersPaymentComboBox.getModel().getSelectedItem().toString().split(",")[0].trim());
+            String paymentYear = yearTXT.getText();
+            
+            Member member = logic.getMember(memberID);
+            //System.out.println(memberTest);
+            double amount = logic.getAmountToPay(member);
+            
+            String date = LocalDate.now().toString();
+            
+            Payment payment = new Payment(id, memberID, paymentYear, amount, date);
+            logic.createPayment(payment);
+            
+            dispose();
+        } catch (Exception ex) {
+            Logger.getLogger(paymentDialog.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_createPaymentBTNActionPerformed
 
     /**
@@ -150,7 +178,7 @@ public class paymentDialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton createPaymentBTN;
-    private javax.swing.JComboBox<String> membersComboBox;
+    private javax.swing.JComboBox<String> membersPaymentComboBox;
     private javax.swing.JLabel yearLBL;
     private javax.swing.JTextField yearTXT;
     // End of variables declaration//GEN-END:variables

@@ -12,10 +12,20 @@ public class Payment {
     private String paymentYear;
     private double amount;
     private String paymentDate;
+    
+    String memberName;
 
     public Payment(int id, int memberID, String paymentYear, double amount, String paymentDate) {
         this.id = id;
         this.memberID = memberID;
+        this.paymentYear = paymentYear;
+        this.amount = amount;
+        this.paymentDate = paymentDate;
+    }
+    
+    public Payment(int id, String memberName, String paymentYear, double amount, String paymentDate) {
+        this.id = id;
+        this.memberName = memberName;
         this.paymentYear = paymentYear;
         this.amount = amount;
         this.paymentDate = paymentDate;
@@ -27,6 +37,10 @@ public class Payment {
 
     public int getMemberID() {
         return memberID;
+    }
+    
+    public String getMemberName() {
+        return memberName;
     }
 
     public String getPaymentYear() {

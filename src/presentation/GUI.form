@@ -89,14 +89,14 @@
                                   <Component id="numberOfActiveMembersLBL" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="77" max="32767" attributes="0"/>
+                          <EmptySpace pref="113" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="74" max="32767" attributes="0"/>
+                          <EmptySpace pref="46" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="getMembersBTN" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="emailSearchBTN" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -231,7 +231,11 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jTabbedPane2" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jTabbedPane2" pref="568" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -245,7 +249,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
                   <SubComponents>
-                    <Container class="javax.swing.JPanel" name="jPanel1">
+                    <Container class="javax.swing.JPanel" name="paymentsPane">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                           <JTabbedPaneConstraints tabName="Payments">
@@ -258,24 +262,34 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace pref="18" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jScrollPane1" min="-2" pref="581" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="280" max="-2" attributes="0"/>
                                           <Component id="newPaymentBTN" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="deletePaymentBTN" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="updatePaymentsBTN" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                                          <Component id="jScrollPane1" min="-2" pref="533" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace min="5" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace pref="12" max="32767" attributes="0"/>
-                                  <Component id="newPaymentBTN" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="newPaymentBTN" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="updatePaymentsBTN" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="deletePaymentBTN" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace pref="43" max="32767" attributes="0"/>
                                   <Component id="jScrollPane1" min="-2" pref="239" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
@@ -294,8 +308,8 @@
                               <Properties>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                                   <Table columnCount="5" rowCount="4">
-                                    <Column editable="false" title="id" type="java.lang.Integer"/>
-                                    <Column editable="false" title="MemberID" type="java.lang.Integer"/>
+                                    <Column editable="false" title="paymentID" type="java.lang.Integer"/>
+                                    <Column editable="false" title="memberName" type="java.lang.String"/>
                                     <Column editable="false" title="year" type="java.lang.String"/>
                                     <Column editable="false" title="amout" type="java.lang.Double"/>
                                     <Column editable="false" title="date" type="java.lang.String"/>
@@ -309,7 +323,81 @@
                           <Properties>
                             <Property name="text" type="java.lang.String" value="New Payment"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newPaymentBTNActionPerformed"/>
+                          </Events>
                         </Component>
+                        <Component class="javax.swing.JButton" name="updatePaymentsBTN">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Update"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updatePaymentsBTNActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="deletePaymentBTN">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Delete"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deletePaymentBTNActionPerformed"/>
+                          </Events>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="missingPaymentsPane">
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                          <JTabbedPaneConstraints tabName="Missing Payments">
+                            <Property name="tabTitle" type="java.lang.String" value="Missing Payments"/>
+                          </JTabbedPaneConstraints>
+                        </Constraint>
+                      </Constraints>
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane2" min="-2" pref="403" max="-2" attributes="0"/>
+                                  <EmptySpace pref="71" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane2" min="-2" pref="244" max="-2" attributes="0"/>
+                                  <EmptySpace pref="45" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+                          <AuxValues>
+                            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                          </AuxValues>
+
+                          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                          <SubComponents>
+                            <Component class="javax.swing.JTable" name="missingPaymentsTable">
+                              <Properties>
+                                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                                  <Table columnCount="6" rowCount="4">
+                                    <Column editable="true" title="memberID" type="java.lang.Integer"/>
+                                    <Column editable="true" title="name" type="java.lang.String"/>
+                                    <Column editable="true" title="email" type="java.lang.String"/>
+                                    <Column editable="true" title="birthday" type="java.lang.String"/>
+                                    <Column editable="true" title="active" type="java.lang.String"/>
+                                    <Column editable="true" title="elite" type="java.lang.String"/>
+                                  </Table>
+                                </Property>
+                              </Properties>
+                            </Component>
+                          </SubComponents>
+                        </Container>
                       </SubComponents>
                     </Container>
                   </SubComponents>
@@ -328,7 +416,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="614" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="650" max="32767" attributes="0"/>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Component id="jTabbedPane1" alignment="0" max="32767" attributes="0"/>
                       </Group>
@@ -336,7 +424,7 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="324" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="355" max="32767" attributes="0"/>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Component id="jTabbedPane1" alignment="0" max="32767" attributes="0"/>
                       </Group>
@@ -379,7 +467,7 @@
                                           <Component id="deleteResultBTN" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="42" max="32767" attributes="0"/>
+                                  <EmptySpace pref="78" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>

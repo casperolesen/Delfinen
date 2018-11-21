@@ -26,6 +26,8 @@ public class Controller implements ControllerInterface {
     public List<Result> resultList = null;
     public List<Discipline> categoryList = null;
     public List<Payment> paymentList = null;
+    
+    public List<Member> missingPaymentList = null;
 
     public String getNumberFact(int number) throws Exception {
         URL url = new URL("http://numbersapi.com/" + number);
@@ -48,7 +50,7 @@ public class Controller implements ControllerInterface {
         Period period = Period.between(birth, today);
         
         Integer years = period.getYears();
-        System.out.println(years);
+        //System.out.println(years);
        
         if (!member.isActive()) {
             price = 500;
@@ -167,6 +169,24 @@ public class Controller implements ControllerInterface {
      
      public void updatePaymentList() throws Exception {
          this.paymentList = sqldata.getPayments();
+     }
+     
+     public Member getMember(int id) throws Exception {
+         Member member = sqldata.getMember(id);
+         
+         return member;
+     }
+     
+     public void createPayment(Payment payment) throws Exception {
+         sqldata.createPayment(payment);
+     }
+     
+     public void updateMissingPaymentList() throws Exception {
+         this.missingPaymentList = sqldata.getMissingPayments();
+     }
+     
+     public void deletePayment(int id) throws Exception {
+         sqldata.deletePayment(id);
      }
      
      

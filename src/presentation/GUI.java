@@ -62,10 +62,15 @@ public class GUI extends javax.swing.JFrame {
         numberFactLBL = new javax.swing.JLabel();
         accountingPane = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
+        paymentsPane = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         paymentTable = new javax.swing.JTable();
         newPaymentBTN = new javax.swing.JButton();
+        updatePaymentsBTN = new javax.swing.JButton();
+        deletePaymentBTN = new javax.swing.JButton();
+        missingPaymentsPane = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        missingPaymentsTable = new javax.swing.JTable();
         coachPane = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         testPane = new javax.swing.JPanel();
@@ -175,7 +180,7 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(editMemberBTN, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(addMemberBTN, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(numberOfActiveMembersLBL, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
 
         adminPaneLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {addMemberBTN, deleteMemberBTN, editMemberBTN});
@@ -183,7 +188,7 @@ public class GUI extends javax.swing.JFrame {
         adminPaneLayout.setVerticalGroup(
             adminPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, adminPaneLayout.createSequentialGroup()
-                .addContainerGap(74, Short.MAX_VALUE)
+                .addContainerGap(46, Short.MAX_VALUE)
                 .addGroup(adminPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(getMembersBTN)
                     .addComponent(emailSearchBTN)
@@ -221,11 +226,11 @@ public class GUI extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "id", "MemberID", "year", "amout", "date"
+                "paymentID", "memberName", "year", "amout", "date"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false
@@ -242,37 +247,107 @@ public class GUI extends javax.swing.JFrame {
         jScrollPane1.setViewportView(paymentTable);
 
         newPaymentBTN.setText("New Payment");
+        newPaymentBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newPaymentBTNActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 581, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        updatePaymentsBTN.setText("Update");
+        updatePaymentsBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatePaymentsBTNActionPerformed(evt);
+            }
+        });
+
+        deletePaymentBTN.setText("Delete");
+        deletePaymentBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deletePaymentBTNActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout paymentsPaneLayout = new javax.swing.GroupLayout(paymentsPane);
+        paymentsPane.setLayout(paymentsPaneLayout);
+        paymentsPaneLayout.setHorizontalGroup(
+            paymentsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(paymentsPaneLayout.createSequentialGroup()
+                .addGroup(paymentsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(paymentsPaneLayout.createSequentialGroup()
+                        .addGap(280, 280, 280)
                         .addComponent(newPaymentBTN)
-                        .addGap(8, 8, 8)))
-                .addContainerGap())
+                        .addGap(18, 18, 18)
+                        .addComponent(deletePaymentBTN)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(updatePaymentsBTN))
+                    .addGroup(paymentsPaneLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
-                .addComponent(newPaymentBTN)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+        paymentsPaneLayout.setVerticalGroup(
+            paymentsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paymentsPaneLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(paymentsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(newPaymentBTN)
+                    .addComponent(updatePaymentsBTN)
+                    .addComponent(deletePaymentBTN))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        jTabbedPane2.addTab("Payments", jPanel1);
+        jTabbedPane2.addTab("Payments", paymentsPane);
+
+        missingPaymentsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "memberID", "name", "email", "birthday", "active", "elite"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(missingPaymentsTable);
+
+        javax.swing.GroupLayout missingPaymentsPaneLayout = new javax.swing.GroupLayout(missingPaymentsPane);
+        missingPaymentsPane.setLayout(missingPaymentsPaneLayout);
+        missingPaymentsPaneLayout.setHorizontalGroup(
+            missingPaymentsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(missingPaymentsPaneLayout.createSequentialGroup()
+                .addGap(89, 89, 89)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(71, Short.MAX_VALUE))
+        );
+        missingPaymentsPaneLayout.setVerticalGroup(
+            missingPaymentsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(missingPaymentsPaneLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(45, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab("Missing Payments", missingPaymentsPane);
 
         javax.swing.GroupLayout accountingPaneLayout = new javax.swing.GroupLayout(accountingPane);
         accountingPane.setLayout(accountingPaneLayout);
         accountingPaneLayout.setHorizontalGroup(
             accountingPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2)
+            .addGroup(accountingPaneLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 568, Short.MAX_VALUE)
+                .addGap(72, 72, 72))
         );
         accountingPaneLayout.setVerticalGroup(
             accountingPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -369,7 +444,7 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(jScrollPane4)
                         .addComponent(testResetBTN, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
                         .addComponent(deleteResultBTN)))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         testPaneLayout.setVerticalGroup(
             testPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -396,13 +471,13 @@ public class GUI extends javax.swing.JFrame {
         coachPane.setLayout(coachPaneLayout);
         coachPaneLayout.setHorizontalGroup(
             coachPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 614, Short.MAX_VALUE)
+            .addGap(0, 650, Short.MAX_VALUE)
             .addGroup(coachPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jTabbedPane1))
         );
         coachPaneLayout.setVerticalGroup(
             coachPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 324, Short.MAX_VALUE)
+            .addGap(0, 355, Short.MAX_VALUE)
             .addGroup(coachPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jTabbedPane1))
         );
@@ -501,12 +576,13 @@ public class GUI extends javax.swing.JFrame {
             fillCategoryList();
             fillMemberList();
             fillPaymentTable();
+            fillMissinPaymentTable();
 
         } catch (Exception ex) {
             showMessage("Kunne ikke loade content");
         }
     }
-    
+
     private void fillResultTable() {
         try {
             logic.updateResultList();
@@ -535,7 +611,7 @@ public class GUI extends javax.swing.JFrame {
             // TODO
         }
     }
-    
+
     private void fillMemberList() {
         try {
             logic.updateMemberList();
@@ -544,22 +620,35 @@ public class GUI extends javax.swing.JFrame {
             for (Member member : logic.memberList) {
                 model.addRow(new Object[]{member.getID(), member.getName(), member.getEmail(), member.getBirthday()});
             }
-            
+
         } catch (Exception ex) {
             showMessage("Kunne ikke indlæse medlemmer");
         }
     }
-    
+
     private void fillPaymentTable() {
         try {
             logic.updatePaymentList();
             DefaultTableModel model = (DefaultTableModel) paymentTable.getModel();
             clearTable(model);
             for (Payment payment : logic.paymentList) {
-                model.addRow(new Object[]{payment.getId(), payment.getMemberID(), payment.getPaymentYear(), payment.getAmount(), payment.getPaymentDate()});
+                model.addRow(new Object[]{payment.getId(), payment.getMemberName(), payment.getPaymentYear(), payment.getAmount(), payment.getPaymentDate()});
             }
         } catch (Exception ex) {
-            showMessage("Kunne ikke indlæse resultater");
+            showMessage("Kunne ikke indlæse payments");
+        }
+    }
+    
+    private void fillMissinPaymentTable() {
+        try {
+            logic.updateMissingPaymentList();
+            DefaultTableModel model = (DefaultTableModel) missingPaymentsTable.getModel();
+            clearTable(model);
+            for (Member member : logic.missingPaymentList) {
+                model.addRow(new Object[]{member.getID(), member.getName(), member.getEmail(), member.getBirthday().toString(), Boolean.toString(member.isActive()), Boolean.toString(member.isElite())});
+            }
+        } catch (Exception ex) {
+            showMessage("Kunne ikke indlæse missin payments");
         }
     }
 
@@ -604,6 +693,7 @@ public class GUI extends javax.swing.JFrame {
         membersDialog mdia = new membersDialog(this, true);
         mdia.setTitle("Rediger medlem");
         DefaultTableModel model = (DefaultTableModel) memberTable.getModel();
+        System.out.println(logic.memberList.get(memberTable.convertRowIndexToModel(memberTable.getSelectedRow())).getBryst());
         mdia.readyEdit(logic.memberList.get(memberTable.convertRowIndexToModel(memberTable.getSelectedRow())));
         mdia.setVisible(true);
         clearTable(model);
@@ -618,7 +708,7 @@ public class GUI extends javax.swing.JFrame {
             try {
                 //int idTest = Integer.parseInt(model.getValueAt(memberTable.getSelectedRow(), 0));
                 //System.out.println(model.getValueAt(memberTable.getSelectedRow(), 0));
-               
+
                 //logic.deleteMember(10);
                 logic.deleteMember((int) model.getValueAt(memberTable.getSelectedRow(), 0));
                 //clearTable(model);
@@ -630,7 +720,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteMemberBTNActionPerformed
 
     private void categoryListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_categoryListMouseClicked
-         // TODO add your handling code here:
+        // TODO add your handling code here:
         //String memberID = sdgsgdfs.getText();
         int categoryID = categoryList.getSelectedIndex() + 1;
 
@@ -649,9 +739,9 @@ public class GUI extends javax.swing.JFrame {
 
     private void getResultsBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getResultsBTNActionPerformed
         // TODO add your handling code here:
-         try {
-                 // TODO add your handling code here:
-        String memberID = resultsMemberIdTXT.getText();
+        try {
+            // TODO add your handling code here:
+            String memberID = resultsMemberIdTXT.getText();
             logic.getResultsForMember(memberID);
             DefaultTableModel model = (DefaultTableModel) resultTable.getModel();
             clearTable(model);
@@ -665,7 +755,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void testResetBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testResetBTNActionPerformed
         // TODO add your handling code here:
-                try {
+        try {
             fillResultTable();
         } catch (Exception ex) {
             //TODO
@@ -689,10 +779,33 @@ public class GUI extends javax.swing.JFrame {
 
     private void newResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newResultActionPerformed
         // TODO add your handling code here:
-                resultsDialog rdia = new resultsDialog(this, true);
+        resultsDialog rdia = new resultsDialog(this, true);
         rdia.setTitle("Opret nyt medlem");
         rdia.setVisible(true);
     }//GEN-LAST:event_newResultActionPerformed
+
+    private void newPaymentBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newPaymentBTNActionPerformed
+        // TODO add your handling code here:
+        paymentDialog pdia = new paymentDialog(this, true);
+        pdia.setTitle("Opret nyt medlem");
+        pdia.setVisible(true);
+    }//GEN-LAST:event_newPaymentBTNActionPerformed
+
+    private void updatePaymentsBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePaymentsBTNActionPerformed
+        fillPaymentTable();
+        fillMissinPaymentTable();
+    }//GEN-LAST:event_updatePaymentsBTNActionPerformed
+
+    private void deletePaymentBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePaymentBTNActionPerformed
+        try {
+            DefaultTableModel model = (DefaultTableModel) paymentTable.getModel();
+            int id = (int) model.getValueAt(paymentTable.getSelectedRow(), 0);
+            //int id = (int) model.getValueAt(resultTable.getSelectedRow(), 1);
+            logic.deletePayment(id);
+        } catch (Exception ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_deletePaymentBTNActionPerformed
 
     /**
      * @param args the command line arguments
@@ -737,14 +850,15 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JList<String> categoryList;
     private javax.swing.JPanel coachPane;
     private javax.swing.JButton deleteMemberBTN;
+    private javax.swing.JButton deletePaymentBTN;
     private javax.swing.JButton deleteResultBTN;
     private javax.swing.JButton editMemberBTN;
     private javax.swing.JButton emailSearchBTN;
     private javax.swing.JTextField emailTXT;
     private javax.swing.JButton getMembersBTN;
     private javax.swing.JButton getResultsBTN;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
@@ -753,6 +867,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTabbedPane mainTabs;
     private javax.swing.JTable memberTable;
     private javax.swing.JScrollPane memberTableScroll;
+    private javax.swing.JPanel missingPaymentsPane;
+    private javax.swing.JTable missingPaymentsTable;
     private javax.swing.JButton newPaymentBTN;
     private javax.swing.JButton newResult;
     private javax.swing.JLabel numberFactLBL;
@@ -760,9 +876,11 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel numberOfMembersLBL;
     private javax.swing.JLabel numberOfNotActiveMembersLBL;
     private javax.swing.JTable paymentTable;
+    private javax.swing.JPanel paymentsPane;
     private javax.swing.JTable resultTable;
     private javax.swing.JTextField resultsMemberIdTXT;
     private javax.swing.JPanel testPane;
     private javax.swing.JButton testResetBTN;
+    private javax.swing.JButton updatePaymentsBTN;
     // End of variables declaration//GEN-END:variables
 }

@@ -84,24 +84,23 @@ public class DataAccessorDB implements DataAccessorInterface {
 
     }
 
-    
     public void createResult(int memberID, int disciplineID, String time, String comp, String place) throws Exception {
         int membID = memberID;
         int discID = disciplineID;
         String theTime = time;
         String theComp = comp;
         String thePlace = place;
-        
+
         Connection connection = con.getConnection();
         PreparedStatement pstmt = connection.prepareStatement("INSERT INTO `delfinen`.`results` (`idmembers`, `iddisciplines`, `time`, `comp`, `place`) VALUES (?, ?, ?, ?, ?)");
-        
-            pstmt.setInt(1, memberID );
-            pstmt.setInt(2, disciplineID);
-            pstmt.setString(3, time);
-            pstmt.setString(4, comp);
-            pstmt.setString(5, place);
-            
-            con.newQuery(pstmt);
+
+        pstmt.setInt(1, memberID);
+        pstmt.setInt(2, disciplineID);
+        pstmt.setString(3, time);
+        pstmt.setString(4, comp);
+        pstmt.setString(5, place);
+
+        con.newQuery(pstmt);
     }
 
     @Override
@@ -166,10 +165,49 @@ public class DataAccessorDB implements DataAccessorInterface {
                     rs.getString(3),
                     LocalDate.parse(rs.getString(4)),
                     rs.getBoolean(5),
-                    rs.getBoolean(6)));
+                    rs.getBoolean(6),
+                    getMembersDisciplines(rs.getInt(1))));
         }
         return members;
 
+    }
+
+    private boolean[] getMembersDisciplines(int id) throws Exception {
+        boolean[] disc = new boolean[4];
+        ResultSet rs = con.GetSQLResult("SELECT * FROM members_disciplines WHERE memberID=" + id);
+        
+        while (rs.next()) {
+            
+            if (rs.getString("discipline1").equals("true")) {
+                disc[0] = true;
+            } else {
+                disc[0] = false;
+            }
+            
+            if (rs.getString("discipline2").equals("true")) {
+                disc[1] = true;
+            } else {
+                disc[1] = false;
+            }
+            
+            if (rs.getString("discipline3").equals("true")) {
+                disc[2] = true;
+            } else {
+                disc[2] = false;
+            }
+            
+            if (rs.getString("discipline4").equals("true")) {
+                disc[3] = true;
+            } else {
+                disc[3] = false;
+            }
+//            disc[0] = Boolean.getBoolean(rs.getString("discipline1"));
+//            disc[1] = Boolean.getBoolean(rs.getString("discipline2"));
+//            disc[2] = Boolean.getBoolean(rs.getString("discipline3"));
+//            disc[3] = Boolean.getBoolean(rs.getString("discipline4"));
+        }
+        
+        return disc;
     }
 
     @Override
@@ -188,10 +226,14 @@ public class DataAccessorDB implements DataAccessorInterface {
         return members;
     }
 
+//    public List<Member> getMemberByID(int id) throws Exception {
+//        Member meber = null;
+//        ResultSet rs = con.GetSQLResult("select * from members where 
+//    }
     @Override
     public Member getMember(int id) throws Exception {
         Member member = null;
-        ResultSet rs = con.GetSQLResult("select * from members where id=" + id);
+        ResultSet rs = con.GetSQLResult("select * from members where idmembers=" + id);
         while (rs.next()) {
             member = new Member(
                     rs.getInt(1),
@@ -255,16 +297,21 @@ public class DataAccessorDB implements DataAccessorInterface {
             pstmt.setString(4, "" + member.isActive());
             pstmt.setString(5, "" + member.isElite());
             con.newQuery(pstmt);
-//
-//            pstmt = connection.prepareStatement(
-//                    "UPDATE members_disciplines "
-//                    + "SET discipline1=?, discipline2=?, discipline3=?, discipline4=? "
-//                    + "WHERE memberID=" + member.getID());
+
+            pstmt = connection.prepareStatement(
+                    "UPDATE members_disciplines "
+                    + "SET discipline1=?, discipline2=?, discipline3=?, discipline4=? "
+                    + "WHERE memberID=" + member.getID());
+            pstmt.setString(1, String.valueOf(disciplines[0]));
+            pstmt.setString(2, String.valueOf(disciplines[1]));
+            pstmt.setString(3, String.valueOf(disciplines[2]));
+            pstmt.setString(4, String.valueOf(disciplines[3]));
+            
 //            pstmt.setString(1, "" + disciplines[0]);
 //            pstmt.setString(2, "" + disciplines[1]);
 //            pstmt.setString(3, "" + disciplines[2]);
 //            pstmt.setString(4, "" + disciplines[3]);
-//            con.newQuery(pstmt);
+            con.newQuery(pstmt);
 
         } catch (Exception e) {
             throw new Exception();
@@ -304,24 +351,65 @@ public class DataAccessorDB implements DataAccessorInterface {
             throw new Exception();
         }
     }
-    
+
     public List<Payment> getPayments() throws Exception {
         List<Payment> allPayments = new ArrayList<>();
-        
-        ResultSet rs = con.GetSQLResult("SELECT * FROM payments");
-        
+
+        ResultSet rs = con.GetSQLResult("SELECT idpayments, members.name, year, amount, date FROM delfinen.payments join members on payments.idmembers = members.idmembers");
+
         while (rs.next()) {
             int id = rs.getInt(1);
-            int memberID = rs.getInt(2);
+            String memberName = rs.getString(2);
             String year = rs.getString(3);
             double amount = rs.getDouble(4);
             String date = rs.getString(5);
-            
-            Payment payment = new Payment(id, memberID, year, amount, date);
+
+            Payment payment = new Payment(id, memberName, year, amount, date);
             allPayments.add(payment);
         }
-        
+
         return allPayments;
+    }
+
+    public List<Member> getMissingPayments() throws Exception {
+        List<Member> missingPayments = new ArrayList<>();
+
+        ResultSet rs = con.GetSQLResult("SELECT * from members LEFT OUTER JOIN payments on members.idmembers = payments.idmembers WHERE payments.idmembers IS NULL");
+
+        while (rs.next()) {
+            Member member = new Member(
+                    rs.getInt(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    LocalDate.parse(rs.getString(4)),
+                    rs.getBoolean(5),
+                    rs.getBoolean(6));
+
+            missingPayments.add(member);
+        }
+
+        return missingPayments;
+    }
+
+    public void createPayment(Payment payment) throws Exception {
+        Connection connection = con.getConnection();
+        PreparedStatement pstmt = connection.prepareStatement("INSERT INTO `delfinen`.`payments` (`idmembers`, `year`, `amount`, `date`) VALUES (?, ?, ?, ?)");
+
+        pstmt.setInt(1, payment.getMemberID());
+        pstmt.setString(2, payment.getPaymentYear());
+        pstmt.setDouble(3, payment.getAmount());
+        pstmt.setString(4, payment.getPaymentDate());
+
+        pstmt.execute();
+    }
+
+    public void deletePayment(int id) throws Exception {
+        String query = "DELETE FROM payments where idpayments = ?";
+        Connection connection = con.getConnection();
+        PreparedStatement pstmt = connection.prepareStatement(query);
+        pstmt.setInt(1, id);
+
+        pstmt.execute();
     }
 
 }
