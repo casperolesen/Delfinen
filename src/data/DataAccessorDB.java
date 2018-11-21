@@ -74,7 +74,7 @@ public class DataAccessorDB implements DataAccessorInterface {
         //ResultSet rs = con.GetSQLResult("select * from results");
         ResultSet rs = con.GetSQLResult("SELECT idresults, members.name, disciplines.name, time, comp, place FROM delfinen.results\n"
                 + "JOIN disciplines ON results.iddisciplines = disciplines.idcategories\n"
-                + "JOIN members ON results.idmembers = members.idmembers;");
+                + "JOIN members ON results.idmembers = members.idmembers");
 
         while (rs.next()) {
             results.add(buildResult(rs));
@@ -117,7 +117,10 @@ public class DataAccessorDB implements DataAccessorInterface {
     public List<Result> getResultsInDisciplines(int categoryID) throws Exception {
         List<Result> results = new ArrayList<>();
 
-        ResultSet rs = con.GetSQLResult("select * from results where iddisciplines = " + categoryID);
+        ResultSet rs = con.GetSQLResult("SELECT idresults, members.name, disciplines.name, time, comp, place FROM delfinen.results\n"
+                + "JOIN disciplines ON results.iddisciplines = disciplines.idcategories\n"
+                + "JOIN members ON results.idmembers = members.idmembers WHERE iddisciplines = " + categoryID + " ORDER BY time ASC LIMIT 3");
+        //ResultSet rs = con.GetSQLResult("select * from results where iddisciplines = " + categoryID + " LIMIT 3");
 
         while (rs.next()) {
 
@@ -175,27 +178,27 @@ public class DataAccessorDB implements DataAccessorInterface {
     private boolean[] getMembersDisciplines(int id) throws Exception {
         boolean[] disc = new boolean[4];
         ResultSet rs = con.GetSQLResult("SELECT * FROM members_disciplines WHERE memberID=" + id);
-        
+
         while (rs.next()) {
-            
+
             if (rs.getString("discipline1").equals("true")) {
                 disc[0] = true;
             } else {
                 disc[0] = false;
             }
-            
+
             if (rs.getString("discipline2").equals("true")) {
                 disc[1] = true;
             } else {
                 disc[1] = false;
             }
-            
+
             if (rs.getString("discipline3").equals("true")) {
                 disc[2] = true;
             } else {
                 disc[2] = false;
             }
-            
+
             if (rs.getString("discipline4").equals("true")) {
                 disc[3] = true;
             } else {
@@ -206,7 +209,7 @@ public class DataAccessorDB implements DataAccessorInterface {
 //            disc[2] = Boolean.getBoolean(rs.getString("discipline3"));
 //            disc[3] = Boolean.getBoolean(rs.getString("discipline4"));
         }
-        
+
         return disc;
     }
 
@@ -306,7 +309,7 @@ public class DataAccessorDB implements DataAccessorInterface {
             pstmt.setString(2, String.valueOf(disciplines[1]));
             pstmt.setString(3, String.valueOf(disciplines[2]));
             pstmt.setString(4, String.valueOf(disciplines[3]));
-            
+
 //            pstmt.setString(1, "" + disciplines[0]);
 //            pstmt.setString(2, "" + disciplines[1]);
 //            pstmt.setString(3, "" + disciplines[2]);
