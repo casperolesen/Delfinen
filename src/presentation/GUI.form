@@ -252,8 +252,8 @@
                     <Container class="javax.swing.JPanel" name="paymentsPane">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="Payments">
-                            <Property name="tabTitle" type="java.lang.String" value="Payments"/>
+                          <JTabbedPaneConstraints tabName="Betalinger">
+                            <Property name="tabTitle" type="java.lang.String" value="Betalinger"/>
                           </JTabbedPaneConstraints>
                         </Constraint>
                       </Constraints>
@@ -345,8 +345,8 @@
                     <Container class="javax.swing.JPanel" name="missingPaymentsPane">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="Missing Payments">
-                            <Property name="tabTitle" type="java.lang.String" value="Missing Payments"/>
+                          <JTabbedPaneConstraints tabName="Manglende Betalinger">
+                            <Property name="tabTitle" type="java.lang.String" value="Manglende Betalinger"/>
                           </JTabbedPaneConstraints>
                         </Constraint>
                       </Constraints>
@@ -388,11 +388,11 @@
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                                   <Table columnCount="6" rowCount="4">
                                     <Column editable="true" title="memberID" type="java.lang.Integer"/>
-                                    <Column editable="true" title="name" type="java.lang.String"/>
-                                    <Column editable="true" title="email" type="java.lang.String"/>
-                                    <Column editable="true" title="birthday" type="java.lang.String"/>
-                                    <Column editable="true" title="active" type="java.lang.String"/>
-                                    <Column editable="true" title="elite" type="java.lang.String"/>
+                                    <Column editable="true" title="Navn" type="java.lang.String"/>
+                                    <Column editable="true" title="Email" type="java.lang.String"/>
+                                    <Column editable="true" title="F&#xf8;dselsdag" type="java.lang.String"/>
+                                    <Column editable="true" title="Aktiv" type="java.lang.String"/>
+                                    <Column editable="true" title="Elite" type="java.lang.String"/>
                                   </Table>
                                 </Property>
                               </Properties>
@@ -528,12 +528,12 @@
                               <Properties>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                                   <Table columnCount="6" rowCount="4">
-                                    <Column editable="false" title="id" type="java.lang.Integer"/>
+                                    <Column editable="false" title="resultID" type="java.lang.Integer"/>
                                     <Column editable="false" title="Navn" type="java.lang.String"/>
                                     <Column editable="false" title="Disciplin" type="java.lang.String"/>
                                     <Column editable="false" title="Tid" type="java.lang.String"/>
-                                    <Column editable="false" title="comp" type="java.lang.Boolean"/>
-                                    <Column editable="false" title="place" type="java.lang.String"/>
+                                    <Column editable="false" title="St&#xe6;vne" type="java.lang.Boolean"/>
+                                    <Column editable="false" title="Sted" type="java.lang.String"/>
                                   </Table>
                                 </Property>
                               </Properties>
@@ -572,7 +572,7 @@
                         </Component>
                         <Component class="javax.swing.JButton" name="getResultsBTN">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="S&#xf8;g id Member"/>
+                            <Property name="text" type="java.lang.String" value="S&#xf8;g Resultat (memberID)"/>
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getResultsBTNActionPerformed"/>
@@ -597,7 +597,7 @@
                         </Component>
                         <Component class="javax.swing.JButton" name="newResult">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="New Result"/>
+                            <Property name="text" type="java.lang.String" value="Opret Resultat"/>
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newResultActionPerformed"/>

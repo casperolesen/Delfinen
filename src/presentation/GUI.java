@@ -295,7 +295,7 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane2.addTab("Payments", paymentsPane);
+        jTabbedPane2.addTab("Betalinger", paymentsPane);
 
         missingPaymentsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -305,7 +305,7 @@ public class GUI extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "memberID", "name", "email", "birthday", "active", "elite"
+                "memberID", "Navn", "Email", "Fødselsdag", "Aktiv", "Elite"
             }
         ) {
             Class[] types = new Class [] {
@@ -341,7 +341,7 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("Missing Payments", missingPaymentsPane);
+        jTabbedPane2.addTab("Manglende Betalinger", missingPaymentsPane);
 
         javax.swing.GroupLayout accountingPaneLayout = new javax.swing.GroupLayout(accountingPane);
         accountingPane.setLayout(accountingPaneLayout);
@@ -367,7 +367,7 @@ public class GUI extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "id", "Navn", "Disciplin", "Tid", "comp", "place"
+                "resultID", "Navn", "Disciplin", "Tid", "Stævne", "Sted"
             }
         ) {
             Class[] types = new Class [] {
@@ -399,7 +399,7 @@ public class GUI extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(categoryList);
 
-        getResultsBTN.setText("Søg id Member");
+        getResultsBTN.setText("Søg Resultat (memberID)");
         getResultsBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 getResultsBTNActionPerformed(evt);
@@ -421,7 +421,7 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        newResult.setText("New Result");
+        newResult.setText("Opret Resultat");
         newResult.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newResultActionPerformed(evt);
