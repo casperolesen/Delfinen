@@ -84,6 +84,7 @@ public class DataAccessorDB implements DataAccessorInterface {
 
     }
 
+    @Override
     public void createResult(int memberID, int disciplineID, String time, String comp, String place) throws Exception {
         int membID = memberID;
         int discID = disciplineID;
@@ -355,6 +356,7 @@ public class DataAccessorDB implements DataAccessorInterface {
         }
     }
 
+    @Override
     public List<Payment> getPayments() throws Exception {
         List<Payment> allPayments = new ArrayList<>();
 
@@ -374,6 +376,7 @@ public class DataAccessorDB implements DataAccessorInterface {
         return allPayments;
     }
 
+    @Override
     public List<Member> getMissingPayments() throws Exception {
         List<Member> missingPayments = new ArrayList<>();
 
@@ -394,6 +397,7 @@ public class DataAccessorDB implements DataAccessorInterface {
         return missingPayments;
     }
 
+    @Override
     public void createPayment(Payment payment) throws Exception {
         Connection connection = con.getConnection();
         PreparedStatement pstmt = connection.prepareStatement("INSERT INTO `delfinen`.`payments` (`idmembers`, `year`, `amount`, `date`) VALUES (?, ?, ?, ?)");
@@ -406,6 +410,7 @@ public class DataAccessorDB implements DataAccessorInterface {
         pstmt.execute();
     }
 
+    @Override
     public void deletePayment(int id) throws Exception {
         String query = "DELETE FROM payments where idpayments = ?";
         Connection connection = con.getConnection();

@@ -15,6 +15,7 @@ import logic.Result;
 /**
  *
  * @author caspe
+ * 
  */
 public class GUI extends javax.swing.JFrame {
 

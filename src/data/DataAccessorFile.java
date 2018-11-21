@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import logic.Discipline;
 import logic.Member;
+import logic.Payment;
 import logic.Result;
 
 public class DataAccessorFile implements DataAccessorInterface {
@@ -192,6 +193,31 @@ public class DataAccessorFile implements DataAccessorInterface {
     }
 
     public void createResult() throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void createResult(int memberID, int disciplineID, String time, String comp, String place) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Payment> getPayments() throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Member> getMissingPayments() throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void createPayment(Payment payment) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void deletePayment(int id) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
