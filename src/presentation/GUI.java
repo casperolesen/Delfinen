@@ -33,7 +33,6 @@ public class GUI extends javax.swing.JFrame {
         memberTable.removeColumn(memberTable.getColumnModel().getColumn(0));
 
         loadContent();
-        adminPane.remove(numberFactLBL);
         //removeLabels();
     }
 
@@ -157,6 +156,7 @@ public class GUI extends javax.swing.JFrame {
 
         numberOfNotActiveMembersLBL.setText("numberOfNotActiveMembersLBL");
 
+        numberFactLBL.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
         numberFactLBL.setText("numberFactLBL");
 
         javax.swing.GroupLayout adminPaneLayout = new javax.swing.GroupLayout(adminPane);
@@ -167,24 +167,29 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(adminPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(adminPaneLayout.createSequentialGroup()
-                        .addComponent(memberTableScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22)
-                        .addGroup(adminPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(numberOfNotActiveMembersLBL)
-                            .addComponent(numberOfMembersLBL)
-                            .addComponent(numberFactLBL)
-                            .addComponent(deleteMemberBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(editMemberBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(numberOfActiveMembersLBL)
-                            .addComponent(addMemberBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(adminPaneLayout.createSequentialGroup()
                         .addComponent(getMembersBTN)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(emailSearchBTN)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(emailTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(99, Short.MAX_VALUE))
+                        .addComponent(emailTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(adminPaneLayout.createSequentialGroup()
+                        .addComponent(memberTableScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(adminPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(adminPaneLayout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addGroup(adminPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(numberOfNotActiveMembersLBL)
+                                    .addComponent(numberOfMembersLBL)
+                                    .addComponent(numberOfActiveMembersLBL)
+                                    .addComponent(numberFactLBL)))
+                            .addGroup(adminPaneLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(adminPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(editMemberBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(deleteMemberBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(addMemberBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                .addContainerGap(154, Short.MAX_VALUE))
         );
 
         adminPaneLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {addMemberBTN, deleteMemberBTN, editMemberBTN});
@@ -197,26 +202,26 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(getMembersBTN)
                     .addComponent(emailSearchBTN)
                     .addComponent(emailTXT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addComponent(addMemberBTN)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(40, 40, 40)
                 .addGroup(adminPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(adminPaneLayout.createSequentialGroup()
+                        .addComponent(addMemberBTN)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(editMemberBTN)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(deleteMemberBTN)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(46, 46, 46)
                         .addComponent(numberOfActiveMembersLBL)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(numberOfNotActiveMembersLBL)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(numberOfMembersLBL)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(numberFactLBL))
-                    .addComponent(memberTableScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 47, Short.MAX_VALUE))
+                    .addComponent(memberTableScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         mainTabs.addTab("Formand", adminPane);
@@ -229,7 +234,7 @@ public class GUI extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "paymentID", "memberName", "year", "amout", "date"
+                "paymentID", "Navn", "År", "Beløb", "Betalingsdato"
             }
         ) {
             Class[] types = new Class [] {
@@ -329,7 +334,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(missingPaymentsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(missingPaymentsHeader)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 31, Short.MAX_VALUE))
+                .addGap(0, 86, Short.MAX_VALUE))
         );
         missingPaymentsPaneLayout.setVerticalGroup(
             missingPaymentsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -455,7 +460,7 @@ public class GUI extends javax.swing.JFrame {
                         .addGroup(testPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane4)
                             .addComponent(testResetBTN, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE))))
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
         testPaneLayout.setVerticalGroup(
             testPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -486,7 +491,7 @@ public class GUI extends javax.swing.JFrame {
         coachPane.setLayout(coachPaneLayout);
         coachPaneLayout.setHorizontalGroup(
             coachPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
+            .addGap(0, 695, Short.MAX_VALUE)
             .addGroup(coachPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jTabbedPane1))
         );
