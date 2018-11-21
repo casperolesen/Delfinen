@@ -53,6 +53,20 @@ public interface ControllerInterface {
     
     public void editMember(Member member, boolean[] discs) throws Exception;
     
-     public void createMember(Member member, boolean[] discs) throws Exception;
+    public void createMember(Member member, boolean[] discs) throws Exception;
+    
+    public double getAmountToPay(Member member) throws NumberFormatException;
+    
+    public void createResult(int memberID, int disciplineID, String time, String comp, String place) throws Exception;
+    
+    public void updatePaymentList() throws Exception;
+    
+    public Member getMember(int id) throws Exception;
+    
+    public void createPayment(Payment payment) throws Exception;
+    
+    public void updateMissingPaymentList() throws Exception;
+    
+    public void deletePayment(int id) throws Exception;
 
 }

@@ -39,6 +39,7 @@ public class Controller implements ControllerInterface {
         return result;
     }
     
+    @Override
     public double getAmountToPay(Member member) throws NumberFormatException {
         String _memberAge = (member.getBirthday().toString()).substring(0, 4);
         int memberBday = Integer.parseInt(_memberAge);
@@ -112,6 +113,7 @@ public class Controller implements ControllerInterface {
         this.resultList = sqldata.getResults();
     }
     
+    @Override
     public void createResult(int memberID, int disciplineID, String time, String comp, String place) throws Exception {
         sqldata.createResult(memberID, disciplineID, time, comp, place);
     }
@@ -167,24 +169,29 @@ public class Controller implements ControllerInterface {
         //data.createMember(member, discs);
     }
      
+    @Override
      public void updatePaymentList() throws Exception {
          this.paymentList = sqldata.getPayments();
      }
      
+    @Override
      public Member getMember(int id) throws Exception {
          Member member = sqldata.getMember(id);
          
          return member;
      }
      
+    @Override
      public void createPayment(Payment payment) throws Exception {
          sqldata.createPayment(payment);
      }
      
+    @Override
      public void updateMissingPaymentList() throws Exception {
          this.missingPaymentList = sqldata.getMissingPayments();
      }
      
+    @Override
      public void deletePayment(int id) throws Exception {
          sqldata.deletePayment(id);
      }
