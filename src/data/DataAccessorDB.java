@@ -292,7 +292,7 @@ public class DataAccessorDB implements DataAccessorInterface {
             Connection connection = con.getConnection();
             PreparedStatement pstmt = connection.prepareStatement(
                     "UPDATE members "
-                    + "SET name = ?, email = ?, birthday = ?, active = ?, elite = ?) "
+                    + "SET name = ?, email = ?, birthday = ?, active = ?, elite = ? "
                     + "WHERE idmembers=" + member.getID());
             pstmt.setString(1, member.getName());
             pstmt.setString(2, member.getEmail());
