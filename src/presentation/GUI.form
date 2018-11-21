@@ -66,58 +66,59 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="memberTableScroll" min="-2" pref="355" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
+                                  <Component id="memberTableScroll" min="-2" pref="355" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jSeparator1" alignment="0" min="-2" pref="154" max="-2" attributes="0"/>
+                                      <Component id="numberOfNotActiveMembersLBL" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="numberOfMembersLBL" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="numberFactLBL" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="deleteMemberBTN" linkSize="1" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="editMemberBTN" linkSize="1" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="numberOfActiveMembersLBL" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="addMemberBTN" linkSize="1" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="getMembersBTN" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="emailSearchBTN" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="emailTXT" min="-2" pref="147" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jSeparator1" alignment="0" min="-2" pref="154" max="-2" attributes="0"/>
-                              <Component id="numberOfNotActiveMembersLBL" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="numberOfMembersLBL" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="numberFactLBL" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="deleteMemberBTN" linkSize="1" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="editMemberBTN" linkSize="1" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="addMemberBTN" linkSize="1" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="numberOfActiveMembersLBL" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace pref="109" max="32767" attributes="0"/>
+                          <EmptySpace pref="99" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="addMemberBTN" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="getMembersBTN" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="emailSearchBTN" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="emailTXT" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                          <Component id="addMemberBTN" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="editMemberBTN" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="deleteMemberBTN" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="numberOfActiveMembersLBL" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="deleteMemberBTN" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="numberOfActiveMembersLBL" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="numberOfNotActiveMembersLBL" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="numberOfMembersLBL" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="numberFactLBL" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="memberTableScroll" min="-2" pref="222" max="-2" attributes="0"/>
@@ -262,18 +263,16 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
                                           <Component id="newPaymentBTN" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="deletePaymentBTN" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="updatePaymentsBTN" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="jScrollPane1" alignment="0" min="-2" pref="533" max="-2" attributes="0"/>
                                       <Component id="paymentsHeader" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="20" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -288,7 +287,6 @@
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="newPaymentBTN" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="deletePaymentBTN" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="updatePaymentsBTN" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
@@ -326,14 +324,6 @@
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newPaymentBTNActionPerformed"/>
                           </Events>
                         </Component>
-                        <Component class="javax.swing.JButton" name="updatePaymentsBTN">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="Update"/>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updatePaymentsBTNActionPerformed"/>
-                          </Events>
-                        </Component>
                         <Component class="javax.swing.JButton" name="deletePaymentBTN">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Delete"/>
@@ -369,7 +359,7 @@
                                       <Component id="missingPaymentsHeader" min="-2" max="-2" attributes="0"/>
                                       <Component id="jScrollPane2" min="-2" pref="522" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="0" pref="41" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="31" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -435,7 +425,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="650" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="640" max="32767" attributes="0"/>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Component id="jTabbedPane1" alignment="0" max="32767" attributes="0"/>
                       </Group>
@@ -493,7 +483,7 @@
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="78" max="32767" attributes="0"/>
+                                  <EmptySpace pref="68" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
