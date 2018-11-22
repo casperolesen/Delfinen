@@ -529,11 +529,21 @@ public class GUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    /**
+   * Shows dialog popup with message
+   * 
+   * @param msg must be string
+  */ 
     private void showMessage(String msg) {
         JOptionPane.showMessageDialog(null, msg);
     }
 
+    /**
+   * Clears table model
+   * 
+   * @param model must be table model
+  */ 
     private void clearTable(DefaultTableModel model) {
         model.setRowCount(0);
     }

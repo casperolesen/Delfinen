@@ -30,6 +30,11 @@ public class membersDialog extends javax.swing.JDialog {
         errorTXT.setText("");
     }
 
+    /**
+   * Readies dialog frame with member information
+   * 
+   * @param member must be a valid Member object
+  */ 
     public void readyEdit(Member member){
         isEdit = true;
         currentID = member.getID();
