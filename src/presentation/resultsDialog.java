@@ -24,6 +24,8 @@ public class resultsDialog extends javax.swing.JDialog {
 
     /**
      * Creates new form resultsDialog
+     * @param parent the window where to popup "comes" from
+     * @param modal tells if a popup is modal or not
      */
     public resultsDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
