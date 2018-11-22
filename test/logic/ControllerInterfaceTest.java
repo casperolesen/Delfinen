@@ -1,5 +1,6 @@
 package logic;
 
+import java.time.LocalDate;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -57,12 +58,10 @@ public class ControllerInterfaceTest {
     @Test
     public void testCheckEmail() throws Exception {
         System.out.println("checkEmail");
-        String email = "";
+        String email = "testtest.dk";
         boolean expResult = false;
         boolean result = logic.checkEmail(email);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -103,10 +102,8 @@ public class ControllerInterfaceTest {
     @Test
     public void testDeleteResult() throws Exception {
         System.out.println("deleteResult");
-        int id = 0;
+        int id = 0; // sletter et resultat, som ikke findes - og får ingen Exception - VIRKER FORKERT
         logic.deleteResult(id);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -127,8 +124,6 @@ public class ControllerInterfaceTest {
         System.out.println("deleteMember");
         int id = 0;
         logic.deleteMember(id);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -158,11 +153,9 @@ public class ControllerInterfaceTest {
     @Test
     public void testEditMember() throws Exception {
         System.out.println("editMember");
-        Member member = null;
-        boolean[] discs = null;
+        Member member = logic.getMember(1);
+        boolean[] discs = {true, true, true, true};
         logic.editMember(member, discs);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -171,11 +164,11 @@ public class ControllerInterfaceTest {
     @Test
     public void testCreateMember() throws Exception {
         System.out.println("createMember");
-        Member member = null;
-        boolean[] discs = null;
+        //public Member(int id, String name, String email, LocalDate date, boolean active, boolean elite)
+        Member member = new Member(0, "Tester T. Testersen", "test@mail.dk", LocalDate.parse("1900-01-01"), true, true);
+        boolean[] discs = {true, true, true, true};
         logic.createMember(member, discs);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
     }
 
     /**
@@ -184,12 +177,10 @@ public class ControllerInterfaceTest {
     @Test
     public void testGetAmountToPay() {
         System.out.println("getAmountToPay");
-        Member member = null;
-        double expResult = 0.0;
+        Member member = new Member(0, "Tester T. Testersen", "test@mail.dk", LocalDate.parse("1900-01-01"), true, true);
+        double expResult = 1200.0;
         double result = logic.getAmountToPay(member);
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(expResult, result, 0.05);
     }
 
     /**
@@ -198,14 +189,12 @@ public class ControllerInterfaceTest {
     @Test
     public void testCreateResult() throws Exception {
         System.out.println("createResult");
-        int memberID = 0;
-        int disciplineID = 0;
-        String time = "";
-        String comp = "";
-        String place = "";
+        int memberID = 1;
+        int disciplineID = 4;
+        String time = "400";
+        String comp = "true";
+        String place = "Træning Test";
         logic.createResult(memberID, disciplineID, time, comp, place);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -228,8 +217,6 @@ public class ControllerInterfaceTest {
         Member expResult = null;
         Member result = logic.getMember(id);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -238,10 +225,8 @@ public class ControllerInterfaceTest {
     @Test
     public void testCreatePayment() throws Exception {
         System.out.println("createPayment");
-        Payment payment = null;
+        Payment payment = new Payment(0, 1, "1900", 0.0, "1900-01-01");
         logic.createPayment(payment);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -262,8 +247,6 @@ public class ControllerInterfaceTest {
         System.out.println("deletePayment");
         int id = 0;
         logic.deletePayment(id);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
 }
