@@ -118,9 +118,11 @@ public class DataAccessorDB implements DataAccessorInterface {
     public List<Result> getResultsInDisciplines(int categoryID) throws Exception {
         List<Result> results = new ArrayList<>();
 
-        ResultSet rs = con.GetSQLResult("SELECT idresults, members.name, disciplines.name, time, comp, place FROM delfinen.results\n"
-                + "JOIN disciplines ON results.iddisciplines = disciplines.idcategories\n"
-                + "JOIN members ON results.idmembers = members.idmembers WHERE iddisciplines = " + categoryID + " ORDER BY time ASC LIMIT 5");
+        ResultSet rs = con.GetSQLResult("SELECT idresults, members.name, disciplines.name, MIN(time), comp, place FROM delfinen.results "
+                + "JOIN disciplines ON results.iddisciplines = disciplines.idcategories "
+                + "JOIN members ON results.idmembers = members.idmembers "
+                + "GROUP BY results.idmembers, iddisciplines "
+                + "HAVING iddisciplines = " + categoryID + " ORDER BY MIN(time) ASC LIMIT 5");
         //ResultSet rs = con.GetSQLResult("select * from results where iddisciplines = " + categoryID + " LIMIT 3");
 
         while (rs.next()) {
