@@ -66,13 +66,13 @@ public class GUI extends javax.swing.JFrame {
         paymentsPane = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         paymentTable = new javax.swing.JTable();
-        newPaymentBTN = new javax.swing.JButton();
-        deletePaymentBTN = new javax.swing.JButton();
         paymentsHeader = new javax.swing.JLabel();
         missingPaymentsPane = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         missingPaymentsTable = new javax.swing.JTable();
         missingPaymentsHeader = new javax.swing.JLabel();
+        newPaymentBTN1 = new javax.swing.JButton();
+        deletePaymentBTN1 = new javax.swing.JButton();
         coachPane = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         testPane = new javax.swing.JPanel();
@@ -254,20 +254,6 @@ public class GUI extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(paymentTable);
 
-        newPaymentBTN.setText("New Payment");
-        newPaymentBTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newPaymentBTNActionPerformed(evt);
-            }
-        });
-
-        deletePaymentBTN.setText("Delete");
-        deletePaymentBTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deletePaymentBTNActionPerformed(evt);
-            }
-        });
-
         paymentsHeader.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         paymentsHeader.setText("Registrerede Betalinger");
 
@@ -278,13 +264,9 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(paymentsPaneLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(paymentsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, paymentsPaneLayout.createSequentialGroup()
-                        .addComponent(newPaymentBTN)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(deletePaymentBTN))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(paymentsHeader))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         paymentsPaneLayout.setVerticalGroup(
             paymentsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,11 +275,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(paymentsHeader)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(paymentsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(newPaymentBTN)
-                    .addComponent(deletePaymentBTN))
-                .addContainerGap())
+                .addGap(45, 45, 45))
         );
 
         jTabbedPane2.addTab("Betalinger", paymentsPane);
@@ -326,14 +304,33 @@ public class GUI extends javax.swing.JFrame {
         missingPaymentsHeader.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         missingPaymentsHeader.setText("Manglende Betalinger");
 
+        newPaymentBTN1.setText("Opret ny betaling");
+        newPaymentBTN1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newPaymentBTN1ActionPerformed(evt);
+            }
+        });
+
+        deletePaymentBTN1.setText("Slet betaling");
+        deletePaymentBTN1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deletePaymentBTN1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout missingPaymentsPaneLayout = new javax.swing.GroupLayout(missingPaymentsPane);
         missingPaymentsPane.setLayout(missingPaymentsPaneLayout);
         missingPaymentsPaneLayout.setHorizontalGroup(
             missingPaymentsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(missingPaymentsPaneLayout.createSequentialGroup()
-                .addGroup(missingPaymentsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(missingPaymentsHeader)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(missingPaymentsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(missingPaymentsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(missingPaymentsHeader)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(missingPaymentsPaneLayout.createSequentialGroup()
+                        .addComponent(newPaymentBTN1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(deletePaymentBTN1)))
                 .addGap(0, 86, Short.MAX_VALUE))
         );
         missingPaymentsPaneLayout.setVerticalGroup(
@@ -342,8 +339,12 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(missingPaymentsHeader)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(missingPaymentsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(newPaymentBTN1)
+                    .addComponent(deletePaymentBTN1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Manglende Betalinger", missingPaymentsPane);
@@ -359,7 +360,7 @@ public class GUI extends javax.swing.JFrame {
         );
         accountingPaneLayout.setVerticalGroup(
             accountingPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2)
+            .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 355, Short.MAX_VALUE)
         );
 
         mainTabs.addTab("Kasserer", accountingPane);
@@ -419,14 +420,14 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        deleteResultBTN.setText("Slet Res");
+        deleteResultBTN.setText("Slet Resultat");
         deleteResultBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteResultBTNActionPerformed(evt);
             }
         });
 
-        newResult.setText("Opret Resultat");
+        newResult.setText("Opret nyt Resultat");
         newResult.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newResultActionPerformed(evt);
@@ -454,7 +455,7 @@ public class GUI extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, testPaneLayout.createSequentialGroup()
                                 .addComponent(newResult)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(deleteResultBTN))
+                                .addComponent(deleteResultBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(testPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -802,20 +803,21 @@ public class GUI extends javax.swing.JFrame {
     private void newResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newResultActionPerformed
         // TODO add your handling code here:
         resultsDialog rdia = new resultsDialog(this, true);
-        rdia.setTitle("Opret nyt medlem");
+        rdia.setTitle("Opret nyt resultat");
         rdia.setVisible(true);
     }//GEN-LAST:event_newResultActionPerformed
 
-    private void newPaymentBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newPaymentBTNActionPerformed
+    private void newPaymentBTN1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newPaymentBTN1ActionPerformed
         // TODO add your handling code here:
         paymentDialog pdia = new paymentDialog(this, true);
-        pdia.setTitle("Opret nyt medlem");
+        pdia.setTitle("Opret ny betaling");
         pdia.setVisible(true);
         fillPaymentTable();
         fillMissinPaymentTable();
-    }//GEN-LAST:event_newPaymentBTNActionPerformed
+    }//GEN-LAST:event_newPaymentBTN1ActionPerformed
 
-    private void deletePaymentBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePaymentBTNActionPerformed
+    private void deletePaymentBTN1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePaymentBTN1ActionPerformed
+        // TODO add your handling code here:
         try {
             DefaultTableModel model = (DefaultTableModel) paymentTable.getModel();
             int id = (int) model.getValueAt(paymentTable.getSelectedRow(), 0);
@@ -826,7 +828,7 @@ public class GUI extends javax.swing.JFrame {
         }
         fillPaymentTable();
         fillMissinPaymentTable();
-    }//GEN-LAST:event_deletePaymentBTNActionPerformed
+    }//GEN-LAST:event_deletePaymentBTN1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -871,7 +873,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JList<String> categoryList;
     private javax.swing.JPanel coachPane;
     private javax.swing.JButton deleteMemberBTN;
-    private javax.swing.JButton deletePaymentBTN;
+    private javax.swing.JButton deletePaymentBTN1;
     private javax.swing.JButton deleteResultBTN;
     private javax.swing.JButton editMemberBTN;
     private javax.swing.JButton emailSearchBTN;
@@ -891,7 +893,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel missingPaymentsHeader;
     private javax.swing.JPanel missingPaymentsPane;
     private javax.swing.JTable missingPaymentsTable;
-    private javax.swing.JButton newPaymentBTN;
+    private javax.swing.JButton newPaymentBTN1;
     private javax.swing.JButton newResult;
     private javax.swing.JLabel numberFactLBL;
     private javax.swing.JLabel numberOfActiveMembersLBL;

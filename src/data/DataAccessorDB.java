@@ -265,17 +265,17 @@ public class DataAccessorDB implements DataAccessorInterface {
             pstmt.setString(5, "" + member.isElite());
             con.newQuery(pstmt);
 
-            int testID = 0;
+            int currentID = 0;
             ResultSet rs = con.GetSQLResult("SELECT @@IDENTITY");
             while (rs.next()) {
-                testID = rs.getInt(1);
+                currentID = rs.getInt(1);
             }
 
             pstmt = connection.prepareStatement(
                     "INSERT INTO members_disciplines "
                     + "(memberID, discipline1, discipline2, discipline3, discipline4) "
                     + "VALUES (?,?,?,?,?)");
-            pstmt.setInt(1, testID);
+            pstmt.setInt(1, currentID);
             pstmt.setString(2, "" + disciplines[0]);
             pstmt.setString(3, "" + disciplines[1]);
             pstmt.setString(4, "" + disciplines[2]);
@@ -365,7 +365,7 @@ public class DataAccessorDB implements DataAccessorInterface {
         while (rs.next()) {
             int id = rs.getInt(1);
             String memberName = rs.getString(2);
-            String year = rs.getString(3);
+            String year = String.valueOf(rs.getInt(3));
             double amount = rs.getDouble(4);
             String date = rs.getString(5);
 
@@ -380,7 +380,9 @@ public class DataAccessorDB implements DataAccessorInterface {
     public List<Member> getMissingPayments() throws Exception {
         List<Member> missingPayments = new ArrayList<>();
 
-        ResultSet rs = con.GetSQLResult("SELECT * from members LEFT OUTER JOIN payments on members.idmembers = payments.idmembers WHERE payments.idmembers IS NULL");
+        ResultSet rs = con.GetSQLResult("SELECT members.idmembers, members.name, members.email, members.birthday, members.active, members.elite, "
+                + "MAX(payments.year), payments.idmembers"
+                + " from members LEFT OUTER JOIN payments on members.idmembers = payments.idmembers GROUP BY members.idmembers HAVING (payments.idmembers IS NULL OR MAX(payments.year) < "+LocalDate.now().getYear()+")");
 
         while (rs.next()) {
             Member member = new Member(
