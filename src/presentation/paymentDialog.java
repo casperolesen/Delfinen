@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
 import logic.Controller;
 import logic.Member;
 import logic.Payment;
@@ -20,23 +21,16 @@ public class paymentDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
-        fillMemberComboBox();
+        fillYearComboBox();
+        
     }
-
-    private void fillMemberComboBox() {
-        try {
-            logic.updateMemberList();
-            DefaultComboBoxModel model = (DefaultComboBoxModel) membersPaymentComboBox.getModel();
-            model.removeAllElements();
-
-            for (Member member : logic.memberList) {
-                model.addElement(member.getID() + ", " + member.getName());
-            }
-            membersPaymentComboBox.setModel(model);
-            //membersComboBox.setModel((ComboBoxModel<String>) logic.memberList);
-        } catch (Exception ex) {
-            Logger.getLogger(resultsDialog.class.getName()).log(Level.SEVERE, null, ex);
+    
+    private void fillYearComboBox(){
+        int currentYear = LocalDate.now().getYear();
+        for(int i = currentYear -10;i<currentYear+6;i++){
+            yearCB.addItem(String.valueOf(i));
         }
+        yearCB.setSelectedItem(String.valueOf(currentYear));
     }
 
     /**
@@ -48,25 +42,21 @@ public class paymentDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        membersPaymentComboBox = new javax.swing.JComboBox<>();
-        yearTXT = new javax.swing.JTextField();
         yearLBL = new javax.swing.JLabel();
         createPaymentBTN = new javax.swing.JButton();
         amountLBL = new javax.swing.JLabel();
         amountTXT = new javax.swing.JTextField();
+        searchBTN = new javax.swing.JButton();
+        emailTXT = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        memberTable = new javax.swing.JTable();
+        yearCB = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        membersPaymentComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        membersPaymentComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                membersPaymentComboBoxActionPerformed(evt);
-            }
-        });
-
         yearLBL.setText("År");
 
-        createPaymentBTN.setText("Create Payment");
+        createPaymentBTN.setText("Opret betaling");
         createPaymentBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createPaymentBTNActionPerformed(evt);
@@ -75,70 +65,94 @@ public class paymentDialog extends javax.swing.JDialog {
 
         amountLBL.setText("Beløb");
 
+        searchBTN.setText("Søg email for medlem:");
+        searchBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBTNActionPerformed(evt);
+            }
+        });
+
+        memberTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Navn", "Email", "Fødselsdag"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        memberTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        memberTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                memberTableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(memberTable);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(170, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(createPaymentBTN)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(amountLBL)
-                            .addComponent(yearLBL))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(membersPaymentComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(yearTXT)
-                            .addComponent(amountTXT))))
-                .addGap(119, 119, 119))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(searchBTN)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(emailTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(amountLBL)
+                                    .addComponent(yearLBL))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(yearCB, 0, 154, Short.MAX_VALUE)
+                                    .addComponent(amountTXT)))
+                            .addComponent(createPaymentBTN))
+                        .addGap(0, 44, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addComponent(membersPaymentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(yearTXT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(yearLBL))
+                    .addComponent(searchBTN)
+                    .addComponent(emailTXT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(yearLBL)
+                    .addComponent(yearCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(amountLBL)
                     .addComponent(amountTXT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(createPaymentBTN)
-                .addGap(58, 58, 58))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private Member getMemberTest() {
-        Member member = null;
-        try {
-            int id = Integer.parseInt(membersPaymentComboBox.getModel().getSelectedItem().toString().split(",")[0].trim());
-            member = logic.getMember(id);
-            
-        } catch (Exception ex) {
-            Logger.getLogger(paymentDialog.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return member;
-        
-    }
     private void createPaymentBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createPaymentBTNActionPerformed
-        //Member memberTest = getMemberTest();
         try {
             int id = 0;
-            int memberID = Integer.parseInt(membersPaymentComboBox.getModel().getSelectedItem().toString().split(",")[0].trim());
-            String paymentYear = yearTXT.getText();
-            
-            Member member = logic.getMember(memberID);
-            //System.out.println(memberTest);
-            double amount = logic.getAmountToPay(member);
-            
+            int memberID = logic.memberList.get(memberTable.convertRowIndexToModel(memberTable.getSelectedRow())).getID();
+            String paymentYear = yearCB.getSelectedItem().toString();
+            double amount = Double.parseDouble(amountTXT.getText());
             String date = LocalDate.now().toString();
             
             Payment payment = new Payment(id, memberID, paymentYear, amount, date);
@@ -150,10 +164,30 @@ public class paymentDialog extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_createPaymentBTNActionPerformed
 
-    private void membersPaymentComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_membersPaymentComboBoxActionPerformed
+    private void searchBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBTNActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_membersPaymentComboBoxActionPerformed
+        try {
+            logic.updateMemberList(emailTXT.getText());
+            DefaultTableModel model = (DefaultTableModel) memberTable.getModel();
+            model.setRowCount(0);
+            for (Member member : logic.memberList) {
+                model.addRow(new Object[]{member.getName(), member.getEmail(), member.getBirthday()});
+            }
+        } catch (Exception e) {
+            //"Kunne ikke indlæse medlemmer.."
+        }
+    }//GEN-LAST:event_searchBTNActionPerformed
 
+    private void memberTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_memberTableMouseClicked
+        // TODO add your handling code here:
+        //
+        if(!memberTable.getSelectionModel().isSelectionEmpty()){
+            double amount = logic.getAmountToPay(logic.memberList.get(memberTable.convertRowIndexToModel(memberTable.getSelectedRow())));
+            amountTXT.setText(String.valueOf(amount));
+        }
+    }//GEN-LAST:event_memberTableMouseClicked
+
+    
     /**
      * @param args the command line arguments
      */
@@ -200,8 +234,11 @@ public class paymentDialog extends javax.swing.JDialog {
     private javax.swing.JLabel amountLBL;
     private javax.swing.JTextField amountTXT;
     private javax.swing.JButton createPaymentBTN;
-    private javax.swing.JComboBox<String> membersPaymentComboBox;
+    private javax.swing.JTextField emailTXT;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable memberTable;
+    private javax.swing.JButton searchBTN;
+    private javax.swing.JComboBox<String> yearCB;
     private javax.swing.JLabel yearLBL;
-    private javax.swing.JTextField yearTXT;
     // End of variables declaration//GEN-END:variables
 }

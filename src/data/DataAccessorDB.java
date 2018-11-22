@@ -135,7 +135,10 @@ public class DataAccessorDB implements DataAccessorInterface {
     public List<Result> getResultsForMember(String memberID) throws Exception {
         List<Result> results = new ArrayList<>();
 
-        ResultSet rs = con.GetSQLResult("select * from results where idmembers = " + memberID);
+        ResultSet rs = con.GetSQLResult("select idresults, members.name, disciplines.name, time, comp, place from results "
+                + "join members on results.idmembers = members.idmembers "
+                + "join disciplines on results.iddisciplines = disciplines.idcategories "
+                + "where members.email = '" + memberID+"'");
 
         while (rs.next()) {
             results.add(buildResult(rs));

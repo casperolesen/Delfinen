@@ -31,7 +31,8 @@ public class GUI extends javax.swing.JFrame {
         ImageIcon img = new ImageIcon("dolphin.png");
         this.setIconImage(img.getImage());
         memberTable.removeColumn(memberTable.getColumnModel().getColumn(0));
-
+        paymentTable.removeColumn(paymentTable.getColumnModel().getColumn(0));
+        missingPaymentsTable.removeColumn(missingPaymentsTable.getColumnModel().getColumn(0));
         loadContent();
         //removeLabels();
     }
@@ -63,16 +64,16 @@ public class GUI extends javax.swing.JFrame {
         numberFactLBL = new javax.swing.JLabel();
         accountingPane = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
-        paymentsPane = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        paymentTable = new javax.swing.JTable();
-        paymentsHeader = new javax.swing.JLabel();
         missingPaymentsPane = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         missingPaymentsTable = new javax.swing.JTable();
         missingPaymentsHeader = new javax.swing.JLabel();
         newPaymentBTN1 = new javax.swing.JButton();
-        deletePaymentBTN1 = new javax.swing.JButton();
+        paymentsPane = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        paymentTable = new javax.swing.JTable();
+        paymentsHeader = new javax.swing.JLabel();
+        deletePaymentBTN = new javax.swing.JButton();
         coachPane = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         testPane = new javax.swing.JPanel();
@@ -226,12 +227,70 @@ public class GUI extends javax.swing.JFrame {
 
         mainTabs.addTab("Formand", adminPane);
 
+        missingPaymentsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "memberID", "Navn", "Email", "Fødselsdag"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(missingPaymentsTable);
+
+        missingPaymentsHeader.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        missingPaymentsHeader.setText("Manglende Betalinger");
+
+        newPaymentBTN1.setText("Opret ny betaling");
+        newPaymentBTN1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newPaymentBTN1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout missingPaymentsPaneLayout = new javax.swing.GroupLayout(missingPaymentsPane);
+        missingPaymentsPane.setLayout(missingPaymentsPaneLayout);
+        missingPaymentsPaneLayout.setHorizontalGroup(
+            missingPaymentsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(missingPaymentsPaneLayout.createSequentialGroup()
+                .addGroup(missingPaymentsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(missingPaymentsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(missingPaymentsHeader)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(newPaymentBTN1))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        missingPaymentsPaneLayout.setVerticalGroup(
+            missingPaymentsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(missingPaymentsPaneLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(missingPaymentsHeader)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(newPaymentBTN1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab("Manglende Betalinger", missingPaymentsPane);
+
         paymentTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "paymentID", "Navn", "År", "Beløb", "Betalingsdato"
@@ -252,10 +311,18 @@ public class GUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        paymentTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(paymentTable);
 
         paymentsHeader.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         paymentsHeader.setText("Registrerede Betalinger");
+
+        deletePaymentBTN.setText("Slet betaling");
+        deletePaymentBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deletePaymentBTNActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout paymentsPaneLayout = new javax.swing.GroupLayout(paymentsPane);
         paymentsPane.setLayout(paymentsPaneLayout);
@@ -263,10 +330,12 @@ public class GUI extends javax.swing.JFrame {
             paymentsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paymentsPaneLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(paymentsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(paymentsHeader))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addGroup(paymentsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(paymentsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(paymentsHeader))
+                    .addComponent(deletePaymentBTN))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         paymentsPaneLayout.setVerticalGroup(
             paymentsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,79 +344,12 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(paymentsHeader)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(deletePaymentBTN)
+                .addContainerGap())
         );
 
         jTabbedPane2.addTab("Betalinger", paymentsPane);
-
-        missingPaymentsTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "memberID", "Navn", "Email", "Fødselsdag", "Aktiv", "Elite"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane2.setViewportView(missingPaymentsTable);
-
-        missingPaymentsHeader.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        missingPaymentsHeader.setText("Manglende Betalinger");
-
-        newPaymentBTN1.setText("Opret ny betaling");
-        newPaymentBTN1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newPaymentBTN1ActionPerformed(evt);
-            }
-        });
-
-        deletePaymentBTN1.setText("Slet betaling");
-        deletePaymentBTN1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deletePaymentBTN1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout missingPaymentsPaneLayout = new javax.swing.GroupLayout(missingPaymentsPane);
-        missingPaymentsPane.setLayout(missingPaymentsPaneLayout);
-        missingPaymentsPaneLayout.setHorizontalGroup(
-            missingPaymentsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(missingPaymentsPaneLayout.createSequentialGroup()
-                .addGroup(missingPaymentsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(missingPaymentsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(missingPaymentsHeader)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(missingPaymentsPaneLayout.createSequentialGroup()
-                        .addComponent(newPaymentBTN1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(deletePaymentBTN1)))
-                .addGap(0, 86, Short.MAX_VALUE))
-        );
-        missingPaymentsPaneLayout.setVerticalGroup(
-            missingPaymentsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(missingPaymentsPaneLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(missingPaymentsHeader)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(missingPaymentsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(newPaymentBTN1)
-                    .addComponent(deletePaymentBTN1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jTabbedPane2.addTab("Manglende Betalinger", missingPaymentsPane);
 
         javax.swing.GroupLayout accountingPaneLayout = new javax.swing.GroupLayout(accountingPane);
         accountingPane.setLayout(accountingPaneLayout);
@@ -367,10 +369,7 @@ public class GUI extends javax.swing.JFrame {
 
         resultTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "resultID", "Navn", "Disciplin", "Tid", "Stævne", "Sted"
@@ -405,7 +404,7 @@ public class GUI extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(categoryList);
 
-        getResultsBTN.setText("Søg Resultat (memberID)");
+        getResultsBTN.setText("Søg Resultat fra email");
         getResultsBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 getResultsBTNActionPerformed(evt);
@@ -445,9 +444,9 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(testPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(testPaneLayout.createSequentialGroup()
-                        .addComponent(resultsMemberIdTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(getResultsBTN)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(resultsMemberIdTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(topResultsHeader))
                     .addGroup(testPaneLayout.createSequentialGroup()
@@ -666,7 +665,7 @@ public class GUI extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) missingPaymentsTable.getModel();
             clearTable(model);
             for (Member member : logic.missingPaymentList) {
-                model.addRow(new Object[]{member.getID(), member.getName(), member.getEmail(), member.getBirthday().toString(), Boolean.toString(member.isActive()), Boolean.toString(member.isElite())});
+                model.addRow(new Object[]{member.getID(), member.getName(), member.getEmail(), member.getBirthday().toString()});
             }
         } catch (Exception ex) {
             showMessage("Kunne ikke indlæse missin payments");
@@ -816,11 +815,15 @@ public class GUI extends javax.swing.JFrame {
         fillMissinPaymentTable();
     }//GEN-LAST:event_newPaymentBTN1ActionPerformed
 
-    private void deletePaymentBTN1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePaymentBTN1ActionPerformed
+    private void deletePaymentBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePaymentBTNActionPerformed
         // TODO add your handling code here:
-        try {
-            DefaultTableModel model = (DefaultTableModel) paymentTable.getModel();
-            int id = (int) model.getValueAt(paymentTable.getSelectedRow(), 0);
+        DefaultTableModel model = (DefaultTableModel) paymentTable.getModel();
+        int reply = JOptionPane.showConfirmDialog(null,
+                "Er du sikker på at du vil slette betalingen fra " + model.getValueAt(paymentTable.getSelectedRow(), 1) + "?",
+                "Slet betaling?", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+            try {
+                int id = (int) model.getValueAt(paymentTable.getSelectedRow(), 0);
             //int id = (int) model.getValueAt(resultTable.getSelectedRow(), 1);
             logic.deletePayment(id);
         } catch (Exception ex) {
@@ -828,7 +831,9 @@ public class GUI extends javax.swing.JFrame {
         }
         fillPaymentTable();
         fillMissinPaymentTable();
-    }//GEN-LAST:event_deletePaymentBTN1ActionPerformed
+        }
+        
+    }//GEN-LAST:event_deletePaymentBTNActionPerformed
 
     /**
      * @param args the command line arguments
@@ -873,7 +878,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JList<String> categoryList;
     private javax.swing.JPanel coachPane;
     private javax.swing.JButton deleteMemberBTN;
-    private javax.swing.JButton deletePaymentBTN1;
+    private javax.swing.JButton deletePaymentBTN;
     private javax.swing.JButton deleteResultBTN;
     private javax.swing.JButton editMemberBTN;
     private javax.swing.JButton emailSearchBTN;
