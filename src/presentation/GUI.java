@@ -15,7 +15,7 @@ import logic.Result;
 /**
  *
  * @author caspe
- * 
+ *
  */
 public class GUI extends javax.swing.JFrame {
 
@@ -35,7 +35,7 @@ public class GUI extends javax.swing.JFrame {
         missingPaymentsTable.removeColumn(missingPaymentsTable.getColumnModel().getColumn(0));
         resultTable.removeColumn(resultTable.getColumnModel().getColumn(0));
         loadContent();
-        //removeLabels();
+        removeLabels();
     }
 
     /**
@@ -205,7 +205,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(emailSearchBTN)
                     .addComponent(emailTXT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
-                .addGroup(adminPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(adminPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(adminPaneLayout.createSequentialGroup()
                         .addComponent(addMemberBTN)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -221,9 +221,10 @@ public class GUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(numberOfMembersLBL)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(numberFactLBL))
+                        .addComponent(numberFactLBL)
+                        .addGap(0, 14, Short.MAX_VALUE))
                     .addComponent(memberTableScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         mainTabs.addTab("Formand", adminPane);
@@ -391,6 +392,7 @@ public class GUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        resultTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane3.setViewportView(resultTable);
 
         categoryList.setModel(new javax.swing.AbstractListModel<String>() {
@@ -529,21 +531,21 @@ public class GUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-   /**
-   * Shows dialog popup with message
-   * 
-   * @param msg must be string
-   */ 
+
+    /**
+     * Shows dialog popup with message
+     *
+     * @param msg must be string
+     */
     private void showMessage(String msg) {
         JOptionPane.showMessageDialog(null, msg);
     }
 
-   /**
-   * Clears table model
-   * 
-   * @param model must be table model
-   */ 
+    /**
+     * Clears table model
+     *
+     * @param model must be table model
+     */
     private void clearTable(DefaultTableModel model) {
         model.setRowCount(0);
     }
@@ -669,7 +671,7 @@ public class GUI extends javax.swing.JFrame {
             showMessage("Kunne ikke indlæse payments");
         }
     }
-    
+
     private void fillMissinPaymentTable() {
         try {
             logic.updateMissingPaymentList();
@@ -733,6 +735,10 @@ public class GUI extends javax.swing.JFrame {
 
     private void deleteMemberBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMemberBTNActionPerformed
         DefaultTableModel model = (DefaultTableModel) memberTable.getModel();
+        if (memberTable.getSelectionModel().isSelectionEmpty()) {
+            return;
+        }
+
         int reply = JOptionPane.showConfirmDialog(null,
                 "Er du sikker på at du vil slette " + model.getValueAt(memberTable.getSelectedRow(), 1) + "?",
                 "Slet medlem?", JOptionPane.YES_NO_OPTION);
@@ -762,7 +768,7 @@ public class GUI extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) resultTable.getModel();
             clearTable(model);
             for (Result result : logic.resultList) {
-                model.addRow(new Object[]{result.getId(), result.getMemberName(), result.getDisciplineName(), result.getTime(), result.getComp(), result.getPlace(),result.getTeam()});
+                model.addRow(new Object[]{result.getId(), result.getMemberName(), result.getDisciplineName(), result.getTime(), result.getComp(), result.getPlace(), result.getTeam()});
             }
         } catch (Exception ex) {
             showMessage("Kunne ikke indlæse resultater..");
@@ -779,7 +785,7 @@ public class GUI extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) resultTable.getModel();
             clearTable(model);
             for (Result result : logic.resultList) {
-                model.addRow(new Object[]{result.getId(), result.getMemberName(), result.getDisciplineName(), result.getTime(), result.getComp(), result.getPlace(),result.getTeam()});
+                model.addRow(new Object[]{result.getId(), result.getMemberName(), result.getDisciplineName(), result.getTime(), result.getComp(), result.getPlace(), result.getTeam()});
             }
         } catch (Exception ex) {
             showMessage("Kunne ikke indlæse resultater..");
@@ -800,14 +806,25 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_testResetBTNActionPerformed
 
     private void deleteResultBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteResultBTNActionPerformed
-        try {
-            DefaultTableModel model = (DefaultTableModel) resultTable.getModel();
-            int id = (int) model.getValueAt(resultTable.getSelectedRow(), 0);
-            //int id = (int) model.getValueAt(resultTable.getSelectedRow(), 1);
-            logic.deleteResult(id);
-        } catch (Exception ex) {
-            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        if (resultTable.getSelectionModel().isSelectionEmpty()) {
+            return;
         }
+        int reply = JOptionPane.showConfirmDialog(null,
+                "Er du sikker på at du vil slette dette resultat?",
+                "Slet resultat?", JOptionPane.YES_NO_OPTION);
+
+        if (reply == JOptionPane.YES_OPTION) {
+            try {
+                DefaultTableModel model = (DefaultTableModel) resultTable.getModel();
+                int id = (int) model.getValueAt(resultTable.getSelectedRow(), 0);
+                //int id = (int) model.getValueAt(resultTable.getSelectedRow(), 1);
+                logic.deleteResult(id);
+            } catch (Exception ex) {
+                Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            fillResultTable();
+        }
+
     }//GEN-LAST:event_deleteResultBTNActionPerformed
 
     private void newResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newResultActionPerformed
@@ -815,6 +832,7 @@ public class GUI extends javax.swing.JFrame {
         resultsDialog rdia = new resultsDialog(this, true);
         rdia.setTitle("Opret nyt resultat");
         rdia.setVisible(true);
+        fillResultTable();
     }//GEN-LAST:event_newResultActionPerformed
 
     private void newPaymentBTN1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newPaymentBTN1ActionPerformed
@@ -827,7 +845,9 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_newPaymentBTN1ActionPerformed
 
     private void deletePaymentBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePaymentBTNActionPerformed
-        // TODO add your handling code here:
+        if (paymentTable.getSelectionModel().isSelectionEmpty()) {
+            return;
+        }
         DefaultTableModel model = (DefaultTableModel) paymentTable.getModel();
         int reply = JOptionPane.showConfirmDialog(null,
                 "Er du sikker på at du vil slette betalingen fra " + model.getValueAt(paymentTable.getSelectedRow(), 1) + "?",
@@ -835,15 +855,15 @@ public class GUI extends javax.swing.JFrame {
         if (reply == JOptionPane.YES_OPTION) {
             try {
                 int id = (int) model.getValueAt(paymentTable.getSelectedRow(), 0);
-            //int id = (int) model.getValueAt(resultTable.getSelectedRow(), 1);
-            logic.deletePayment(id);
-        } catch (Exception ex) {
-            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+                //int id = (int) model.getValueAt(resultTable.getSelectedRow(), 1);
+                logic.deletePayment(id);
+            } catch (Exception ex) {
+                Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            fillPaymentTable();
+            fillMissinPaymentTable();
         }
-        fillPaymentTable();
-        fillMissinPaymentTable();
-        }
-        
+
     }//GEN-LAST:event_deletePaymentBTNActionPerformed
 
     /**

@@ -141,7 +141,7 @@ public class DataAccessorDB implements DataAccessorInterface {
         ResultSet rs = con.GetSQLResult("select idresults, members.name, disciplines.name, time, comp, place, members.birthday from results "
                 + "join members on results.idmembers = members.idmembers "
                 + "join disciplines on results.iddisciplines = disciplines.idcategories "
-                + "where members.email = '" + memberID+"' ORDER BY idresults DESC");
+                + "where members.email LIKE '%" + memberID+"%' ORDER BY idresults DESC");
 
         while (rs.next()) {
             results.add(buildResult(rs));
@@ -223,7 +223,7 @@ public class DataAccessorDB implements DataAccessorInterface {
     @Override
     public List<Member> searchMailForMembers(String email) throws Exception {
         List<Member> members = new ArrayList<>();
-        ResultSet rs = con.GetSQLResult("select * from members where email='" + email + "'");
+        ResultSet rs = con.GetSQLResult("select * from members where email LIKE '%" + email + "%'");
         while (rs.next()) {
             members.add(new Member(
                     rs.getInt(1),

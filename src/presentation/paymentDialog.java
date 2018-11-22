@@ -26,7 +26,7 @@ public class paymentDialog extends javax.swing.JDialog {
     
     private void fillYearComboBox(){
         int currentYear = LocalDate.now().getYear();
-        for(int i = currentYear -10;i<currentYear+6;i++){
+        for(int i = currentYear -10; i <= currentYear; i++){
             yearCB.addItem(String.valueOf(i));
         }
         yearCB.setSelectedItem(String.valueOf(currentYear));
