@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
@@ -33,23 +33,34 @@
                   </Group>
                   <Component id="jScrollPane1" min="-2" pref="224" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="timeTXT" min="-2" pref="65" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="timeLBL" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="timeTXT" min="-2" pref="65" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="timeLBL" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="placeTXT" min="-2" pref="65" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="placeLBL" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="compBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="createResultBTN" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <Component id="disciplinesComboBox" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="placeTXT" min="-2" pref="65" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="placeLBL" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="disciplinesComboBox" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="compBox" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="createResultBTN" min="-2" pref="107" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" pref="65" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="28" max="32767" attributes="0"/>
+              <EmptySpace pref="26" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -57,14 +68,18 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="searchMailTime" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="disciplinesComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="searchMailNewTime" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="searchMailTime" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="searchMailNewTime" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="jLabel1" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                      <Component id="disciplinesComboBox" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="timeTXT" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="timeLBL" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -74,15 +89,12 @@
                           <Component id="placeTXT" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="placeLBL" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="compBox" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="32767" attributes="0"/>
+                      <EmptySpace pref="14" max="32767" attributes="0"/>
                       <Component id="createResultBTN" min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
@@ -109,24 +121,27 @@
     </Component>
     <Component class="javax.swing.JLabel" name="timeLBL">
       <Properties>
-        <Property name="text" type="java.lang.String" value="time"/>
+        <Property name="text" type="java.lang.String" value="Tid"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="compBox">
       <Properties>
-        <Property name="text" type="java.lang.String" value="comp"/>
+        <Property name="text" type="java.lang.String" value="St&#xe6;vne"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="compBoxActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="placeTXT">
     </Component>
     <Component class="javax.swing.JLabel" name="placeLBL">
       <Properties>
-        <Property name="text" type="java.lang.String" value="place"/>
+        <Property name="text" type="java.lang.String" value="Sted"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="createResultBTN">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Create Result"/>
+        <Property name="text" type="java.lang.String" value="Opret resultat"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createResultBTNActionPerformed"/>
@@ -180,6 +195,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchMailNewTimeActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Disciplin"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
