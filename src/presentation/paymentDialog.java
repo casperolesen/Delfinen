@@ -52,12 +52,19 @@ public class paymentDialog extends javax.swing.JDialog {
         yearTXT = new javax.swing.JTextField();
         yearLBL = new javax.swing.JLabel();
         createPaymentBTN = new javax.swing.JButton();
+        amountLBL = new javax.swing.JLabel();
+        amountTXT = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         membersPaymentComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        membersPaymentComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                membersPaymentComboBoxActionPerformed(evt);
+            }
+        });
 
-        yearLBL.setText("year");
+        yearLBL.setText("År");
 
         createPaymentBTN.setText("Create Payment");
         createPaymentBTN.addActionListener(new java.awt.event.ActionListener() {
@@ -65,6 +72,8 @@ public class paymentDialog extends javax.swing.JDialog {
                 createPaymentBTNActionPerformed(evt);
             }
         });
+
+        amountLBL.setText("Beløb");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -75,11 +84,14 @@ public class paymentDialog extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(createPaymentBTN)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(yearLBL)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(amountLBL)
+                            .addComponent(yearLBL))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(membersPaymentComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(yearTXT))))
+                            .addComponent(yearTXT)
+                            .addComponent(amountTXT))))
                 .addGap(119, 119, 119))
         );
         layout.setVerticalGroup(
@@ -91,7 +103,11 @@ public class paymentDialog extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(yearTXT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(yearLBL))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(amountLBL)
+                    .addComponent(amountTXT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addComponent(createPaymentBTN)
                 .addGap(58, 58, 58))
         );
@@ -133,6 +149,10 @@ public class paymentDialog extends javax.swing.JDialog {
             Logger.getLogger(paymentDialog.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_createPaymentBTNActionPerformed
+
+    private void membersPaymentComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_membersPaymentComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_membersPaymentComboBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,6 +197,8 @@ public class paymentDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel amountLBL;
+    private javax.swing.JTextField amountTXT;
     private javax.swing.JButton createPaymentBTN;
     private javax.swing.JComboBox<String> membersPaymentComboBox;
     private javax.swing.JLabel yearLBL;

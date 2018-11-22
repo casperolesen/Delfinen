@@ -26,17 +26,21 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="170" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="createPaymentBTN" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Component id="yearLBL" min="-2" max="-2" attributes="0"/>
+                  <Component id="createPaymentBTN" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="amountLBL" min="-2" max="-2" attributes="0"/>
+                          <Component id="yearLBL" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="membersPaymentComboBox" max="32767" attributes="0"/>
                           <Component id="yearTXT" max="32767" attributes="0"/>
+                          <Component id="amountTXT" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
+              <EmptySpace min="119" pref="119" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -50,7 +54,12 @@
                   <Component id="yearTXT" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="yearLBL" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="87" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="amountLBL" min="-2" max="-2" attributes="0"/>
+                  <Component id="amountTXT" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="49" max="32767" attributes="0"/>
               <Component id="createPaymentBTN" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
           </Group>
@@ -69,6 +78,9 @@
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="membersPaymentComboBoxActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
@@ -77,7 +89,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="yearLBL">
       <Properties>
-        <Property name="text" type="java.lang.String" value="year"/>
+        <Property name="text" type="java.lang.String" value="&#xc5;r"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="createPaymentBTN">
@@ -87,6 +99,13 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createPaymentBTNActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="amountLBL">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Bel&#xf8;b"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="amountTXT">
     </Component>
   </SubComponents>
 </Form>
