@@ -75,7 +75,7 @@ public class DataAccessorDB implements DataAccessorInterface {
         //ResultSet rs = con.GetSQLResult("select * from results");
         ResultSet rs = con.GetSQLResult("SELECT idresults, members.name, disciplines.name, time, comp, place, members.birthday FROM delfinen.results\n"
                 + "JOIN disciplines ON results.iddisciplines = disciplines.idcategories\n"
-                + "JOIN members ON results.idmembers = members.idmembers");
+                + "JOIN members ON results.idmembers = members.idmembers ORDER BY idresults DESC");
 
         while (rs.next()) {
             results.add(buildResult(rs));
@@ -141,7 +141,7 @@ public class DataAccessorDB implements DataAccessorInterface {
         ResultSet rs = con.GetSQLResult("select idresults, members.name, disciplines.name, time, comp, place, members.birthday from results "
                 + "join members on results.idmembers = members.idmembers "
                 + "join disciplines on results.iddisciplines = disciplines.idcategories "
-                + "where members.email = '" + memberID+"'");
+                + "where members.email = '" + memberID+"' ORDER BY idresults DESC");
 
         while (rs.next()) {
             results.add(buildResult(rs));
