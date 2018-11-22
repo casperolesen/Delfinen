@@ -9,6 +9,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import logic.Controller;
 import logic.Discipline;
 import logic.Member;
@@ -29,29 +31,29 @@ public class resultsDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
-        fillMemberComboBox();
+        //fillMemberComboBox();
         fillDisciplinesComboBox();
 
         
 
     }
     
-    private void fillMemberComboBox() {
-        try {
-
-            logic.updateMemberList();
-            DefaultComboBoxModel model = (DefaultComboBoxModel) membersComboBox.getModel();
-            model.removeAllElements();
-
-            for (Member member : logic.memberList) {
-                model.addElement(member.getID() + ", "+ member.getName());
-            }
-            membersComboBox.setModel(model);
-            //membersComboBox.setModel((ComboBoxModel<String>) logic.memberList);
-        } catch (Exception ex) {
-            Logger.getLogger(resultsDialog.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+//    private void fillMemberComboBox() {
+//        try {
+//
+//            logic.updateMemberList();
+//            DefaultComboBoxModel model = (DefaultComboBoxModel) membersComboBox.getModel();
+//            model.removeAllElements();
+//
+//            for (Member member : logic.memberList) {
+//                model.addElement(member.getID() + ", "+ member.getName());
+//            }
+//            membersComboBox.setModel(model);
+//            //membersComboBox.setModel((ComboBoxModel<String>) logic.memberList);
+//        } catch (Exception ex) {
+//            Logger.getLogger(resultsDialog.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
     
     private void fillDisciplinesComboBox() {
         try {
@@ -78,7 +80,6 @@ public class resultsDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        membersComboBox = new javax.swing.JComboBox<>();
         disciplinesComboBox = new javax.swing.JComboBox<>();
         timeTXT = new javax.swing.JTextField();
         timeLBL = new javax.swing.JLabel();
@@ -86,10 +87,12 @@ public class resultsDialog extends javax.swing.JDialog {
         placeTXT = new javax.swing.JTextField();
         placeLBL = new javax.swing.JLabel();
         createResultBTN = new javax.swing.JButton();
+        searchMailTime = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        memberTimeTable = new javax.swing.JTable();
+        searchMailNewTime = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        membersComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         disciplinesComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -106,47 +109,82 @@ public class resultsDialog extends javax.swing.JDialog {
             }
         });
 
+        searchMailTime.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchMailTimeActionPerformed(evt);
+            }
+        });
+
+        memberTimeTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Navn", "Mail"
+            }
+        ));
+        jScrollPane1.setViewportView(memberTimeTable);
+
+        searchMailNewTime.setText("Søg mail");
+        searchMailNewTime.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchMailNewTimeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(209, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(createResultBTN)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(timeLBL)
-                            .addComponent(placeLBL))
+                        .addComponent(searchMailNewTime)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(compBox)
-                            .addComponent(disciplinesComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(membersComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(timeTXT)
-                            .addComponent(placeTXT))))
-                .addGap(92, 92, 92))
+                        .addComponent(searchMailTime))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(timeTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(timeLBL))
+                    .addComponent(disciplinesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(placeTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(placeLBL))
+                    .addComponent(compBox)
+                    .addComponent(createResultBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(membersComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(disciplinesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(timeTXT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(timeLBL))
-                .addGap(18, 18, 18)
-                .addComponent(compBox)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(placeTXT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(placeLBL))
-                .addGap(18, 18, 18)
-                .addComponent(createResultBTN)
-                .addContainerGap(44, Short.MAX_VALUE))
+                    .addComponent(searchMailTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(disciplinesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchMailNewTime, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(timeTXT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(timeLBL))
+                        .addGap(7, 7, 7)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(placeTXT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(placeLBL))
+                        .addGap(18, 18, 18)
+                        .addComponent(compBox)
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addComponent(createResultBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         pack();
@@ -155,27 +193,35 @@ public class resultsDialog extends javax.swing.JDialog {
     private void createResultBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createResultBTNActionPerformed
         try {
             // TODO add your handling code here:
-            String test = (String) membersComboBox.getModel().getSelectedItem();
-            int memberID = Integer.parseInt(membersComboBox.getModel().getSelectedItem().toString().split(",")[0].trim());
-            int disciplineID = Integer.parseInt(disciplinesComboBox.getModel().getSelectedItem().toString().split(",")[0].trim());
             String time = timeTXT.getText();
-            String comp = "false";
-            if (compBox.isSelected()) {
-                comp = "true";
-            }
-            
+            int discID = disciplinesComboBox.getSelectedIndex() + 1;
+            String isComp = String.valueOf(compBox.isEnabled());
             String place = placeTXT.getText();
-
-            System.out.println(test);
-            System.out.println("memberID: " + memberID);
-            System.out.println("disciplineID: " + disciplineID);
-            logic.createResult(memberID, disciplineID, time, comp, place);
+            int memberID = logic.memberList.get(memberTimeTable.convertRowIndexToModel(memberTimeTable.getSelectedRow())).getID();
             
+            logic.createResult(memberID, discID, time, isComp, place);
             dispose();
         } catch (Exception ex) {
             Logger.getLogger(resultsDialog.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_createResultBTNActionPerformed
+
+    private void searchMailTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchMailTimeActionPerformed
+        
+    }//GEN-LAST:event_searchMailTimeActionPerformed
+
+    private void searchMailNewTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchMailNewTimeActionPerformed
+        try {
+            logic.updateMemberList(searchMailTime.getText());
+            DefaultTableModel model = (DefaultTableModel) memberTimeTable.getModel();
+            model.setRowCount(0);
+            for (Member member : logic.memberList) {
+                model.addRow(new Object[]{member.getName(), member.getEmail()});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Kunne ikke indlæse medlemmer..");
+        }            
+    }//GEN-LAST:event_searchMailNewTimeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -223,9 +269,12 @@ public class resultsDialog extends javax.swing.JDialog {
     private javax.swing.JCheckBox compBox;
     private javax.swing.JButton createResultBTN;
     private javax.swing.JComboBox<String> disciplinesComboBox;
-    private javax.swing.JComboBox<String> membersComboBox;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable memberTimeTable;
     private javax.swing.JLabel placeLBL;
     private javax.swing.JTextField placeTXT;
+    private javax.swing.JButton searchMailNewTime;
+    private javax.swing.JTextField searchMailTime;
     private javax.swing.JLabel timeLBL;
     private javax.swing.JTextField timeTXT;
     // End of variables declaration//GEN-END:variables
