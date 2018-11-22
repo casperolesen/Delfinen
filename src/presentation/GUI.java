@@ -33,6 +33,7 @@ public class GUI extends javax.swing.JFrame {
         memberTable.removeColumn(memberTable.getColumnModel().getColumn(0));
         paymentTable.removeColumn(paymentTable.getColumnModel().getColumn(0));
         missingPaymentsTable.removeColumn(missingPaymentsTable.getColumnModel().getColumn(0));
+        resultTable.removeColumn(resultTable.getColumnModel().getColumn(0));
         loadContent();
         //removeLabels();
     }
@@ -372,14 +373,14 @@ public class GUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "resultID", "Navn", "Disciplin", "Tid", "Stævne", "Sted"
+                "resultID", "Navn", "Disciplin", "Tid", "Stævne", "Sted", "Hold"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -609,7 +610,7 @@ public class GUI extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) resultTable.getModel();
             clearTable(model);
             for (Result result : logic.resultList) {
-                model.addRow(new Object[]{result.getId(), result.getMemberName(), result.getDisciplineName(), result.getTime(), result.getComp(), result.getPlace()});
+                model.addRow(new Object[]{result.getId(), result.getMemberName(), result.getDisciplineName(), result.getTime(), result.getComp(), result.getPlace(), result.getTeam()});
             }
         } catch (Exception ex) {
             showMessage("Kunne ikke indlæse resultater..");
@@ -751,7 +752,7 @@ public class GUI extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) resultTable.getModel();
             clearTable(model);
             for (Result result : logic.resultList) {
-                model.addRow(new Object[]{result.getId(), result.getMemberName(), result.getDisciplineName(), result.getTime(), result.getComp(), result.getPlace()});
+                model.addRow(new Object[]{result.getId(), result.getMemberName(), result.getDisciplineName(), result.getTime(), result.getComp(), result.getPlace(),result.getTeam()});
             }
         } catch (Exception ex) {
             showMessage("Kunne ikke indlæse resultater..");
@@ -768,7 +769,7 @@ public class GUI extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) resultTable.getModel();
             clearTable(model);
             for (Result result : logic.resultList) {
-                model.addRow(new Object[]{result.getId(), result.getMemberName(), result.getDisciplineName(), result.getTime(), result.getComp(), result.getPlace()});
+                model.addRow(new Object[]{result.getId(), result.getMemberName(), result.getDisciplineName(), result.getTime(), result.getComp(), result.getPlace(),result.getTeam()});
             }
         } catch (Exception ex) {
             showMessage("Kunne ikke indlæse resultater..");

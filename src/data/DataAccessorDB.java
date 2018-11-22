@@ -62,8 +62,9 @@ public class DataAccessorDB implements DataAccessorInterface {
         }
 
         String place = rs.getString(6);
+        String memberBirthday = rs.getString(7);
 
-        return new Result(id, member_name, discipline_name, time, comp, place);
+        return new Result(id, member_name, discipline_name, time, comp, place, memberBirthday);
 
     }
 
@@ -72,7 +73,7 @@ public class DataAccessorDB implements DataAccessorInterface {
         List<Result> results = new ArrayList<>();
 
         //ResultSet rs = con.GetSQLResult("select * from results");
-        ResultSet rs = con.GetSQLResult("SELECT idresults, members.name, disciplines.name, time, comp, place FROM delfinen.results\n"
+        ResultSet rs = con.GetSQLResult("SELECT idresults, members.name, disciplines.name, time, comp, place, members.birthday FROM delfinen.results\n"
                 + "JOIN disciplines ON results.iddisciplines = disciplines.idcategories\n"
                 + "JOIN members ON results.idmembers = members.idmembers");
 
@@ -118,7 +119,7 @@ public class DataAccessorDB implements DataAccessorInterface {
     public List<Result> getResultsInDisciplines(int categoryID) throws Exception {
         List<Result> results = new ArrayList<>();
 
-        ResultSet rs = con.GetSQLResult("SELECT idresults, members.name, disciplines.name, MIN(time), comp, place FROM delfinen.results "
+        ResultSet rs = con.GetSQLResult("SELECT idresults, members.name, disciplines.name, MIN(time), comp, place, members.birthday FROM delfinen.results "
                 + "JOIN disciplines ON results.iddisciplines = disciplines.idcategories "
                 + "JOIN members ON results.idmembers = members.idmembers "
                 + "GROUP BY results.idmembers, iddisciplines "
@@ -137,7 +138,7 @@ public class DataAccessorDB implements DataAccessorInterface {
     public List<Result> getResultsForMember(String memberID) throws Exception {
         List<Result> results = new ArrayList<>();
 
-        ResultSet rs = con.GetSQLResult("select idresults, members.name, disciplines.name, time, comp, place from results "
+        ResultSet rs = con.GetSQLResult("select idresults, members.name, disciplines.name, time, comp, place, members.birthday from results "
                 + "join members on results.idmembers = members.idmembers "
                 + "join disciplines on results.iddisciplines = disciplines.idcategories "
                 + "where members.email = '" + memberID+"'");
@@ -186,7 +187,7 @@ public class DataAccessorDB implements DataAccessorInterface {
         ResultSet rs = con.GetSQLResult("SELECT * FROM members_disciplines WHERE memberID=" + id);
 
         while (rs.next()) {
-
+            /*
             if (rs.getString("discipline1").equals("true")) {
                 disc[0] = true;
             } else {
@@ -209,11 +210,11 @@ public class DataAccessorDB implements DataAccessorInterface {
                 disc[3] = true;
             } else {
                 disc[3] = false;
-            }
-//            disc[0] = Boolean.getBoolean(rs.getString("discipline1"));
-//            disc[1] = Boolean.getBoolean(rs.getString("discipline2"));
-//            disc[2] = Boolean.getBoolean(rs.getString("discipline3"));
-//            disc[3] = Boolean.getBoolean(rs.getString("discipline4"));
+            } */
+            disc[0] = Boolean.parseBoolean(rs.getString("discipline1"));
+            disc[1] = Boolean.parseBoolean(rs.getString("discipline2"));
+            disc[2] = Boolean.parseBoolean(rs.getString("discipline3"));
+            disc[3] = Boolean.parseBoolean(rs.getString("discipline4"));
         }
 
         return disc;
