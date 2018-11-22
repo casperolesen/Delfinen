@@ -1,6 +1,7 @@
 package logic;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 /**
  *
@@ -12,6 +13,7 @@ public class Result {
 //    private int id_category;
     
     private String member_name;
+    private String memberBirthday;
     private String discipline_name;
     private LocalDate date;
     
@@ -29,13 +31,14 @@ public class Result {
 //        this.place = place;
 //    }
     
-    public Result(int id, String member_name, String discipline_name, double time, Boolean comp, String place) {
+    public Result(int id, String member_name, String discipline_name, double time, Boolean comp, String place, String bd) {
         this.id = id;
         this.member_name = member_name;
         this.discipline_name = discipline_name;
         this.time = time;
         this.comp = comp;
         this.place = place;
+        this.memberBirthday = bd;
     }
 
     public int getId() {
@@ -48,6 +51,11 @@ public class Result {
     
     public String getDisciplineName() {
         return discipline_name;
+    }
+    
+    public String getTeam(){
+        int age = Period.between(LocalDate.parse(memberBirthday), LocalDate.now()).getYears();
+        return age < 18 ? "Junior":"Senior";
     }
 
 //    public int getId_member() {
