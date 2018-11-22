@@ -148,6 +148,10 @@ public class paymentDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void createPaymentBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createPaymentBTNActionPerformed
+        if(memberTable.getSelectionModel().isSelectionEmpty()){
+            return;
+        }
+        
         try {
             int id = 0;
             int memberID = logic.memberList.get(memberTable.convertRowIndexToModel(memberTable.getSelectedRow())).getID();
